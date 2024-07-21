@@ -21,6 +21,7 @@
     "framer-motion": "^11.3.8",
     "lucide-react": "^0.411.0",
     "next": "14.2.5",
+    "nextjs-toploader": "^1.6.12",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.4.0",

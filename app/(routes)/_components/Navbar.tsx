@@ -6,10 +6,23 @@ import Link from "next/link";
 import { Icon } from "./Icon";
 
 import { Menu, SunMoonIcon, MoonStarIcon } from "lucide-react";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../../../components/ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "../../../components/ui/dropdown-menu";
 import { Button } from "../../../components/ui/button";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "../../../components/ui/sheet";
-
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "../../../components/ui/sheet";
 
 export const Navbar = () => {
   const [theme, setTheme] = useState("dark");
@@ -35,10 +48,13 @@ export const Navbar = () => {
   });
   return (
     <header className="min-w-full">
-      <nav className={`fixed top-0 left-0 right-0 backdrop-blur-md z-50 hidden md:flex items-center container dark:text-white`}>
+      <nav
+        className={`fixed top-0 left-0 right-0 backdrop-blur-md z-50 hidden md:flex items-center container dark:text-white`}
+      >
         <div className="flex items-center justify-between w-full py-4">
           <div className="flex items-center space-x-4">
             <Link
+              scroll={false}
               href="/"
               className="font-bold flex text-2xl gap-3 justify-center items-center"
             >
@@ -48,6 +64,7 @@ export const Navbar = () => {
         </div>
         <div className="flex items-center gap-3  space-x-4">
           <Link
+            scroll={false}
             href="/explore"
             className="dark:hover:text-cyan-400
             dark:text-slate-300 transition-all delay-200 duration-200 ease-in-out text-slate-700 hover:text-slate-900"
@@ -56,12 +73,14 @@ export const Navbar = () => {
           </Link>
 
           <Link
+            scroll={false}
             href="/login"
             className="dark:hover:text-cyan-400 dark:text-slate-300 transition-all delay-200 duration-200 ease-in-out text-slate-700 hover:text-slate-900"
           >
             Login
           </Link>
           <Link
+            scroll={false}
             href="/register"
             className="dark:hover:text-cyan-400 transition-all delay-200 duration-200 ease-in-out border rounded-lg p-1 px-2 dark:hover:bg-slate-800 dark:text-slate-300 dark:border-slate-200 text-slate-700 hover:text-slate-900 hover:bg-slate-100"
           >
@@ -73,7 +92,7 @@ export const Navbar = () => {
             </DropdownMenuTrigger>
             <DropdownMenuContent className="mt-2">
               <DropdownMenuLabel>Theme</DropdownMenuLabel>
-              <DropdownMenuSeparator/>
+              <DropdownMenuSeparator />
               <DropdownMenuItem>
                 <Button
                   variant="ghost"
@@ -109,6 +128,7 @@ export const Navbar = () => {
               <SheetDescription>
                 <div className="flex flex-col items-center mt-5 gap-3">
                   <Link
+                    scroll={false}
                     href="/communities"
                     className="hover:text-slate-800 text-slate-600 dark:hover:text-cyan-400 dark:text-slate-400 hover:bg-slate-100
                     dark:hover:bg-slate-800 transition-all delay-200 duration-200 ease-in-out w-full text-start p-2 pl-8"
@@ -116,6 +136,7 @@ export const Navbar = () => {
                     Explore {"> >"}
                   </Link>
                   <Link
+                    scroll={false}
                     href="/login"
                     className="hover:text-slate-800 text-slate-600 dark:hover:text-cyan-400 dark:text-slate-400 hover:bg-slate-100 
                     dark:hover:bg-slate-800  transition-all delay-200 duration-200 ease-in-out w-full p-2 text-start pl-8"
@@ -129,6 +150,7 @@ export const Navbar = () => {
         </Sheet>
         <div className="flex items-center space-x-4">
           <Link
+            scroll={false}
             href="/"
             className="font-bold flex text-2xl gap-3 justify-center items-center"
           >
@@ -137,6 +159,7 @@ export const Navbar = () => {
         </div>
         <div className="flex gap-2 items-center">
           <Link
+            scroll={false}
             href="/register"
             className="dark:hover:text-cyan-400 transition-all delay-200 duration-200 ease-in-out border rounded-lg p-1 px-2 dark:hover:bg-slate-800 hover:bg-slate-200"
           >
@@ -149,7 +172,7 @@ export const Navbar = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="mt-2">
                 <DropdownMenuLabel>Theme</DropdownMenuLabel>
-                <DropdownMenuSeparator/>
+                <DropdownMenuSeparator />
                 <DropdownMenuItem>
                   <Button
                     variant="ghost"

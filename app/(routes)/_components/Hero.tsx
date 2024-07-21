@@ -13,6 +13,8 @@ import { Icon } from "./Icon";
 import { Meteors } from "../../../components/animated/meteors";
 import { BackgroundBeams } from "../../../components/animated/background-beams";
 import { Input } from "@/components/ui/input";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const World = dynamic(() => import("../../../components/animated/globe").then((m) => m.World), {
   ssr: false,
@@ -23,6 +25,9 @@ type Props = {};
 export const Hero = () => {
   const [hovered, setHovered] = useState<boolean>(false);
   const [hovered1, setHovered1] = useState<boolean>(false);
+  // router.push
+  const router = useRouter();
+    
   const globeConfig = {
     pointSize: 4,
     globeColor: "#062056",
@@ -538,10 +543,10 @@ export const Hero = () => {
                 </div>
               </form>
               <span className="border-t-[1px] md:border-l-[1px] border-neutral-700 md:mx-10 mb-3 md:mb-0"></span>
-              <a
+              <Link
                 onMouseEnter={() => setHovered1(true)}
                 onMouseLeave={() => setHovered1(false)}
-                href=""
+                href='/explore' scroll={false}
                 className="flex items-center w-full md:w-auto justify-center text-[16px] py-3 px-5 max-md:mt-4 rounded-md border-[#ae88f9] border-[1.5px] dark:text-white"
               >
                 Explore
@@ -569,7 +574,7 @@ export const Hero = () => {
                     strokeLinecap="round"
                   ></path>
                 </svg>
-              </a>
+              </Link>
             </div>
             <div className="w-full flex justify-center">
               <Gradient />

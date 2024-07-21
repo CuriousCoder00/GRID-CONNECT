@@ -1,8 +1,7 @@
-
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { useEffect } from "react";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,9 +17,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className="dark"  lang="en">
+    <html className="dark" lang="en">
       <link rel="shortcut icon" href="grid-icon.svg" type="image/svg" />
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <NextTopLoader />
+        {children}
+      </body>
     </html>
   );
 }

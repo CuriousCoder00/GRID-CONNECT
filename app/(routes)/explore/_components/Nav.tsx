@@ -55,6 +55,7 @@ export const Navbar = () => {
         <div className="flex items-center justify-between w-full py-4">
           <div className="flex items-center space-x-4">
             <Link
+              scroll={false}
               href="/"
               className="font-bold flex text-2xl gap-3 justify-center items-center"
             >
@@ -63,14 +64,20 @@ export const Navbar = () => {
           </div>
         </div>
         <div className="flex items-center gap-3  space-x-4">
-          <Input className="w-54" type="search" placeholder="Explore communities..." />
+          <Input
+            className="w-54"
+            type="search"
+            placeholder="Explore communities..."
+          />
           <Link
+            scroll={false}
             href="/login"
             className="dark:hover:text-cyan-400 dark:text-slate-300 transition-all delay-200 duration-200 ease-in-out text-slate-700 hover:text-slate-900"
           >
             Login
           </Link>
           <Link
+            scroll={false}
             href="/register"
             className="dark:hover:text-cyan-400 transition-all delay-200 duration-200 ease-in-out border rounded-lg p-1 px-2 dark:hover:bg-slate-800 dark:text-slate-300 dark:border-slate-200 text-slate-700 hover:text-slate-900 hover:bg-slate-100"
           >
@@ -118,6 +125,7 @@ export const Navbar = () => {
               <SheetDescription>
                 <div className="flex flex-col items-center mt-5 gap-3">
                   <Link
+                    scroll={false}
                     href="/login"
                     className="hover:text-slate-800 text-slate-600 dark:hover:text-cyan-400 dark:text-slate-400 hover:bg-slate-100
                     dark:hover:bg-slate-800  transition-all delay-200 duration-200 ease-in-out w-full p-2 text-start pl-8"
@@ -131,6 +139,7 @@ export const Navbar = () => {
         </Sheet>
         <div className="flex items-center space-x-4">
           <Link
+            scroll={false}
             href="/"
             className="font-bold flex text-2xl gap-3 justify-center items-center"
           >
@@ -139,6 +148,7 @@ export const Navbar = () => {
         </div>
         <div className="flex gap-2 items-center">
           <Link
+            scroll={false}
             href="/register"
             className="dark:hover:text-cyan-400 transition-all delay-200 duration-200 ease-in-out border rounded-lg p-1 px-2 dark:hover:bg-slate-800 hover:bg-slate-200"
           >
