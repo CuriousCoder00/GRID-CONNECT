@@ -2,7 +2,21 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
-  "keywords": ["react", "nextjs", "typescript", "tailwindcss", "shadcn", "animate", "app"],
+  "keywords": [
+    "react",
+    "nextjs",
+    "typescript",
+    "tailwindcss",
+    "shadcn",
+    "clsx",
+    "framer-motion",
+    "nextjs-toploader",
+    "tailwind-merge",
+    "tailwindcss-animate",
+    "three",
+    "three-globe",
+    "class-variance-authority"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
