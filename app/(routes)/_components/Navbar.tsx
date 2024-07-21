@@ -129,7 +129,7 @@ export const Navbar = () => {
                 <div className="flex flex-col items-center mt-5 gap-3">
                   <Link
                     scroll={false}
-                    href="/communities"
+                    href="/explore"
                     className="hover:text-slate-800 text-slate-600 dark:hover:text-cyan-400 dark:text-slate-400 hover:bg-slate-100
                     dark:hover:bg-slate-800 transition-all delay-200 duration-200 ease-in-out w-full text-start p-2 pl-8"
                   >

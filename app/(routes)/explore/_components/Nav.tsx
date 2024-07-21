@@ -124,6 +124,11 @@ export const Navbar = () => {
               <SheetTitle>GridConnects</SheetTitle>
               <SheetDescription>
                 <div className="flex flex-col items-center mt-5 gap-3">
+                  <Input
+                    className="w-full"
+                    type="search"
+                    placeholder="Explore communities..."
+                  />
                   <Link
                     scroll={false}
                     href="/login"
