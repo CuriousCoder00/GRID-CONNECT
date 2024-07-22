@@ -2,6 +2,7 @@
 import { CombineIcon, DiamondPercentIcon, Gamepad, GraduationCap, Music, Tv } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { Gradient } from "../../_components/Gradient";
 
 const NavItems = [
   {
@@ -73,6 +74,7 @@ const CommunityNavs = () => {
           </Link>
         );
       })}
+      <Gradient/>
     </div>
   );
 };

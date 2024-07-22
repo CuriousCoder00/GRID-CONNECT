@@ -11,14 +11,7 @@ const ExploreLayout = ({ children }: { children: React.ReactNode }) => {
         <Gradient />
         <Banner />
         <Gradient />
-        <div className="container grid grid-cols-4 mt-12">
-          <div className="grid-cols-1">
-            <CommunityNavs />
-          </div>
-          <div className="grid-cols-3 flex flex-col w-full justify-center items-start gap-3">
-            {children}
-          </div>
-        </div>
+        <div className="w-full h-full">{children}</div>
       </div>
     </div>
   );
