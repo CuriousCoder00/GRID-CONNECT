@@ -20,7 +20,7 @@ export default function page() {
       <form className="my-8" onSubmit={handleSubmit}>
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
-            <Label htmlFor="Full Name">First name</Label>
+            <Label htmlFor="Full Name">Full name</Label>
             <Input id="name" placeholder="Tyler Durden" type="text" />
           </LabelInputContainer>
         </div>
