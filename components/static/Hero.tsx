@@ -17,16 +17,19 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { sampleArcs } from "@/data/sampleArcs";
 
-const World = dynamic(() => import("@/components/animated/globe").then((m) => m.World), {
-  ssr: false,
-});
+const World = dynamic(
+  () => import("@/components/animated/globe").then((m) => m.World),
+  {
+    ssr: false,
+  }
+);
 
 type Props = {};
 
 export const Hero = () => {
   const [hovered, setHovered] = useState<boolean>(false);
   const [hovered1, setHovered1] = useState<boolean>(false);
-    
+
   const globeConfig = {
     pointSize: 4,
     globeColor: "#062056",
@@ -52,53 +55,12 @@ export const Hero = () => {
 
   return (
     <div className="w-full overflow-hidden">
-      <div className="relative max-w-[1280px] md:px-10 mx-auto md:pt-24 pt-16">
+      <div className="max-w-[1280px] md:px-10 mx-auto">
         <Gradient />
         <div className="flex">
-          <div className="relative ">
-            <Image
-              aria-hidden="true"
-              className=""
-              src="https://github.githubassets.com/images/modules/site/home-campaign/lines-hero.svg"
-              width="437"
-              height="900"
-              alt=""
-            />
-            <Gradient />
-            <div className="mx-auto my-3 ">
-              <span className="relative z-[11]">
-                <svg
-                  aria-hidden="true"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  version="1.1"
-                  width="24"
-                  data-view-component="true"
-                  className=" dark:text-white"
-                >
-                  <path d="M15.22 4.97a.75.75 0 0 1 1.06 0l6.5 6.5a.75.75 0 0 1 0 1.06l-6.5 6.5a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L21.19 12l-5.97-5.97a.75.75 0 0 1 0-1.06Zm-6.44 0a.75.75 0 0 1 0 1.06L2.81 12l5.97 5.97a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-6.5-6.5a.75.75 0 0 1 0-1.06l6.5-6.5a.75.75 0 0 1 1.06 0Z"></path>
-                </svg>
-                <span
-                  className="absolute left-0 top-0 w-6 h-full shadow-xl shadow-cyan-400 "
-                  style={{
-                    backgroundColor: "var(--mktg-accent-primary)",
-                    filter: "blur(17px)",
-                  }}
-                ></span>
-              </span>
-            </div>
-            <div
-              style={{
-                background:
-                  "linear-gradient(#d2a8ff, #a371f7 10%, #196c2e 70%, #2ea043 80%, #56d364)",
-                marginLeft: "11px",
-              }}
-              className=" max-md:w-[2px] w-[3px] h-[300px] max-md:h-[300px] max-sm:h-[300px] max-ssm:h-[900px] max-sssm:h-[1150px] line rounded-md"
-            ></div>
-          </div>
-          <div className=" absolute pt-32 mt-28 max-md:px-4 ml-4 md:ml-12">
-            <div className="relative md:top-20 mb-[24px]">
+          <Gradient />
+          <div className="mt-28 max-md:px-4 ml-4 md:ml-12">
+            <div className="">
               <a
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}
@@ -146,7 +108,7 @@ export const Hero = () => {
                 </div>
               </a>
             </div>
-            <h1 className="md:mt-24 lg:mt-28 sm:mt-10 relative z-2 max-md:mb-5 text-[48px] md:text-[72px] max-sm:leading-[60px] max-md:leading-[80px] lg:text-[80px] font-semibold dark:text-white">
+            <h1 className="md:mt-10 lg:mt-10 sm:mt-14 mt-14 relative z-2 max-md:mb-5 text-[48px] md:text-[72px] max-sm:leading-[60px] max-md:leading-[80px] lg:text-[80px] font-semibold dark:text-white">
               {" "}
               Let&apos;s connect from&nbsp;here
             </h1>
@@ -155,7 +117,7 @@ export const Hero = () => {
               A Community of your interests. Experience the power of community
               with GridConnect. Be a part of something bigger.
             </p>
-            <div className="flex lg:w-11/12 md:space-x-5 max-md:flex-col">
+            <div className="relative flex lg:w-11/12 md:space-x-5 max-md:flex-col z-50">
               <form action="">
                 <div className=" grid max-md:grid-rows-2 md:grid-cols-2 md:border md:rounded-lg md:shadow-xl md:border-blue-500 dark:border-[#ae88f9]">
                   <dl>
@@ -183,7 +145,8 @@ export const Hero = () => {
               <Link
                 onMouseEnter={() => setHovered1(true)}
                 onMouseLeave={() => setHovered1(false)}
-                href='/explore' scroll={false}
+                href="/explore"
+                scroll={false}
                 className="flex items-center w-full md:w-auto justify-center text-[16px] py-3 px-5 max-md:mt-4 rounded-md border-[#ae88f9] border-[1.5px] dark:text-white"
               >
                 Explore
@@ -213,14 +176,15 @@ export const Hero = () => {
                 </svg>
               </Link>
             </div>
+            <BackgroundBeams />
             <div className="w-full flex justify-center">
               <Gradient />
             </div>
           </div>
         </div>
-        <div className="container min-h-screen flex flex-row items-center justify-center py-20 h-screen md:h-auto relative w-full">
+        <div className="container min-h-screen flex flex-row items-center justify-center py-20 h-[140vh] md:h-auto relative w-full">
           <Gradient />
-          <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-full md:h-[40rem] px-4">
+          <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-[100vh] md:h-[40rem] px-4">
             <motion.div
               initial={{
                 opacity: 0,
@@ -235,21 +199,34 @@ export const Hero = () => {
               }}
               className="div"
             >
-              <h2 className="text-center text-xl md:text-4xl font-bold text-black dark:text-white">
+              <h2 className="text-start text-4xl sm:text-5xl md:text-6xl font-bold text-black dark:text-white">
                 Connect and interact with millions of people worldwide
               </h2>
             </motion.div>
             <div className="absolute w-full top-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" />
-          <Meteors number={100} />
-            <div className="absolute w-full -bottom-15 h-full md:h-full z-10">
-              <World data={sampleArcs} globeConfig={globeConfig} />
+            <Meteors number={100} />
+            <div className="flex relative md:h-full md:w-screen">
+              <div className="absolute w-full -right-0 -bottom-15 h-[30rem] md:h-full z-10 dark:invert-0 dark:hue-rotate-0 invert grayscale-0 hue-rotate-90">
+                <World data={sampleArcs} globeConfig={globeConfig} />
+              </div>
+              <div className="md:w-[40rem] flex flex-col gap-20 justify-center md:items-center h-full z-20 md:text-2xl sm:text-2xl text-xl items-start md:ml-14 mt-5 dark:text-neutral-400">
+                <p>
+                  Connect with like-minded people and expand your horizons.
+                  Discover, share, and grow together in a global community.
+                </p>
+                <p>
+                  {" "}
+                  Our platform is designed to bring people from all corners of
+                  the world together. Whether you're looking to network, find
+                  collaborators, or simply meet new friends, we've got you
+                  covered.
+                </p>
+              </div>
             </div>
           </div>
           <Gradient />
         </div>
       </div>
-
-      <BackgroundBeams />
     </div>
   );
 };
