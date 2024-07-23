@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { Label } from "../_components/label";
-import { Input } from "../_components/input";
+import { Label } from "@/components/static/label";
+import { Input } from "@/components/static/input";
 import { cn } from "@/lib/utils";
 import { IconBrandGoogle } from "@tabler/icons-react";
 import Link from "next/link";
@@ -12,7 +12,7 @@ export default function page() {
     console.log("Form submitted");
   };
   return (
-    <div className="max-w-md w-full mx-auto mt-10 rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+    <div className="max-w-md w-full mx-auto mt-14 rounded-none md:rounded-2xl p-4 shadow-input bg-white dark:bg-black">
       <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
         Welcome to Grid Connects
       </h2>
@@ -20,12 +20,8 @@ export default function page() {
       <form className="my-8" onSubmit={handleSubmit}>
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
-            <Label htmlFor="firstname">First name</Label>
-            <Input id="firstname" placeholder="Tyler" type="text" />
-          </LabelInputContainer>
-          <LabelInputContainer>
-            <Label htmlFor="lastname">Last name</Label>
-            <Input id="lastname" placeholder="Durden" type="text" />
+            <Label htmlFor="Full Name">First name</Label>
+            <Input id="name" placeholder="Tyler Durden" type="text" />
           </LabelInputContainer>
         </div>
         <LabelInputContainer className="mb-4">

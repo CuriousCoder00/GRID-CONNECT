@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 
-import { Icon } from "@/app/(routes)/_components/Icon";
+import { Icon } from "./static/Icon";
 
-import { Menu, SunMoonIcon, MoonStarIcon } from "lucide-react";
+import { SunMoonIcon, MoonStarIcon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,34 +14,33 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
 
-export const Navbar = () => {
+import { Button } from "@/components/ui/button";
+import { NavbarLinks } from "./NavbarLinks";
+import { Url } from "next/dist/shared/lib/router/router";
+import { MobileNavbar } from "./MobileNavbar";
+
+interface NavbarProps {
+  navLinks?: Array<{ name: String; href: Url }>;
+  showInput?: Boolean;
+  hideMobileNav?: Boolean;
+
+}
+
+export const Navbar = ({ navLinks, showInput, hideMobileNav }: NavbarProps) => {
   const [theme, setTheme] = useState("dark");
-  const lightTheme = () => {
-    setTheme("light");
-    document.documentElement.classList.remove("dark");
-    document.documentElement.classList.add("light");
-  };
-  const darkTheme = () => {
-    setTheme("dark");
-    document.documentElement.classList.remove("light");
-    document.documentElement.classList.add("dark");
+  const toggleTheme = (newTheme: string) => {
+    setTheme(newTheme);
+    document.documentElement.classList.remove("dark", "light");
+    document.documentElement.classList.add(newTheme);
   };
   return (
     <header className="min-w-full">
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 hidden md:flex items-center container dark:text-white`}
+        className={`fixed top-0 left-0 right-0 backdrop-blur-md z-50 flex container dark:text-white gap-4`}
       >
-        <div className="flex items-center justify-between w-full py-4">
+        <div className="flex items-center w-full py-4 gap-2">
+          <MobileNavbar hideMobileNav={hideMobileNav} links={navLinks} showInput={showInput} />
           <div className="flex items-center space-x-4">
             <Link
               scroll={false}
@@ -52,7 +51,13 @@ export const Navbar = () => {
             </Link>
           </div>
         </div>
-        <div className="flex items-center gap-3  space-x-4">
+        <div className="hidden md:flex items-center space-x-4">
+          <NavbarLinks links={navLinks} showInput={showInput} />
+        </div>
+        <div
+          className="flex justify-center items-center
+        "
+        >
           <DropdownMenu>
             <DropdownMenuTrigger className="focus:outline-none">
               {theme === "dark" ? <MoonStarIcon /> : <SunMoonIcon />}
@@ -64,7 +69,7 @@ export const Navbar = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={() => lightTheme()}
+                  onClick={() => toggleTheme("light")}
                   className="w-full flex items-center justify-between"
                 >
                   <SunMoonIcon /> Light
@@ -74,7 +79,7 @@ export const Navbar = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={() => darkTheme()}
+                  onClick={() => toggleTheme("dark")}
                   className="w-full flex items-center justify-between "
                 >
                   <MoonStarIcon /> Dark

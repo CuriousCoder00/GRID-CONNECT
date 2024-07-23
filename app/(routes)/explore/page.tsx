@@ -1,9 +1,8 @@
 "use client";
 
 import React from "react";
-import Cards from "./_components/Cards";
-import { ScrollToTop } from "./_components/ScrollToTop";
-import CommunityNavs from "./_components/CommunityNavs";
+import Cards from "@/components/static/Cards";
+import CommunityNavs from "@/components/static/CommunityNavs";
 
 const page = () => {
   return (

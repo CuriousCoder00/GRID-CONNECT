@@ -1,8 +1,8 @@
-import { Skeleton } from "@/components/ui/skeleton";
 import Image from "next/image";
 import React from "react";
 import * as pic from "@/_assets_dummy/index";
-import { Gradient } from "../../_components/Gradient";
+import { Gradient } from "@/components/static/Gradient";
+
 const Cards = () => {
   return (
     <div className="w-full flex flex-col justify-center items-center">

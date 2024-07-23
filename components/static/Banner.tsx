@@ -2,7 +2,7 @@
 import { useScroll, useTransform } from "framer-motion";
 import React from "react";
 import { GoogleGeminiEffect } from "@/components/animated/google-gemini-effect";
-import { Gradient } from "../../_components/Gradient";
+import { Gradient } from "@/components/static/Gradient";
 
 export function Banner() {
   const ref = React.useRef(null);

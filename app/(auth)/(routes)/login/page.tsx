@@ -1,10 +1,11 @@
 "use client";
 import React from "react";
-import { Label } from "../_components/label";
-import { Input } from "../_components/input";
+import { Label } from "@/components/static/label";
+import { Input } from "@/components/static/input";
 import { cn } from "@/lib/utils";
 import { IconBrandGoogle } from "@tabler/icons-react";
 import Link from "next/link";
+import { Gradient } from "@/components/static/Gradient";
 
 export default function page() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -12,7 +13,7 @@ export default function page() {
     console.log("Form submitted");
   };
   return (
-    <div className="max-w-md w-full mx-auto mt-28 rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+    <div className="max-w-md h-full w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
       <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
         Welcome to Grid Connects
       </h2>
@@ -34,7 +35,7 @@ export default function page() {
           Login &rarr;
           <BottomGradient />
         </button>
-
+        <Gradient />
         <div className="flex justify-end mt-2">
           <Link
             className="text-sm hover:text-blue-700 dark:hover:text-blue-400"
