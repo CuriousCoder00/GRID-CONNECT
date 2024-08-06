@@ -1,5 +1,12 @@
 "use client";
-import { CombineIcon, DiamondPercentIcon, Gamepad, GraduationCap, Music, Tv } from "lucide-react";
+import {
+  CombineIcon,
+  DiamondPercentIcon,
+  Gamepad,
+  GraduationCap,
+  Music,
+  Tv,
+} from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Gradient } from "@/components/static/Gradient";
@@ -61,20 +68,22 @@ const CommunityNavs = () => {
     };
   }, []);
   return (
-    <div className={`flex w-full flex-col gap-2 justify-center items-start}`}>
+    <div
+      className={`flex w-full sm:flex-col sm:gap-2 justify-center items-start overflow-hidden}`}
+    >
       {NavItems.map((item) => {
         return (
           <Link
-            className="w-full p-2 hover:bg-slate-300 rounded-lg dark:hover:bg-slate-800"
+            className="w-full p-2 sm:hover:bg-slate-300 rounded-lg sm:dark:hover:bg-slate-800"
             key={item.id}
             href={item.href}
           >
-            {item.icon}
+            <span className="hidden sm:inline">{item.icon}</span>
             {item.name}
           </Link>
         );
       })}
-      <Gradient/>
+      <Gradient />
     </div>
   );
 };
