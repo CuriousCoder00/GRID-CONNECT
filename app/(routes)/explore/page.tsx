@@ -6,11 +6,11 @@ import CommunityNavs from "@/components/static/CommunityNavs";
 
 const page = () => {
   return (
-    <div className="container w-full grid grid-cols-4 mt-12">
-      <div className="col-span-1">
+    <div className="container w-full grid grid-cols-12 mt-12 ">
+      <div className="sm:col-span-5 md:col-span-3 col-span-12">
         <CommunityNavs />
       </div>
-      <div className="col-span-3 flex flex-col w-full justify-center items-start gap-3">
+      <div className="sm:col-span-7 md:col-span-9 flex flex-col w-full justify-center items-start gap-3 col-span-12">
         <Cards />
       </div>
     </div>
