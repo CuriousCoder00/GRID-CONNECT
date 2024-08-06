@@ -62,7 +62,7 @@ export function Features() {
     },
   ];
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4  relative z-10 py-10 max-w-7xl mx-auto place-content-center place-items-center">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 z-10 py-10 max-w-7xl mx-auto place-content-center place-items-center h-screen">
       {features.map((feature, index) => (
         <Feature key={feature.title} {...feature} index={index} />
       ))}
@@ -84,7 +84,7 @@ const Feature = ({
   return (
     <div
       className={cn(
-        "flex flex-col lg:border-r py-10 relative group/feature dark:border-neutral-800 bg-transparent",
+        "flex flex-col lg:border-r py-10 relative group/feature dark:border-neutral-800 bg-transparent hover:bg-bg-gradient hover:from-slate-100 transition-all duration-150 delay-100 hover:bg-opacity-10",
         (index === 0 || index === 4) && "lg:border-l dark:border-neutral-800",
         index < 4 && "lg:border-b dark:border-neutral-800"
       )}

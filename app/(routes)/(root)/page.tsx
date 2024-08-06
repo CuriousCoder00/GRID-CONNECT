@@ -24,25 +24,11 @@ const links = [
 
 export default function Home() {
   return (
-    <TracingBeam>
-      <div className="h-full overflow-hidden">
+    <TracingBeam className="h-full overflow-hidden">
+      <div className="h-full overflow-x-hidden">
         <Navbar navLinks={links} />
         <Hero />
-      </div>
-      <Features />
-      <div className="flex container justify-between items-center border-t-2 pt-8">
-        <div className="flex justify-center items-center">&copy; Copyright GridConnects 2024</div>
-        <div className="flex justify-center items-center gap-2">
-          Made with <IconHeart /> by @CuriousCoder
-        </div>
-        <div className="flex justify-center items-center gap-3">
-          <Link scroll={false} href={"/"}>
-            <IconBrandGithub />
-          </Link>
-          <Link scroll={false} href={"/"}>
-            <LinkedinIcon />
-          </Link>
-        </div>
+        <Features />
       </div>
     </TracingBeam>
   );

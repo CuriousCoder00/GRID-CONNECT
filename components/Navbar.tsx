@@ -24,7 +24,6 @@ interface NavbarProps {
   navLinks?: Array<{ name: String; href: Url }>;
   showInput?: Boolean;
   hideMobileNav?: Boolean;
-
 }
 
 export const Navbar = ({ navLinks, showInput, hideMobileNav }: NavbarProps) => {
@@ -40,7 +39,11 @@ export const Navbar = ({ navLinks, showInput, hideMobileNav }: NavbarProps) => {
         className={`fixed top-0 left-0 right-0 backdrop-blur-md z-50 flex container dark:text-white gap-4`}
       >
         <div className="flex items-center w-full py-4 gap-2">
-          <MobileNavbar hideMobileNav={hideMobileNav} links={navLinks} showInput={showInput} />
+          <MobileNavbar
+            hideMobileNav={hideMobileNav}
+            links={navLinks}
+            showInput={showInput}
+          />
           <div className="flex items-center space-x-4">
             <Link
               scroll={false}
@@ -58,35 +61,25 @@ export const Navbar = ({ navLinks, showInput, hideMobileNav }: NavbarProps) => {
           className="flex justify-center items-center
         "
         >
-          <DropdownMenu>
-            <DropdownMenuTrigger className="focus:outline-none">
-              {theme === "dark" ? <MoonStarIcon /> : <SunMoonIcon />}
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="mt-2">
-              <DropdownMenuLabel>Theme</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => toggleTheme("light")}
-                  className="w-full flex items-center justify-between"
-                >
-                  <SunMoonIcon /> Light
-                </Button>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => toggleTheme("dark")}
-                  className="w-full flex items-center justify-between "
-                >
-                  <MoonStarIcon /> Dark
-                </Button>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          {theme === "dark" ? (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => toggleTheme("light")}
+              className="w-full flex items-center justify-between hover:bg-transparent"
+            >
+              <SunMoonIcon />
+            </Button>
+          ) : (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => toggleTheme("dark")}
+              className="w-full flex items-center justify-between hover:bg-transparent"
+            >
+              <MoonStarIcon />
+            </Button>
+          )}
         </div>
       </nav>
     </header>
