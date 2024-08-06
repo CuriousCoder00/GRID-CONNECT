@@ -41,7 +41,7 @@ export const Hero = () => {
               }}
               className="div"
             >
-              <h1 className="font-bold text-black text-center text-pretty dark:text-white lg:text-6xl md:text-5xl sm:text-4xl text-3xl">
+              <h1 className="font-bold text-slate-800 text-center text-pretty dark:text-white lg:text-6xl md:text-5xl sm:text-4xl text-3xl">
                 Connect and interact with millions of people worldwide
               </h1>
               <p className="mt-5 text-center text-slate-500 md:text-xl text-sm">
@@ -55,7 +55,7 @@ export const Hero = () => {
               onMouseLeave={() => setHovered(false)}
               href="/explore"
               scroll={false}
-              className="z-10 flex items-center justify-center mt-4 bg-purple-600 px-4 py-1 font-bold text-sm rounded-md text-white"
+              className="z-10 flex items-center justify-center mt-8 bg-blue-800 px-4 py-1 font-bold text-sm rounded-md text-white"
             >
               Explore
               <svg
