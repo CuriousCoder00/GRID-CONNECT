@@ -21,13 +21,11 @@ export const GoogleGeminiEffect = ({
 }) => {
   return (
     <div className={cn("sticky top-24", className)}>
-      <p className="text-lg md:text-7xl font-normal pb-4 text-center bg-clip-text dark:text-white bg-gradient-to-b from-neutral-100 to-neutral-300">
-        {title || `Build with Aceternity UI`}
+      <p className="text-lg md:text-7xl sm:text-4xl font-normal pb-4 text-center bg-clip-text dark:text-white bg-gradient-to-b from-neutral-100 to-neutral-300">
+        {title}
       </p>
       <p className="text-xs md:text-xl font-normal text-center text-neutral-400 mt-4 max-w-lg mx-auto">
-        {description ||
-          `Scroll this component and see the bottom SVG come to life wow this
-        works!`}
+        {description}
       </p>
       <div className="w-full h-[890px] -top-60 md:-top-40  flex items-center justify-center bg-red-transparent absolute ">
         <button className="font-bold bg-white rounded-full md:px-4 md:py-2 px-2 py-1 md:mt-24 mt-8 z-30 md:text-base text-black text-xs  w-fit mx-auto ">
