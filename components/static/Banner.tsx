@@ -19,13 +19,19 @@ export function Banner() {
 
   return (
     <div
-      className="h-[400vh] w-full dark:border dark:border-white/[0.1] rounded-md relative pt-40 overflow-clip"
+      className="sm:h-[400vh] w-full dark:border dark:border-white/[0.1] rounded-md sm:pt-40"
       ref={ref}
     >
       <div className="flex justify-center">
         <Gradient />
+        <div className="flex flex-col justify-center items-center sm:hidden h-[50vh]">
+          <h1 className="text-3xl text-center mb-4">Find Your Community on Grid Connect</h1>
+          <p className="light:text-neutral-800 dark:text-neutral-500">From gaming, to music, to learning, there's a place for you.</p>
+        </div>
       </div>
+
       <GoogleGeminiEffect
+        className="max-sm:hidden"
         title="Find Your Community on Grid Connect"
         description="From gaming, to music, to learning, there's a place for you."
         pathLengths={[
