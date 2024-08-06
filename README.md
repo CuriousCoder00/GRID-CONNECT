@@ -4,7 +4,13 @@ Explore diverse communities tailored to variouswith GridConnect - A Community of
 
 ## Getting Started
 
-First, run the development server:
+First, Install the dependencies:
+
+```bash
+npm install
+```
+
+Then, Run the development server:
 
 ```bash
 npm run dev
