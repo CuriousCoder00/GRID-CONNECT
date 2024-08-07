@@ -21,19 +21,7 @@ const links = [
   },
 ];
 
-const loadingStates = [
-  {
-    text: "Generating Content..",
-  },
-  {
-    text: "Loading Resources..",
-  },
-  {
-    text: "Loading....",
-  },
-];
-
-export default function Home() {
+export default function page() {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
@@ -43,24 +31,12 @@ export default function Home() {
     return () => clearTimeout(timeout);
   }, []);
   return (
-    <>
-      {loading ? (
-        <div className="w-full h-[60vh] flex items-center justify-center">
-          <Loader
-            loadingStates={loadingStates}
-            loading={loading}
-            duration={2000}
-          />
-        </div>
-      ) : (
-        <TracingBeam className="h-full overflow-hidden">
-          <div className="h-full overflow-x-hidden">
-            <Navbar navLinks={links} />
-            <Hero />
-            <Features />
-          </div>
-        </TracingBeam>
-      )}
-    </>
+    <TracingBeam className="h-full overflow-hidden">
+      <div className="h-full overflow-x-hidden">
+        <Navbar navLinks={links} />
+        <Hero />
+        <Features />
+      </div>
+    </TracingBeam>
   );
 }
