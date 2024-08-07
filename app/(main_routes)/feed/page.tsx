@@ -8,16 +8,29 @@ import { useEffect, useState } from "react";
 
 const links = [
   {
-    name: "Explore",
-    href: "/explore",
+    name: "Feed",
+    href: "/feed",
+  },
+
+  {
+    name: "Communities",
+    href: "/communities",
   },
   {
-    name: "Login",
-    href: "/login",
+    name: "Friends",
+    href: "/friends",
   },
   {
-    name: "Register",
-    href: "/register",
+    name: "Chats",
+    href: "/chats",
+  },
+  {
+    name: "Notifications",
+    href: "/notifications",
+  },
+  {
+    name: "Account",
+    href: "/account",
   },
 ];
 
