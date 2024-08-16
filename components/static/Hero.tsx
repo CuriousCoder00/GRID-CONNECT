@@ -55,7 +55,7 @@ export const Hero = () => {
               onMouseLeave={() => setHovered(false)}
               href="/explore"
               scroll={false}
-              className="z-10 flex items-center justify-center mt-8 bg-blue-800 px-4 py-1 font-bold text-sm rounded-md text-white"
+              className="z-10 flex items-center justify-center mt-8 bg-blue-800 px-4 py-2 font-bold text-sm rounded-md text-white"
             >
               Explore
               <svg
