@@ -9,7 +9,6 @@ import {
   IconHeart,
   IconTerminal2,
 } from "@tabler/icons-react";
-import { Gradient } from "./Gradient";
 
 export function Features() {
   const features = [
@@ -62,7 +61,7 @@ export function Features() {
     },
   ];
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 z-10 py-10 max-w-7xl mx-auto place-content-center place-items-center h-screen">
+    <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 z-10 py-10 max-w-7xl mx-auto place-content-center place-items-center min-h-screen">
       {features.map((feature, index) => (
         <Feature key={feature.title} {...feature} index={index} />
       ))}
@@ -104,7 +103,6 @@ const Feature = ({
           {title}
         </span>
       </div>
-      <Gradient />
       <p className="text-sm text-neutral-600 dark:text-neutral-300 max-w-xs relative z-10 px-10">
         {description}
       </p>
