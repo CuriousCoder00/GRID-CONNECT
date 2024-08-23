@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import { GridBackground } from "../gridBackground";
 import { Icon } from "./Icon";
+import { IconBrandNextjs } from "@tabler/icons-react";
 type Props = {};
 
 export const Hero = () => {
@@ -15,13 +16,13 @@ export const Hero = () => {
   return (
     <div className="w-full">
       <GridBackground>
-        <div className="md:container h-screen flex justify-start items-center mx-auto flex-col mt-32">
+        <div className="md:container h-screen flex justify-start items-center mx-auto flex-col">
           <motion.div
             onMouseEnter={() => setHovered1(true)}
             onMouseLeave={() => setHovered1(false)}
             className="flex items-center justify-center mb-12 px-4 py-2 border border-slate-500 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-950 gap-3 font-bold text-sm rounded-full dark:text-white text-slate-700 cursor-pointer"
           >
-            <Icon size={25} animate={"bounce"}/>
+            <Icon size={25} animate={"bounce"} />
             Open Source
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -62,10 +63,10 @@ export const Hero = () => {
             }}
             className="div md:container"
           >
-            <h1 className="font-bold text-slate-800 text-center text-pretty dark:text-white lg:text-7xl md:text-5xl sm:text-4xl text-3xl from-accent-foreground">
+            <h1 className="font-bold text-slate-800 text-center md:text-pretty text-balance dark:text-white lg:text-7xl md:text-5xl sm:text-4xl text-4xl from-accent-foreground">
               Connect and interact with millions of people worldwide
             </h1>
-            <p className="mt-10 text-center text-balance text-slate-500 md:text-xl text-sm font-normal">
+            <p className="mt-10 text-center text-balance dark:text-slate-400 text-slate-600 md:text-xl text-md font-medium">
               Explore diverse communities tailored to various catagories with
               GridConnect - A Community of your interests. Experience the power
               of community with GridConnect. Be a part of something bigger.
@@ -118,7 +119,7 @@ export const Hero = () => {
                 ></path>
               </svg>
             </Link>
-            <div className="h-10 mt-8 w-[2px] bg-slate-400"/>
+            <div className="h-10 mt-8 w-[2px] bg-slate-400" />
             <Link
               onMouseEnter={() => setHovered2(true)}
               onMouseLeave={() => setHovered2(false)}
@@ -153,70 +154,55 @@ export const Hero = () => {
               </svg>
             </Link>
           </motion.div>
-
-          {/* <div className="max-w-[1280px] md:px-10 mx-auto">
-          <div className="flex justify-center items-center">
-            <div className="container flex flex-col justify-center items-center">
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                transition={{
-                  duration: 1,
-                }}
-                className="div"
-              >
-                <h1 className="font-bold text-slate-800 text-center text-pretty dark:text-white lg:text-6xl md:text-5xl sm:text-4xl text-3xl from-accent-foreground">
-                  Connect and interact with millions of people worldwide
-                </h1>
-                <p className="mt-5 text-center text-slate-500 md:text-xl text-sm">
-                  Explore diverse communities tailored to variouswith
-                  GridConnect - A Community of your interests. Experience the
-                  power of community with GridConnect. Be a part of something
-                  bigger.
-                </p>
-              </motion.div>
-              <Link
-                onMouseEnter={() => setHovered(true)}
-                onMouseLeave={() => setHovered(false)}
-                href="/explore"
-                scroll={false}
-                className="z-10 flex items-center justify-center mt-8 bg-blue-800 px-4 py-2 font-bold text-sm rounded-md text-white"
-              >
-                Explore
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className={` arrow-symbol-mktg dark:text-white ml-3 transition ease-in duration-150 ${
-                    hovered ? "translate-x-0 " : "-translate-x-1"
-                  }`}
-                  width="20"
-                  height="20"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M7.28033 3.21967C6.98744 2.92678 6.51256 2.92678 6.21967 3.21967C5.92678 3.51256 5.92678 3.98744 6.21967 4.28033L7.28033 3.21967ZM11 8L11.5303 8.53033C11.8232 8.23744 11.8232 7.76256 11.5303 7.46967L11 8ZM6.21967 11.7197C5.92678 12.0126 5.92678 12.4874 6.21967 12.7803C6.51256 13.0732 6.98744 13.0732 7.28033 12.7803L6.21967 11.7197ZM6.21967 4.28033L10.4697 8.53033L11.5303 7.46967L7.28033 3.21967L6.21967 4.28033ZM10.4697 7.46967L6.21967 11.7197L7.28033 12.7803L11.5303 8.53033L10.4697 7.46967Z"
-                  ></path>
-                  <path
-                    className={` dark:text-white transition ease-in duration-150 ${
-                      hovered ? " opacity-100" : "opacity-0 "
-                    }`}
-                    stroke="currentColor"
-                    d="M1.75 8H11"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  ></path>
-                </svg>
-              </Link>
-              <div className="w-full flex justify-center"></div>
-            </div>
-          </div> */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 1,
+            }}
+            className="mt-40 text-4xl font-semibold flex flex-col justify-center items-center"
+          >
+            <h1>Powered By</h1>
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 1,
+              }}
+              className="flex justify-center items-center gap-8 h-20 overflow-hidden"
+            >
+              <img
+                src="/nextjs.svg"
+                alt="NextJS"
+                className="w-28 h-28 dark:invert-0 invert text-white"
+              />
+              <img
+                src="/vercel.svg"
+                alt="NextJS"
+                className="w-28 h-28 dark:invert-0 invert text-white"
+              />
+              <div className="flex justify-center items-center gap-2">
+                <img
+                  src="/shadcn-ui.svg"
+                  alt="NextJS"
+                  className="w-10 h-10 dark:invert text-white"
+                />
+                <span className="text-xl">ShadCN UI</span>
+              </div>
+            </motion.div>
+          </motion.div>
           {/* <div className="container flex flex-row items-center justify-center py-20 w-full">
             
             <div className="max-w-7xl mx-auto w-full relative overflow-hidden px-4">
