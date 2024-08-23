@@ -29,7 +29,7 @@ export const MobileNavbar = ({
   return (
     <>
       {!hideMobileNav && (
-        <div className="md:hidden dark:text-white cursor-pointer">
+        <div className="md:hidden dark:bg-slate-950 dark:text-white cursor-pointer">
           <Sheet>
             <SheetTrigger asChild>
               <Menu size={40} />
