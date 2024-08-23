@@ -2,7 +2,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+
 import { GridBackground } from "../gridBackground";
+import { Icon } from "./Icon";
 type Props = {};
 
 export const Hero = () => {
@@ -19,11 +21,7 @@ export const Hero = () => {
             onMouseLeave={() => setHovered1(false)}
             className="flex items-center justify-center mb-12 px-4 py-2 border border-slate-500 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-950 gap-3 font-bold text-sm rounded-full dark:text-white text-slate-700 cursor-pointer"
           >
-            <img
-              src="/grid-icon.svg"
-              alt="Grid Connect Logo"
-              className="w-5 h-5 hover:animate-bounce"
-            />
+            <Icon size={25} animate={"bounce"}/>
             Open Source
             <svg
               xmlns="http://www.w3.org/2000/svg"
