@@ -34,11 +34,11 @@ export const Navbar = ({ navLinks, showInput, hideMobileNav }: NavbarProps) => {
     document.documentElement.classList.add(newTheme);
   };
   return (
-    <header className="min-w-full">
+    <header className="min-w-full ">
       <nav
-        className={`fixed top-0 left-0 right-0 backdrop-blur-md z-50 flex container dark:text-white gap-4`}
+        className={`fixed top-0 left-0 right-0 rounded-full backdrop-blur bg-slate-100 md:dark:bg-slate-950 md:border md:w-[80%] md:mt-5 z-50 flex container dark:text-white gap-4`}
       >
-        <div className="flex items-center w-full py-4 gap-2">
+        <div className="flex items-center w-full py-2 gap-2">
           <MobileNavbar
             hideMobileNav={hideMobileNav}
             links={navLinks}
