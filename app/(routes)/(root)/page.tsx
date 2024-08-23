@@ -31,12 +31,19 @@ export default function page() {
     return () => clearTimeout(timeout);
   }, []);
   return (
-    <TracingBeam className="h-full overflow-hidden">
-      <div className="h-full overflow-x-hidden">
+    <>
+      <TracingBeam className="h-full overflow-hidden max-md:hidden">
+        <div className="h-full overflow-x-hidden">
+          <Navbar navLinks={links} />
+          <Hero />
+          <Features />
+        </div>
+      </TracingBeam>
+      <div className="h-full overflow-x-hidden md:hidden">
         <Navbar navLinks={links} />
         <Hero />
         <Features />
       </div>
-    </TracingBeam>
+    </>
   );
 }
