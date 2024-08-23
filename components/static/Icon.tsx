@@ -1,10 +1,18 @@
-export const Icon = () => {
+type IconProps = {
+  size?: Number;
+  animate?: String;
+};
+export const Icon = ({ size, animate }: IconProps) => {
   return (
-    <div className="flex dark:invert dark:hue-rotate-180 justify-center items-center hover:animate-spin transition-all delay-300 duration-300 ease-in-out">
+    <div
+      className={`flex dark:invert dark:hue-rotate-180 justify-center items-center ${
+        animate ? `hover:animate-${animate}` : "hover:animate-spin"
+      } transition-all delay-300 duration-300 ease-in-out`}
+    >
       <svg
         id="logo-58"
-        width="50"
-        height="50"
+        width={size ? `${size}` : "50"}
+        height={size ? `${size}` : "50"}
         viewBox="0 0 50 50"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
