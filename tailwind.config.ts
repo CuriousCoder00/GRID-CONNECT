@@ -26,6 +26,9 @@ const config = {
       boxShadow: {
         input: `0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)`,
       },
+      colors: {
+        background: "hsl(var(--background))",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -54,6 +57,8 @@ const config = {
       "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
       "gradient-to-b":
         "linear-gradient(to bottom, var(--tw-gradient-from), var(--tw-gradient-to))",
+      "gradient-to-t":
+        "linear-gradient(to top, var(--tw-gradient-from), var(--tw-gradient-to))",
     },
   },
   plugins: [
