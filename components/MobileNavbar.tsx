@@ -29,14 +29,14 @@ export const MobileNavbar = ({
   return (
     <>
       {!hideMobileNav && (
-        <div className="md:hidden dark:bg-slate-950 dark:text-white cursor-pointer">
+        <div className="md:hidden cursor-pointer">
           <Sheet>
             <SheetTrigger asChild>
               <Menu size={40} />
             </SheetTrigger>
-            <SheetContent>
+            <SheetContent className="bg-white dark:bg-slate-900">
               <SheetHeader>
-                <SheetTitle>
+                <SheetTitle className="">
                   <div className="flex items-center space-x-4">
                     <div className="font-bold flex text-2xl gap-3 justify-center items-center">
                       <Icon /> GridConnects
