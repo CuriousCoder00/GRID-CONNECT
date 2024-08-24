@@ -3,12 +3,10 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-  relationMode = "prisma"
-
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
-
 
 model User {
   id       String @id @default(uuid())
@@ -17,8 +15,8 @@ model User {
   imageUrl String @db.Text
   email    String @db.Text
 
-  communities  Community[]
-  members  Member[]
+  communities Community[]
+  members     Member[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -31,9 +29,9 @@ model Community {
   inviteCode String @unique
 
   userId String
-  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  members  Member[]
+  members Member[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -52,10 +50,10 @@ model Member {
   role MemberRole @default(GUEST)
 
   userId String
-  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   communityId String
-  communities   Community @relation(fields: [communityId], references: [id], onDelete: Cascade)
+  communities Community @relation(fields: [communityId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -63,4 +61,3 @@ model Member {
   @@index([userId])
   @@index([communityId])
 }
-
