@@ -15,7 +15,7 @@ export const NavbarLinks = ({ links, showInput }: NavbarLinksProps) => {
     <div className="flex md:flex-row md:justify-end md:items-center md:gap-4 flex-col justify-center items-start gap-8 w-full">
       {showInput && (
         <Input
-          className="md:w-64 w-full"
+          className="md:w-64 w-full border-[1px]"
           type="search"
           placeholder="Explore communities..."
         />
