@@ -36,7 +36,7 @@ export const Navbar = ({ navLinks, showInput, hideMobileNav }: NavbarProps) => {
   return (
     <header className="min-w-full ">
       <nav
-        className={`fixed top-0 left-0 right-0 md:rounded-full backdrop-blur md:bg-slate-100 dark:bg-slate-950 md:border border-slate-500 md:w-[80%] md:mt-5 z-50 flex container dark:text-white gap-4`}
+        className={`fixed top-0 left-0 right-0 md:rounded-full backdrop-blur md:bg-slate-100 dark:bg-slate-950 bg-opacity-50 md:border border-slate-500 md:w-[80%] md:mt-5 z-50 flex container dark:text-white gap-4`}
       >
         <div className="flex items-center w-full py-2 gap-2">
           <MobileNavbar

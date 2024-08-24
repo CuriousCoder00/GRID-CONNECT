@@ -166,7 +166,7 @@ export const Hero = () => {
             transition={{
               duration: 1,
             }}
-            className="mt-40 text-4xl font-semibold flex flex-col justify-center items-center"
+            className="mt-40 text-4xl font-semibold flex flex-col justify-center items-center max-md:hidden"
           >
             <h1>Powered By</h1>
             <motion.div
