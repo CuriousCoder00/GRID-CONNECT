@@ -14,6 +14,7 @@ import {
 import { NavbarLinks } from "./NavbarLinks";
 import { Url } from "next/dist/shared/lib/router/router";
 import { Icon } from "./static/Icon";
+import { APP_NAME } from "@/constants/TextConsts";
 
 interface NavbarProps {
   links?: Array<{ name: String; href: Url }>;
@@ -39,7 +40,7 @@ export const MobileNavbar = ({
                 <SheetTitle className="">
                   <div className="flex items-center space-x-4">
                     <div className="font-bold flex text-2xl gap-3 justify-center items-center">
-                      <Icon /> GridConnects
+                      <Icon /> {APP_NAME}s
                     </div>
                   </div>
                 </SheetTitle>
