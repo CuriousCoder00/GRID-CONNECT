@@ -2,7 +2,8 @@ type IconProps = {
   size?: Number;
   animate?: String;
 };
-export const Icon = ({ size, animate }: IconProps) => {
+
+export const Icon = ({ size, animate, }: IconProps) => {
   return (
     <div
       className={`flex dark:invert dark:hue-rotate-180 justify-center items-center ${
