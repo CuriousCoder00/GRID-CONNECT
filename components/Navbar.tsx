@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { NavbarLinks } from "./NavbarLinks";
 import { Url } from "next/dist/shared/lib/router/router";
 import { MobileNavbar } from "./MobileNavbar";
+import { APP_NAME } from "@/constants/TextConsts";
 
 interface NavbarProps {
   navLinks?: Array<{ name: String; href: Url }>;
@@ -50,7 +51,7 @@ export const Navbar = ({ navLinks, showInput, hideMobileNav }: NavbarProps) => {
               href="/"
               className="font-bold flex text-2xl gap-3 justify-center items-center"
             >
-              <Icon /> GridConnects
+              <Icon /> {APP_NAME}s
             </Link>
           </div>
         </div>
