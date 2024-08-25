@@ -1,3 +1,4 @@
+import { APP_NAME } from "@/constants/TextConsts";
 import { cn } from "@/lib/utils";
 import {
   IconAdjustmentsBolt,
@@ -65,11 +66,11 @@ export function Features() {
     <div className="flex flex-col justify-center items-center">
       <div className="flex flex-col gap-4 text-center">
         <h1 className="md:text-7xl sm:text-6xl text-5xl  font-extrabold dark:text-white text-slate-800">
-          Why GridConnect?
+          Why {APP_NAME}?
         </h1>
         <p className="text-sm px-3 dark:text-slate-400">
           Why not? If it's all you want, then it's all we can provide. Haha,
-          love from GridConnects.
+          love from {APP_NAME}s.
         </p>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 z-10 px-4 max-md:mt-10 max-w-7xl mx-auto place-content-center place-items-center min-h-screen">
