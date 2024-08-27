@@ -1,6 +1,5 @@
 "use client";
 import { TracingBeam } from "@/components/animated/tracing-beam";
-import { MultiStepLoader as Loader } from "@/components/animated/multi-step-loader";
 import { Navbar } from "@/components/Navbar";
 import { Features } from "@/components/static/Features";
 import { Hero } from "@/components/static/Hero";
