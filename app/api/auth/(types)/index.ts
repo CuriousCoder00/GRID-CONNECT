@@ -1,12 +1,9 @@
 export interface UserTypes {
   name: string;
-  email?: string;
-  password?: string;
-  username?: string;
-  imageUrl?: string;
-  isVerified?: boolean;
-  forgotPasswordToken?: string;
-  forgotPasswordTokenExpiry?: Date;
-  verifyToken?: string;
-  verifyTokenExpiry?: Date;
+  email: string;
+  password: string;
+  username: string;
+  imageUrl: string;
+  verifyToken: string;
+  forgotPasswordToken: string;
 }
