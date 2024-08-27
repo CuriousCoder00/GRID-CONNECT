@@ -1,7 +1,4 @@
 export interface UserTypes {
-  // id
-  //userId
-
   name: string;
   email?: string;
   password?: string;
@@ -12,22 +9,4 @@ export interface UserTypes {
   forgotPasswordTokenExpiry?: Date;
   verifyToken?: string;
   verifyTokenExpiry?: Date;
-
-  //createdAt
-  //updatedAt
 }
-
-// export interface CommunityTypes {
-//     // id
-//     //communityId
-
-//     name: string;
-//     description: string;
-//     imageUrl: string;
-//     creatorId: string;
-//     members: string[];
-//     posts: string[];
-
-//     //createdAt
-//     //updatedAt
-// }
