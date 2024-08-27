@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import jwt from "jsonwebtoken";
-import bcrypt from "bcryptjs";
 
 import { db } from "@/lib/db";
 import { UserTypes } from "../(types)";
