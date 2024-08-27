@@ -16,8 +16,18 @@ export async function POST(req: NextRequest) {
   }
   // Register user
   const user = await db.user.create({
-    data: { name, email, password, userId: "", username: "", imageUrl: "" },
+    data: {
+      name,
+      email,
+      password,
+      userId: "",
+      username: "",
+      imageUrl: "",
+      forgotPasswordToken: "",
+      forgotPasswordTokenExpiry: "",
+      verifyToken: "",
+      verifyTokenExpiry: "",
+    },
   });
-  // const user = await register(email, password);
   return NextResponse.json({ user }, { status: 201 });
 }
