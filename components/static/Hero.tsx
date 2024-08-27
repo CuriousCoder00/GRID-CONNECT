@@ -5,23 +5,21 @@ import Link from "next/link";
 
 import { GridBackground } from "../gridBackground";
 import { Icon } from "./Icon";
-import { APP_NAME } from "@/constants/TextConsts";
-
+import { IconBrandNextjs } from "@tabler/icons-react";
 type Props = {};
 
 export const Hero = () => {
   const [hovered, setHovered] = useState<boolean>(false);
   const [hovered1, setHovered1] = useState<boolean>(false);
   const [hovered2, setHovered2] = useState<boolean>(false);
+
   return (
     <div className="w-full">
       <GridBackground>
         <div className="md:container h-screen flex justify-start items-center mx-auto flex-col">
-          <Link
+          <motion.div
             onMouseEnter={() => setHovered1(true)}
             onMouseLeave={() => setHovered1(false)}
-            href={`${process.env.GITHUB_REPO}`}
-            target="_blank"
             className="flex items-center justify-center mb-12 px-4 py-2 border border-slate-500 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-950 gap-3 font-bold text-sm rounded-full dark:text-white text-slate-700 cursor-pointer"
           >
             <Icon size={25} animate={"bounce"} />
@@ -50,7 +48,7 @@ export const Hero = () => {
                 strokeLinecap="round"
               ></path>
             </svg>
-          </Link>
+          </motion.div>
           <motion.div
             initial={{
               opacity: 0,
@@ -70,8 +68,8 @@ export const Hero = () => {
             </h1>
             <p className="mt-10 text-center text-balance dark:text-slate-400 text-slate-600 md:text-xl text-md font-medium">
               Explore diverse communities tailored to various catagories with
-              {APP_NAME} - A Community of your interests. Experience the power
-              of community with {APP_NAME}. Be a part of something bigger.
+              GridConnect - A Community of your interests. Experience the power
+              of community with GridConnect. Be a part of something bigger.
             </p>
           </motion.div>
           <motion.div
