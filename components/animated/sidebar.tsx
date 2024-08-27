@@ -206,9 +206,15 @@ export const DarkModeToggle = ({ className }: { className?: string }) => {
       )}
     >
       {theme === "dark" ? (
-        <SunMoonIcon className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+        <SunMoonIcon
+          className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0"
+          onClick={() => toggleTheme("light")}
+        />
       ) : (
-        <MoonStarIcon className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+        <MoonStarIcon
+          className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0"
+          onClick={() => toggleTheme("dark")}
+        />
       )}
       {theme === "dark" ? (
         <motion.div
