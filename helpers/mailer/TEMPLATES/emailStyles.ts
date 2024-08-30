@@ -14,9 +14,13 @@ const emailStyles = `
             text-wrap: wrap;
         }
 
-        img {
-            width: 220px;
-            height: 60px;
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .fs{
+            font-size: larger;
         }
 
         .email-container {
