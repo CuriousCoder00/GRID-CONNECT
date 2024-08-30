@@ -51,6 +51,7 @@
     "lucide-react": "^0.411.0",
     "mini-svg-data-uri": "^1.4.4",
     "next": "14.2.5",
+    "next-auth": "^4.24.7",
     "nextjs-toploader": "^1.6.12",
     "nodemailer": "^6.9.14",
     "prisma": "^5.18.0",
