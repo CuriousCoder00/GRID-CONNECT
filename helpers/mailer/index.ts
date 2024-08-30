@@ -17,7 +17,7 @@ export async function sendVerificationMail(user: UserTypes) {
       },
     });
     console.log("verifyToken", user.verifyToken);
-    const verificationLink = `${process.env.NEXTAUTH_URL}/api/auth/verifyEmail?token=${user.verifyToken}`;
+    const verificationLink = `${process.env.NEXTAUTH_URL}/verifyEmail?token=${user.verifyToken}`;
     const info = await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: user.email,
@@ -43,7 +43,7 @@ export async function sendPasswordResetLink(user: UserTypes) {
       },
     });
     console.log("forgotPasswordToken", user.forgotPasswordToken);
-    const resetPasswordLink = `${process.env.NEXTAUTH_URL}/api/auth/resetPassword?token=${user.forgotPasswordToken}`;
+    const resetPasswordLink = `${process.env.NEXTAUTH_URL}/resetPassword?token=${user.forgotPasswordToken}`;
     const info = await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: user.email,
