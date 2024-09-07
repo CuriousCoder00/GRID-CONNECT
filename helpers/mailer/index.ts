@@ -1,8 +1,7 @@
 import nodemailer from "nodemailer";
-import { UserTypes } from "@/app/api/auth/(types)";
-import { APP_NAME } from "@/constants/TextConsts";
-import verificationMailHTML from "./TEMPLATES/VERIFY_EMAIL";
-import resetPassMailHTML from "./TEMPLATES/RESET_PASS";
+import { UserTypes } from "@/types";
+import verificationMailHTML from "@/emails/VERIFY_EMAIL";
+import resetPassMailHTML from "@/emails/RESET_PASS";
 
 export async function sendVerificationMail(user: UserTypes) {
   try {
