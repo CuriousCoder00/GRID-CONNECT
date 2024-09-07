@@ -1,16 +1,69 @@
 "use client";
-import React from "react";
-import { Label } from "@/components/static/label";
-import { Input } from "@/components/static/input";
-import { cn } from "@/lib/utils";
-import { IconBrandGoogle } from "@tabler/icons-react";
+import React, { useState } from "react";
+
 import Link from "next/link";
 
+import axios from "axios";
+
+import { IconBrandGoogle } from "@tabler/icons-react";
+
+import { Label } from "@/components/static/label";
+import { Input } from "@/components/static/input";
+import Alert from "@/components/static/Alert";
+
+import { cn } from "@/lib/utils";
+
 export default function page() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Form submitted");
+  // State to hold user registration data
+  const [userData, setUserData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  // State to handle error messages
+  const [error, setError] = useState("");
+
+  // State to loading phase of form submission
+  const [loading, setLoading] = useState(false);
+
+  // State to display success messages
+  const [successMessage, setSuccessMessage] = useState("");
+
+  // Handle input value change for the form fields
+  const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUserData({ ...userData, [e.target.name]: e.target.value });
   };
+
+  // Handle form submission for user registration
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevent form from submitting the default way
+    // Reset error and success message state
+    setError("");
+    setSuccessMessage("");
+    // Set loading to true during API call
+    setLoading(true);
+    // Make API call to the backend to register the user
+    await axios
+      .post("/api/auth/register", {
+        name: userData.name,
+        email: userData.email,
+        password: userData.password,
+      })
+      .then((res) => {
+        // Set success message on successful registration
+        setSuccessMessage("Please check your mail for verification.");
+        // Capture any error returned by the API
+        setError(res.data.error);
+      })
+      .catch((err) => {
+        // Set error message if registration fails
+        setError(err.response.data.error);
+      });
+      // Reset loading state after the API call
+    setLoading(false);
+  };
+
   return (
     <div className="max-w-md w-full mx-auto md:mt-24 mt-14 rounded-none md:rounded-2xl p-4 shadow-input bg-white dark:bg-black">
       <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
@@ -21,31 +74,64 @@ export default function page() {
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
             <Label htmlFor="Full Name">Full name</Label>
-            <Input id="name" placeholder="Tyler Durden" type="text" />
+            <Input
+              id="name"
+              name="name"
+              placeholder="John Doe"
+              type="text"
+              required
+              disabled={loading}
+              onChange={onValueChange}
+            />
           </LabelInputContainer>
         </div>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="email">Email Address</Label>
-          <Input id="email" placeholder="projectmayhem@fc.com" type="email" />
+          <Input
+            id="email"
+            name="email"
+            placeholder="john.doe@gmail.com"
+            type="email"
+            required
+            disabled={loading}
+            onChange={onValueChange}
+          />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="password">Password</Label>
-          <Input id="password" placeholder="••••••••" type="password" />
+          <Input
+            id="password"
+            name="password"
+            placeholder="••••••••"
+            type="password"
+            required
+            autoComplete="current-password"
+            disabled={loading}
+            onChange={onValueChange}
+          />
         </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="confirmpassword">Confirm password</Label>
-          <Input id="confirmpassword" placeholder="••••••••" type="password" />
-        </LabelInputContainer>
-
+        {error && <Alert type="error" message={error} />}
+        {successMessage && <Alert type="success" message={successMessage} />}
         <button
-          className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full dark:text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+          className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 flex justify-center text-center items-center dark:bg-zinc-800 w-full dark:text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] "
           type="submit"
+          disabled={loading}
         >
-          Sign up &rarr;
+          {loading ? (
+            <svg
+              className="animate-spin h-5 w-5 mr-3 border-t-2 border-b-2 border-sky-700 rounded-full text-center"
+              viewBox="0 0 24 24"
+            ></svg>
+          ) : (
+            "Sign up →"
+          )}
           <BottomGradient />
         </button>
         <div className="flex justify-end mt-2">
-          <Link className="text-sm hover:text-blue-700 dark:hover:text-blue-400" href="/login">
+          <Link
+            className="text-sm hover:text-blue-700 dark:hover:text-blue-400"
+            href="/login"
+          >
             Already have an account?
           </Link>
         </div>
@@ -55,6 +141,7 @@ export default function page() {
           <button
             className=" relative group/btn flex space-x-2 items-center justify-center px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
             type="submit"
+            disabled={loading}
           >
             <IconBrandGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
             <span className="text-neutral-700 dark:text-neutral-300 text-sm">
