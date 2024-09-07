@@ -1,5 +1,5 @@
 import { APP_NAME } from "@/constants/TextConsts";
-import emailStyles from "./emailStyles";
+import emailStyles from "./styles";
 
 const resetPassMailHTML = (resetPasswordLink: string, userName: string) => `
 <!DOCTYPE html>
