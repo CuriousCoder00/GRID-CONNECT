@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { db } from "@/lib/db";
-import { UserTypes } from "../(types)";
+import { UserTypes } from "@/types";
 import { sendVerificationMail } from "@/helpers/mailer";
 
 export async function POST(req: NextRequest) {
@@ -44,7 +44,6 @@ export async function POST(req: NextRequest) {
         username: uname,
         imageUrl: "",
         verifyToken: "",
-        forgotPasswordToken: "",
       },
     });
     console.log(user);
