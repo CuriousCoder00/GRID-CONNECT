@@ -1,17 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
-import jwt from "jsonwebtoken";
 import { db } from "@/lib/db";
 import { UserTypes } from "@/types";
+import { getUserByEmail } from "@/data/user-data";
+import { generateVerificationToken } from "@/lib/tokens";
 import { sendVerificationMail } from "@/helpers/mailer";
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, password }: UserTypes = await req.json();
+    const {
+      name,
+      email,
+      password,
+    }: { name: string; email: string; password: string } = await req.json();
     // check if user already
-    const userExists = await db.user.findFirst({
-      where: { email },
-    });
+    const userExists = await getUserByEmail(email);
     if (userExists) {
       return NextResponse.json(
         { error: "User already exists." },
@@ -42,18 +45,14 @@ export async function POST(req: NextRequest) {
         email,
         password: hashedPassword,
         username: uname,
-        imageUrl: "",
-        verifyToken: "",
       },
     });
-    console.log(user);
-    const token = jwt.sign({ id: user.id }, "secret"); // Generate token using jwt.sign()
-    user = await db.user.update({
-      where: { id: user.id },
-      data: { verifyToken: token },
-    });
-    // Send verification email
-    await sendVerificationMail(user);
+    const verificationToken = await generateVerificationToken(email);
+    await sendVerificationMail(
+      verificationToken.email,
+      verificationToken.token,
+      name
+    );
     return NextResponse.json({ user }, { status: 201 });
   } catch (error: any) {
     return NextResponse.json(error.message);
