@@ -7,6 +7,7 @@ import { IconArrowLeft, IconMenu2, IconX } from "@tabler/icons-react";
 import { MoonStarIcon, SunMoonIcon } from "lucide-react";
 import { signOut } from "@/auth";
 import logout from "@/actions/logout";
+import { useRouter } from "next/navigation";
 
 interface Links {
   label: string;
@@ -255,8 +256,10 @@ export const DarkModeToggle = ({ className }: { className?: string }) => {
 
 export const LogoutToggle = ({ className }: { className?: string }) => {
   const { open, animate } = useSidebar();
+  const router = useRouter();
   const handleLogout = async () => {
     await logout();
+    router.push("/");
   };
   return (
     <div
@@ -279,12 +282,3 @@ export const LogoutToggle = ({ className }: { className?: string }) => {
     </div>
   );
 };
-
-// {
-//   label: "Logout",
-//   href: "/auth/login",
-//   onCLickHandler: async () => await logout(),
-//   icon: (
-//     <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-//   ),
-// },
