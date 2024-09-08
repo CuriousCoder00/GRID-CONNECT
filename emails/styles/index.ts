@@ -45,14 +45,15 @@ const emailStyles = `
             display: inline-block;
             padding: 10px 20px;
             background-color: #007bff;
-            color: white;
+            color: #fffff;
             text-decoration: none;
             border-radius: 5px;
             margin-top: 10px;
         }
 
         a:hover {
-            background-color: #0056b3;
+            background-color: #fffff;
+            color: #007bff;
         }
 
         @media (max-width: 600px) {
