@@ -5,11 +5,11 @@ import { Navbar } from "@/components/Navbar";
 const links = [
   {
     name: "Login",
-    href: "/login",
+    href: "/auth/login",
   },
   {
     name: "Register",
-    href: "/register",
+    href: "/auth/register",
   },
 ];
 
