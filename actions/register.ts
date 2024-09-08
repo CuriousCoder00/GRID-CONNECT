@@ -17,7 +17,7 @@ export const Register = async ({
     .post("/api/auth/register", userData)
     .then((res) => {
       // Set success message on successful registration
-      setSuccessMessage("Please check your mail for verification.");
+      setSuccessMessage("Confirmation mail sent");
       // Capture any error returned by the API
       setError(res.data.error);
     })
