@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className="dark select-none" lang="en">
+    <html className="dark select-none" lang="en" suppressHydrationWarning>
       <link rel="shortcut icon" href="grid-icon.svg" type="image/svg" />
       <body className={inter.className}>
         <NextTopLoader />
