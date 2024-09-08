@@ -7,3 +7,11 @@ export interface UserTypes {
   verifyToken: string | null;
   forgotPasswordToken: string | null;
 }
+
+export interface RegisterActionTypes {
+  userData: { name: string; email: string; password: string };
+  setError: (error: string) => void;
+  setSuccessMessage: (message: string) => void;
+  setLoading: (loading: boolean) => void;
+}
+
