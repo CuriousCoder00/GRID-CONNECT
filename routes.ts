@@ -2,14 +2,19 @@
  * An array of routes that are accessible to public
  * These routes do not need authentication/login
  */
-export const publicRoutes = ["/", "/explore", "/verify-email"];
+export const publicRoutes = ["/", "/explore", ""];
 
 /**
  * An array of routes that are used for authentication
  * These routes do not need authentication/login
  * These routes will redirect users to /feed route
  */
-export const authRoutes = ["/auth/login", "/auth/register", "/auth/error"];
+export const authRoutes = [
+  "/auth/login",
+  "/auth/register",
+  "/auth/error",
+  "/auth/verify-email",
+];
 
 /**
  * The prefix for API authentication routes
