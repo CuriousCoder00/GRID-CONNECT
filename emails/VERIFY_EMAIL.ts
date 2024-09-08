@@ -1,5 +1,5 @@
 import { APP_NAME } from "@/constants/TextConsts";
-import emailStyles from "./styles";
+import emailStyles from "@/emails/styles";
 
 const verificationMailHTML = (verificationLink: string, userName: string) => `
 <!DOCTYPE html>
