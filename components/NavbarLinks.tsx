@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Url } from "next/dist/shared/lib/router/router";
-import { Input } from "./ui/input";
+import { Input } from "@/components/ui/input";
 
 interface NavbarLinksProps {
   links?: Array<{ name: String; href: Url }>;

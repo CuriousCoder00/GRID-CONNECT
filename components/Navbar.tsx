@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-import { Icon } from "./static/Icon";
+import { Icon } from "@/components/static/Icon";
 
 import { SunMoonIcon, MoonStarIcon } from "lucide-react";
 import {
@@ -16,9 +16,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { Button } from "@/components/ui/button";
-import { NavbarLinks } from "./NavbarLinks";
+import { NavbarLinks } from "@/components/NavbarLinks";
 import { Url } from "next/dist/shared/lib/router/router";
-import { MobileNavbar } from "./MobileNavbar";
+import { MobileNavbar } from "@/components/MobileNavbar";
 import { APP_NAME } from "@/constants/TextConsts";
 
 interface NavbarProps {

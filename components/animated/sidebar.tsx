@@ -3,8 +3,10 @@ import { cn } from "@/lib/utils";
 import Link, { LinkProps } from "next/link";
 import React, { useState, createContext, useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { IconMenu2, IconX } from "@tabler/icons-react";
+import { IconArrowLeft, IconMenu2, IconX } from "@tabler/icons-react";
 import { MoonStarIcon, SunMoonIcon } from "lucide-react";
+import { signOut } from "@/auth";
+import logout from "@/actions/logout";
 
 interface Links {
   label: string;
@@ -73,10 +75,10 @@ export const Sidebar = ({
 
 export const SidebarBody = (props: React.ComponentProps<typeof motion.div>) => {
   return (
-    <>
+    <div>
       <DesktopSidebar {...props} />
       <MobileSidebar {...(props as React.ComponentProps<"div">)} />
-    </>
+    </div>
   );
 };
 
@@ -116,7 +118,7 @@ export const MobileSidebar = ({
     <>
       <div
         className={cn(
-          "h-10 px-4 py-4 flex flex-row md:hidden  items-center justify-between  w-full"
+          "h-10 px-4 py-4 flex flex-row md:hidden  items-center justify-between bg-white dark:bg-slate-800 w-full"
         )}
         {...props}
       >
@@ -250,3 +252,39 @@ export const DarkModeToggle = ({ className }: { className?: string }) => {
     </div>
   );
 };
+
+export const LogoutToggle = ({ className }: { className?: string }) => {
+  const { open, animate } = useSidebar();
+  const handleLogout = async () => {
+    await logout();
+  };
+  return (
+    <div
+      className={cn(
+        "flex items-center justify-start gap-2  group/sidebar py-2 cursor-pointer",
+        className
+      )}
+    >
+      <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+      <motion.div
+        animate={{
+          display: animate ? (open ? "inline-block" : "none") : "inline-block",
+          opacity: animate ? (open ? 1 : 0) : 1,
+        }}
+        onClick={() => handleLogout()}
+        className="flex justify-start items-center text-neutral-700 dark:text-neutral-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre !p-0 !m-0"
+      >
+        Logout
+      </motion.div>
+    </div>
+  );
+};
+
+// {
+//   label: "Logout",
+//   href: "/auth/login",
+//   onCLickHandler: async () => await logout(),
+//   icon: (
+//     <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+//   ),
+// },

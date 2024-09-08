@@ -11,9 +11,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { NavbarLinks } from "./NavbarLinks";
+import { NavbarLinks } from "@/components/NavbarLinks";
 import { Url } from "next/dist/shared/lib/router/router";
-import { Icon } from "./static/Icon";
+import { Icon } from "@/components/static/Icon";
 import { APP_NAME } from "@/constants/TextConsts";
 
 interface NavbarProps {

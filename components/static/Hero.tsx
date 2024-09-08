@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-import { GridBackground } from "../gridBackground";
+import { GridBackground } from "@/components/gridBackground";
 import { Icon } from "./Icon";
 import { IconBrandNextjs } from "@tabler/icons-react";
 import { APP_NAME } from "@/constants/TextConsts";
@@ -126,7 +126,7 @@ export const Hero = () => {
             <Link
               onMouseEnter={() => setHovered2(true)}
               onMouseLeave={() => setHovered2(false)}
-              href="/login"
+              href="/auth/login"
               scroll={false}
               className="z-10 flex items-center justify-center mt-8 bg-slate-800 dark:bg-white px-8 py-2 font-bold text-sm rounded-md dark:text-slate-800 text-white"
             >
