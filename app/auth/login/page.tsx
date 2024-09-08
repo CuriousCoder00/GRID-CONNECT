@@ -11,6 +11,7 @@ import { Login } from "@/actions/login";
 import Alert from "@/components/static/Alert";
 import { GoogleLogin } from "@/actions/google-login";
 import { useSearchParams } from "next/navigation";
+import PulseLoader from "react-spinners/PulseLoader";
 
 export default function LoginPage() {
   // State to hold user login data
@@ -26,6 +27,8 @@ export default function LoginPage() {
       : "";
   // State to handle error messages
   const [error, setError] = useState<string | undefined>(undefined);
+  // State to handle success messages for email verification needed
+  const [success, setSuccess] = useState<string | undefined>(undefined);
 
   // State to loading phase of form submission
   const [loading, setLoading] = useState(false);
@@ -39,12 +42,15 @@ export default function LoginPage() {
     e.preventDefault();
     // Make API call to the backend to register the user
     setError("");
+    setSuccess("");
     // Set loading to true during API call
     setLoading(true);
     // Make API call to the backend to login the user
     const res = await Login({ userData });
     // Capture any error returned by the API
     setError(res?.error);
+    // Capture any success message returned by the API
+    setSuccess(res?.warning);
     // Reset loading state after the API call
     setLoading(false);
   };
@@ -82,18 +88,12 @@ export default function LoginPage() {
         </LabelInputContainer>
         {error && <Alert type="error" message={error} />}
         {authError && <Alert type="error" message={authError} />}
+        {success && <Alert type="warning" message={success} />}
         <button
-          className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full dark:text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+          className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 dark:bg-zinc-800 w-full dark:text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] flex justify-center items-center"
           type="submit"
         >
-          {loading ? (
-            <svg
-              className="animate-spin h-5 w-5 mr-3 border-t-2 border-b-2 border-sky-700 rounded-full text-center"
-              viewBox="0 0 24 24"
-            ></svg>
-          ) : (
-            "Login →"
-          )}
+          {loading ? <PulseLoader color="#06b4ff" /> : "Login →"}
           <BottomGradient />
         </button>
         <Gradient />
