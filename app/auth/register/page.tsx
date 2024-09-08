@@ -14,6 +14,7 @@ import Alert from "@/components/static/Alert";
 import { cn } from "@/lib/utils";
 import { Register } from "@/actions/register";
 import { GoogleLogin } from "@/actions/google-login";
+import PulseLoader from "react-spinners/PulseLoader";
 
 export default function RegisterPage() {
   // State to hold user registration data
@@ -96,14 +97,7 @@ export default function RegisterPage() {
           type="submit"
           disabled={loading}
         >
-          {loading ? (
-            <svg
-              className="animate-spin h-5 w-5 mr-3 border-t-2 border-b-2 border-sky-700 rounded-full text-center"
-              viewBox="0 0 24 24"
-            ></svg>
-          ) : (
-            "Sign up →"
-          )}
+          {loading ? <PulseLoader color="#06b4ff" /> : "Sign up →"}
           <BottomGradient />
         </button>
         <div className="flex justify-end mt-2">
