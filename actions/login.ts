@@ -2,14 +2,26 @@
 
 import { signIn } from "@/auth";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
-import { CallbackRouteError } from "@auth/core/errors";
 import { AuthError } from "next-auth";
-
+import { generateVerificationToken } from "@/lib/tokens";
+import { getUserByEmail } from "@/data/user-data";
 export const Login = async ({
   userData,
 }: {
   userData: { email: string; password: string };
 }) => {
+  const existingUser = await getUserByEmail(userData.email);
+
+  if (!existingUser || !existingUser.email || !existingUser.password)
+    return { error: "User does not exist" };
+
+  if (!existingUser.emailVerified) {
+    const verificationToken = await generateVerificationToken(
+      existingUser.email
+    );
+    return { warning: "Please check your mail for verification." };
+  }
+
   try {
     await signIn("credentials", {
       email: userData.email,
@@ -25,10 +37,6 @@ export const Login = async ({
           return { error: "Something went wrong" };
       }
     }
-    if (error instanceof CallbackRouteError) {
-      return { error: "Please verify your email and then try again" };
-    }
     throw error;
   }
 };
-
