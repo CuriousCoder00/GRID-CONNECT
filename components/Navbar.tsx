@@ -25,9 +25,15 @@ interface NavbarProps {
   navLinks?: Array<{ name: String; href: Url }>;
   showInput?: Boolean;
   hideMobileNav?: Boolean;
+  hideAll?: boolean;
 }
 
-export const Navbar = ({ navLinks, showInput, hideMobileNav }: NavbarProps) => {
+export const Navbar = ({
+  navLinks,
+  showInput,
+  hideMobileNav,
+  hideAll,
+}: NavbarProps) => {
   const [theme, setTheme] = useState("dark");
   const toggleTheme = (newTheme: string) => {
     setTheme(newTheme);
@@ -35,7 +41,7 @@ export const Navbar = ({ navLinks, showInput, hideMobileNav }: NavbarProps) => {
     document.documentElement.classList.add(newTheme);
   };
   return (
-    <header className="min-w-full ">
+    <header className={`min-w-full ${hideAll && "hidden"}`}>
       <nav
         className={`fixed top-0 left-0 right-0 md:rounded-full backdrop-blur md:bg-slate-100 dark:bg-slate-950 bg-opacity-50 md:border border-slate-500 md:w-[80%] md:mt-5 z-50 flex container dark:text-white gap-4`}
       >
