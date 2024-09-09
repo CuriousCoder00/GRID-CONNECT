@@ -7,6 +7,7 @@ import { GridBackground } from "@/components/gridBackground";
 import { Icon } from "./Icon";
 import { IconBrandNextjs } from "@tabler/icons-react";
 import { APP_NAME } from "@/constants/TextConsts";
+import Image from "next/image";
 type Props = {};
 
 export const Hero = () => {
@@ -186,18 +187,24 @@ export const Hero = () => {
               }}
               className="flex justify-center items-center gap-8 h-20 overflow-hidden"
             >
-              <img
+              <Image
+                width={112}
+                height={112}
                 src="/nextjs.svg"
                 alt="NextJS"
                 className="w-28 h-28 dark:invert-0 invert text-white"
               />
-              <img
+              <Image
+                width={112}
+                height={112}
                 src="/vercel.svg"
                 alt="NextJS"
                 className="w-28 h-28 dark:invert-0 invert text-white"
               />
               <div className="flex justify-center items-center gap-2">
-                <img
+                <Image
+                  width={40}
+                  height={40}
                   src="/shadcn-ui.svg"
                   alt="NextJS"
                   className="w-10 h-10 dark:invert text-white"

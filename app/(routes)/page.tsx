@@ -20,7 +20,7 @@ const links = [
   },
 ];
 
-export default function page() {
+export default function Home() {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);

@@ -69,7 +69,7 @@ export function Features() {
           Why {APP_NAME}?
         </h1>
         <p className="text-sm px-3 dark:text-slate-400">
-          Why not? If it's all you want, then it's all we can provide. Haha,
+          Why not? If it&apos;s all you want, then it&apos;s all we can provide. Haha,
           love from {APP_NAME}s.
         </p>
       </div>
