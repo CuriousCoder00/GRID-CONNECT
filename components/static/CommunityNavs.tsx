@@ -43,7 +43,7 @@ const NavItems = [
   {
     id: 5,
     name: "Science & Tech",
-    href: "/explore/science&tech",
+    href: "/explore/science-tech",
     icon: <CombineIcon className="inline me-4" />,
     current: false,
   },
