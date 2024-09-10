@@ -20,6 +20,7 @@ import { NavbarLinks } from "@/components/NavbarLinks";
 import { Url } from "next/dist/shared/lib/router/router";
 import { MobileNavbar } from "@/components/MobileNavbar";
 import { APP_NAME } from "@/constants/TextConsts";
+import { usePathname } from "next/navigation";
 
 interface NavbarProps {
   navLinks?: Array<{ name: String; href: Url }>;
@@ -35,6 +36,8 @@ export const Navbar = ({
   hideAll,
 }: NavbarProps) => {
   const [theme, setTheme] = useState("dark");
+  const [hideThemeToggle, setHideThemeToggle] = useState(false);
+  const pathname = usePathname();
   const toggleTheme = (newTheme: string) => {
     setTheme(newTheme);
     document.documentElement.classList.remove("dark", "light");
