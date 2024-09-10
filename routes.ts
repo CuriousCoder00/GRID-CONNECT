@@ -2,7 +2,7 @@
  * An array of routes that are accessible to public
  * These routes do not need authentication/login
  */
-export const publicRoutes = ["/", "/explore", ""];
+export const publicRoutes = ["/", "/explore", "/explore/gaming", "/explore/entertainment", "/explore/education", "/explore/music", "/explore/science-tech"];
 
 /**
  * An array of routes that are used for authentication
@@ -12,8 +12,8 @@ export const publicRoutes = ["/", "/explore", ""];
 export const authRoutes = [
   "/auth/login",
   "/auth/register",
-  "/auth/error",
   "/auth/verify-email",
+  "/auth/reset-pass",
 ];
 
 /**
