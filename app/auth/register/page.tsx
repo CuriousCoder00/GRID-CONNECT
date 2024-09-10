@@ -45,46 +45,55 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="max-w-md w-full mx-auto md:mt-24 mt-14 rounded-none md:rounded-2xl p-4 shadow-input bg-white dark:bg-black">
-      <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
+    <div className="max-w-md w-full mx-auto md:mt-24 mt-14 rounded-none md:rounded-2xl p-4 shadow-input bg-black">
+      <h2 className="font-bold text-xl text-neutral-200">
         Welcome to Grid Connects
       </h2>
 
       <form className="my-8" onSubmit={handleSubmit}>
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
-            <Label htmlFor="Full Name">Full name</Label>
+            <Label className="text-white" htmlFor="Full Name">
+              Full name
+            </Label>
             <Input
               id="name"
               name="name"
               placeholder="John Doe"
               type="text"
               required
+              className="bg-neutral-800 text-white"
               disabled={loading}
               onChange={onValueChange}
             />
           </LabelInputContainer>
         </div>
         <LabelInputContainer className="mb-4">
-          <Label htmlFor="email">Email Address</Label>
+          <Label className="text-white" htmlFor="email">
+            Email Address
+          </Label>
           <Input
             id="email"
             name="email"
             placeholder="john.doe@gmail.com"
             type="email"
             required
+            className="bg-neutral-800 text-white"
             disabled={loading}
             onChange={onValueChange}
           />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
-          <Label htmlFor="password">Password</Label>
+          <Label className="text-white" htmlFor="password">
+            Password
+          </Label>
           <Input
             id="password"
             name="password"
             placeholder="••••••••"
             type="password"
             required
+            className="bg-neutral-800 text-white"
             autoComplete="current-password"
             disabled={loading}
             onChange={onValueChange}
@@ -93,7 +102,7 @@ export default function RegisterPage() {
         {error && <Alert type="error" message={error} />}
         {successMessage && <Alert type="success" message={successMessage} />}
         <button
-          className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 flex justify-center text-center items-center dark:bg-zinc-800 w-full dark:text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] "
+          className="mt-8 bg-gradient-to-br relative group/btn  from-zinc-900 to-zinc-900 flex justify-center text-center items-center bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] "
           type="submit"
           disabled={loading}
         >
@@ -102,7 +111,7 @@ export default function RegisterPage() {
         </button>
         <div className="flex justify-end mt-2">
           <Link
-            className="text-sm hover:text-blue-700 dark:hover:text-blue-400"
+            className="text-sm text-white hover:text-blue-400"
             href="/auth/login"
           >
             Already have an account?
@@ -113,15 +122,13 @@ export default function RegisterPage() {
 
       <div className="flex flex-col">
         <button
-          className=" relative group/btn flex space-x-2 items-center justify-center px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
+          className=" relative group/btn flex space-x-2 items-center justify-center px-4 w-full rounded-md h-10 font-medium bg-zinc-900 shadow-[0px_0px_1px_1px_var(--neutral-800)]"
           type="submit"
           onClick={GoogleLogin}
           disabled={loading}
         >
-          <IconBrandGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
-          <span className="text-neutral-700 dark:text-neutral-300 text-sm">
-            Continue with Google
-          </span>
+          <IconBrandGoogle className="h-4 w-4 text-neutral-300" />
+          <span className="text-neutral-300 text-sm">Continue with Google</span>
           <BottomGradient />
         </button>
       </div>
