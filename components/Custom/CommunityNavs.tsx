@@ -8,7 +8,7 @@ import {
   Tv,
 } from "lucide-react";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Gradient } from "@/components/Landing/Gradient";
 
 const NavItems = [
@@ -57,32 +57,24 @@ const NavItems = [
 ];
 
 const CommunityNavs = () => {
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    window.onscroll = () => {
-      if (window.scrollY > 2800) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-  }, []);
   return (
     <div
-      className={`flex w-full sm:flex-col sm:gap-2 justify-center items-start overflow-hidden}`}
+      className={`flex lg:flex-col sm:gap-2 justify-center items-start overflow-hidden}`}
     >
-      {NavItems.map((item) => {
-        return (
-          <Link
-            className="w-full p-2 sm:hover:bg-slate-300 rounded-lg sm:dark:hover:bg-slate-800"
-            key={item.id}
-            href={item.href}
-          >
-            <span className="hidden sm:inline">{item.icon}</span>
-            {item.name}
-          </Link>
-        );
-      })}
+      <div className="hidden lg:flex flex-col justify-center items-center">
+        {NavItems.map((item) => {
+          return (
+            <Link
+              className="w-full p-2 sm:hover:bg-slate-300 rounded-lg flex flex-nowrap sm:dark:hover:bg-slate-800"
+              key={item.id}
+              href={item.href}
+            >
+              <span className="inline">{item.icon}</span>
+              {item.name}
+            </Link>
+          );
+        })}
+      </div>
       <Gradient />
     </div>
   );
