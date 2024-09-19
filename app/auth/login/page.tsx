@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { Label } from "@/components/Custom/label";
 import { Input } from "@/components/Custom/input";
 import Link from "next/link";
@@ -55,65 +55,67 @@ export default function LoginForm() {
   };
 
   return (
-    <AuthForm loading={loading} login>
-      <form className="my-8" onSubmit={handleSubmit}>
-        <LabelInputContainer className="mb-4">
-          <Label className="text-white" htmlFor="email">
-            Email Address
-          </Label>
-          <Input
-            className="bg-neutral-800 text-white"
-            id="email"
-            placeholder="john.doe@gmail.com"
-            type="email"
-            name="email"
-            autoComplete="email"
-            disabled={loading}
-            onChange={onValueChange}
-          />
-        </LabelInputContainer>
-        <LabelInputContainer>
-          <Label className="text-white" htmlFor="password">
-            Password
-          </Label>
-          <Input
-            className="bg-neutral-800 text-white"
-            id="password"
-            placeholder="••••••••"
-            type="password"
-            name="password"
-            autoComplete="current-password"
-            disabled={loading}
-            onChange={onValueChange}
-          />
-        </LabelInputContainer>
-        <div className="mb-4 text-end">
-          <Link
-            className="text-xs text-white hover:text-blue-400"
-            href={"/auth/reset-pass"}
+    <AuthForm loading={loading}>
+      <Suspense>
+        <form className="my-8" onSubmit={handleSubmit}>
+          <LabelInputContainer className="mb-4">
+            <Label className="text-white" htmlFor="email">
+              Email Address
+            </Label>
+            <Input
+              className="bg-neutral-800 text-white"
+              id="email"
+              placeholder="john.doe@gmail.com"
+              type="email"
+              name="email"
+              autoComplete="email"
+              disabled={loading}
+              onChange={onValueChange}
+            />
+          </LabelInputContainer>
+          <LabelInputContainer>
+            <Label className="text-white" htmlFor="password">
+              Password
+            </Label>
+            <Input
+              className="bg-neutral-800 text-white"
+              id="password"
+              placeholder="••••••••"
+              type="password"
+              name="password"
+              autoComplete="current-password"
+              disabled={loading}
+              onChange={onValueChange}
+            />
+          </LabelInputContainer>
+          <div className="mb-4 text-end">
+            <Link
+              className="text-xs text-white hover:text-blue-400"
+              href={"/auth/reset-pass"}
+            >
+              Forgot Password?
+            </Link>
+          </div>
+          {error && <Alert type="error" message={error} />}
+          {authError && <Alert type="error" message={authError} />}
+          {success && <Alert type="warning" message={success} />}
+          <button
+            className="bg-gradient-to-br relative group/btn  from-zinc-900 to-zinc-900 bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] flex justify-center items-center"
+            type="submit"
           >
-            Forgot Password?
-          </Link>
-        </div>
-        {error && <Alert type="error" message={error} />}
-        {authError && <Alert type="error" message={authError} />}
-        {success && <Alert type="warning" message={success} />}
-        <button
-          className="bg-gradient-to-br relative group/btn  from-zinc-900 to-zinc-900 bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] flex justify-center items-center"
-          type="submit"
-        >
-          {loading ? <PulseLoader color="#06b4ff" /> : "Login →"}
-          <BottomGradient />
-        </button>
-        <div className="flex justify-end mt-2">
-          <Link
-            className="text-sm text-white hover:text-blue-400"
-            href="/auth/register"
-          >
-            Don&apos;t have an account yet?
-          </Link>
-        </div>
-      </form>
+            {loading ? <PulseLoader color="#06b4ff" /> : "Login →"}
+            <BottomGradient />
+          </button>
+          <div className="flex justify-end mt-2">
+            <Link
+              className="text-sm text-white hover:text-blue-400"
+              href="/auth/register"
+            >
+              Don&apos;t have an account yet?
+            </Link>
+          </div>
+        </form>
+      </Suspense>
     </AuthForm>
   );
 }
