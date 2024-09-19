@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { Label } from "@/components/static/label";
-import { Input } from "@/components/static/input";
+import { Label } from "@/components/Custom/label";
+import { Input } from "@/components/Custom/input";
 import Link from "next/link";
 import { Login } from "@/actions/login";
-import Alert from "@/components/static/Alert";
+import Alert from "@/components/Custom/Alert";
 import { useSearchParams } from "next/navigation";
 import PulseLoader from "react-spinners/PulseLoader";
 import { BottomGradient } from "@/components/auth/BottomGradient";

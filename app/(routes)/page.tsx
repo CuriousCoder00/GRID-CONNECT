@@ -1,8 +1,8 @@
 "use client";
 import { TracingBeam } from "@/components/animated/tracing-beam";
-import { Navbar } from "@/components/Navbar";
-import { Features } from "@/components/static/Features";
-import { Hero } from "@/components/static/Hero";
+import { Navbar } from "@/components/Header/Navbar";
+import { Features } from "@/components/Landing/Features";
+import { Hero } from "@/components/Landing/Hero";
 import { useEffect, useState } from "react";
 
 const links = [

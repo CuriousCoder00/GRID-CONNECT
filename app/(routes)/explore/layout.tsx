@@ -1,6 +1,5 @@
-import { Gradient } from "@/components/static/Gradient";
-import { Banner } from "@/components/static/Banner";
-import { Navbar } from "@/components/Navbar";
+import { Gradient } from "@/components/Landing/Gradient";
+import { Navbar } from "@/components/Header/Navbar";
 
 const links = [
   {
@@ -19,8 +18,7 @@ const ExploreLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="flex flex-col">
         <Navbar navLinks={links} showInput={true} />
         <Gradient />
-        <Banner />
-        <div className="w-full h-full z-10 backdrop-blur-xl">{children}</div>
+        <div className="w-full h-full z-10 mt-12">{children}</div>
       </div>
     </div>
   );

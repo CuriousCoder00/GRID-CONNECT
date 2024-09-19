@@ -1,5 +1,5 @@
 "use client";
-import { Navbar } from "@/components/Navbar";
+import { Navbar } from "@/components/Header/Navbar";
 import { useEffect, useState } from "react";
 
 const links = [

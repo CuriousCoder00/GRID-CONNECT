@@ -3,9 +3,9 @@ import React, { useState } from "react";
 
 import Link from "next/link";
 
-import { Label } from "@/components/static/label";
-import { Input } from "@/components/static/input";
-import Alert from "@/components/static/Alert";
+import { Label } from "@/components/Custom/label";
+import { Input } from "@/components/Custom/input";
+import Alert from "@/components/Custom/Alert";
 
 import { cn } from "@/lib/utils";
 import { Register } from "@/actions/register";

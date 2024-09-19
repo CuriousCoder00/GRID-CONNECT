@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 
-import { VerifyCard } from "@/components/ui/verifyCard";
+import { VerifyCard } from "@/components/Custom/verifyCard";
 
 const page = () => {
   return (

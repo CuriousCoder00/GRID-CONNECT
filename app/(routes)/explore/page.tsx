@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import Cards from "@/components/static/Cards";
-import CommunityNavs from "@/components/static/CommunityNavs";
+import Cards from "@/components/Custom/Cards";
+import CommunityNavs from "@/components/Custom/CommunityNavs";
 
 const page = () => {
   return (

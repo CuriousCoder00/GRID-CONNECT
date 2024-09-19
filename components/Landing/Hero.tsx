@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 import { GridBackground } from "@/components/Landing/gridBackground";
-import { Icon } from "../static/Icon";
+import { Icon } from "../Custom/Icon";
 import { IconBrandNextjs } from "@tabler/icons-react";
 import { APP_NAME } from "@/constants/TextConsts";
 import Image from "next/image";

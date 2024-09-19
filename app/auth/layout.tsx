@@ -1,7 +1,7 @@
 "use client";
 
 import { WavyBackground } from "@/components/animated/wavy-background";
-import { Icon } from "@/components/static/Icon";
+import { Icon } from "@/components/Custom/Icon";
 import { APP_NAME } from "@/constants/TextConsts";
 import Link from "next/link";
 

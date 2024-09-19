@@ -11,7 +11,7 @@ import BeatLoader from "react-spinners/BeatLoader";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { verifyEmail } from "@/actions/verification";
-import Alert from "@/components/static/Alert";
+import Alert from "@/components/Custom/Alert";
 
 export function VerifyCard() {
   const searchParams = useSearchParams();

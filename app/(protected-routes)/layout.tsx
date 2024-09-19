@@ -14,7 +14,7 @@ import {
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Icon } from "@/components/static/Icon";
+import { Icon } from "@/components/Custom/Icon";
 import { APP_NAME } from "@/constants/TextConsts";
 
 export default function ProtectedRoutesLayout({
