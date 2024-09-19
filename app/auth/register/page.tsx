@@ -3,18 +3,14 @@ import React, { useState } from "react";
 
 import Link from "next/link";
 
-import axios from "axios";
-
-import { IconBrandGoogle } from "@tabler/icons-react";
-
 import { Label } from "@/components/static/label";
 import { Input } from "@/components/static/input";
 import Alert from "@/components/static/Alert";
 
 import { cn } from "@/lib/utils";
 import { Register } from "@/actions/register";
-import { GoogleLogin } from "@/actions/google-login";
 import PulseLoader from "react-spinners/PulseLoader";
+import AuthForm from "@/components/auth/AuthForm";
 
 export default function RegisterPage() {
   // State to hold user registration data
@@ -45,11 +41,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="max-w-md w-full mx-auto md:mt-24 mt-14 rounded-none md:rounded-2xl p-4 shadow-input bg-black">
-      <h2 className="font-bold text-xl text-neutral-200">
-        Welcome to Grid Connects
-      </h2>
-
+    <AuthForm loading={loading}>
       <form className="my-8" onSubmit={handleSubmit}>
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
@@ -119,20 +111,7 @@ export default function RegisterPage() {
         </div>
       </form>
       <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-2 h-[1px] w-full" />
-
-      <div className="flex flex-col">
-        <button
-          className=" relative group/btn flex space-x-2 items-center justify-center px-4 w-full rounded-md h-10 font-medium bg-zinc-900 shadow-[0px_0px_1px_1px_var(--neutral-800)]"
-          type="submit"
-          onClick={GoogleLogin}
-          disabled={loading}
-        >
-          <IconBrandGoogle className="h-4 w-4 text-neutral-300" />
-          <span className="text-neutral-300 text-sm">Continue with Google</span>
-          <BottomGradient />
-        </button>
-      </div>
-    </div>
+    </AuthForm>
   );
 }
 
