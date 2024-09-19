@@ -12,8 +12,9 @@ export const Login = async ({
 }) => {
   const existingUser = await getUserByEmail(userData.email);
 
-  if (!existingUser || !existingUser.email || !existingUser.password)
-    return { error: "User does not exist" };
+  if (!existingUser) return { error: "User does not exist" };
+  if (!existingUser.email || !existingUser.password)
+    return { error: "Invalid credentials" };
 
   if (!existingUser.emailVerified) {
     const verificationToken = await generateVerificationToken(
