@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-import { IconBrandTabler } from "@tabler/icons-react";
+import { IconBrandTabler, IconBuildingCommunity } from "@tabler/icons-react";
 import { Sidebar, SidebarBody, SidebarLink } from "@/components/animated/sidebar";
 import { LucideMessageSquareText } from "lucide-react";
 
@@ -11,6 +11,13 @@ const links = [
     href: "/feed",
     icon: (
       <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-7 w-7 flex-shrink-0" />
+    ),
+  },
+  {
+    label: "Communities",
+    href: "/communities",
+    icon: (
+      <IconBuildingCommunity className="text-neutral-700 dark:text-neutral-200 h-7 w-7 flex-shrink-0" />
     ),
   },
   {

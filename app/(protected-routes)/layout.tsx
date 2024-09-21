@@ -10,13 +10,13 @@ export default function ProtectedRoutesLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col h-screen w-full dark:bg-black bg-white">
+    <div className="flex flex-col max-h-screen h-screen max-w-screen overflow-hidden dark:bg-black bg-white">
       <AppBar />
       <div className="flex max-md:flex-col w-full h-full">
         <div className="flex">
           <SidebarNavigations />
         </div>
-        <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-black flex flex-col gap-2 flex-1 w-full h-full">
+        <div className="p-2 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-black flex flex-col gap-2 flex-1 w-full h-full">
           {children}
         </div>
       </div>
