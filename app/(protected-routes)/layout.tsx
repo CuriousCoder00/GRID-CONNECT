@@ -13,7 +13,7 @@ export default function ProtectedRoutesLayout({
     <div className="flex flex-col max-h-screen h-screen max-w-screen overflow-hidden dark:bg-black bg-white">
       <AppBar />
       <div className="flex max-md:flex-col w-full h-full">
-        <div className="flex">
+        <div className="flex justify-start items-start">
           <SidebarNavigations />
         </div>
         <div className="p-2 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-black flex flex-col gap-2 flex-1 w-full h-full">
