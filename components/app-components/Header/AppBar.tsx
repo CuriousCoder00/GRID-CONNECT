@@ -1,19 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
+import React from "react";
 
 import { ProfileAvatar } from "../ProfileAvatar";
-import { BellIcon, Plus } from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { Community } from "./Community";
 import { Notifications } from "./Notifications";
 export const AppBar = () => {
@@ -29,7 +18,3 @@ export const AppBar = () => {
     </header>
   );
 };
-
-const MobileNavbar = () => {};
-
-const AppBarLinks = () => {};
