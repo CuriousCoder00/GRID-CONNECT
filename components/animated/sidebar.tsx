@@ -3,11 +3,7 @@ import { cn } from "@/lib/utils";
 import Link, { LinkProps } from "next/link";
 import React, { useState, createContext, useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { IconArrowLeft, IconMenu2, IconX } from "@tabler/icons-react";
-import { MoonStarIcon, SunMoonIcon } from "lucide-react";
-import { signOut } from "@/auth";
-import logout from "@/actions/logout";
-import { useRouter } from "next/navigation";
+import { IconMenu2, IconX } from "@tabler/icons-react";
 
 interface Links {
   label: string;
@@ -119,11 +115,11 @@ export const MobileSidebar = ({
     <>
       <div
         className={cn(
-          "h-12 px-4 py-4 flex flex-row md:hidden items-center justify-between w-full fixed top-0"
+          "h-12 px-4 py-4 flex flex-row md:hidden items-center justify-between fixed top-0"
         )}
         {...props}
       >
-        <div className="flex justify-start z-20 w-full">
+        <div className="flex justify-start z-20">
           <IconMenu2
             className="text-neutral-800 dark:text-neutral-200 cursor-pointer"
             onClick={() => setOpen(!open)}
@@ -140,7 +136,7 @@ export const MobileSidebar = ({
                 ease: "easeInOut",
               }}
               className={cn(
-                "fixed h-full w-full inset-0  p-10 z-[100] flex flex-col justify-between",
+                "fixed h-full w-full inset-0  p-10 z-[999999] flex flex-col justify-between",
                 className
               )}
             >
@@ -190,95 +186,5 @@ export const SidebarLink = ({
         {link.label}
       </motion.span>
     </Link>
-  );
-};
-
-export const DarkModeToggle = ({ className }: { className?: string }) => {
-  const { open, animate } = useSidebar();
-  const [theme, setTheme] = useState("dark");
-  const toggleTheme = (newTheme: string) => {
-    setTheme(newTheme);
-    document.documentElement.classList.remove("dark", "light");
-    document.documentElement.classList.add(newTheme);
-  };
-  return (
-    <div
-      className={cn(
-        "flex items-center justify-start gap-2  group/sidebar py-2 cursor-pointer",
-        className
-      )}
-    >
-      {theme === "dark" ? (
-        <SunMoonIcon
-          className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0"
-          onClick={() => toggleTheme("light")}
-        />
-      ) : (
-        <MoonStarIcon
-          className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0"
-          onClick={() => toggleTheme("dark")}
-        />
-      )}
-      {theme === "dark" ? (
-        <motion.div
-          animate={{
-            display: animate
-              ? open
-                ? "inline-block"
-                : "none"
-              : "inline-block",
-            opacity: animate ? (open ? 1 : 0) : 1,
-          }}
-          onClick={() => toggleTheme("light")}
-          className="text-neutral-700 dark:text-neutral-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
-        >
-          Light Mode
-        </motion.div>
-      ) : (
-        <motion.div
-          animate={{
-            display: animate
-              ? open
-                ? "inline-block"
-                : "none"
-              : "inline-block",
-            opacity: animate ? (open ? 1 : 0) : 1,
-          }}
-          onClick={() => toggleTheme("dark")}
-          className="flex justify-start items-center text-neutral-700 dark:text-neutral-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre !p-0 !m-0"
-        >
-          Dark Mode
-        </motion.div>
-      )}
-    </div>
-  );
-};
-
-export const LogoutToggle = ({ className }: { className?: string }) => {
-  const { open, animate } = useSidebar();
-  const router = useRouter();
-  const handleLogout = async () => {
-    await logout();
-    router.push("/");
-  };
-  return (
-    <div
-      className={cn(
-        "flex items-center justify-start gap-2  group/sidebar py-2 cursor-pointer",
-        className
-      )}
-    >
-      <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-      <motion.div
-        animate={{
-          display: animate ? (open ? "inline-block" : "none") : "inline-block",
-          opacity: animate ? (open ? 1 : 0) : 1,
-        }}
-        onClick={() => handleLogout()}
-        className="flex justify-start items-center text-neutral-700 dark:text-neutral-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre !p-0 !m-0"
-      >
-        Logout
-      </motion.div>
-    </div>
   );
 };
