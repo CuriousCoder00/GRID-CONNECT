@@ -29,7 +29,7 @@ const options = [
 
 export const CreateCommunityForm = () => {
   return (
-    <form className="flex flex-col mt-4 gap-4 w-96" action="">
+    <form className="flex flex-col mx-auto mt-4 gap-4 w-96" action="">
       <input
         className="p-2 px-4 border rounded w-full h-12 bg-transparent dark:border-slate-500 focus:outline-none"
         type="text"

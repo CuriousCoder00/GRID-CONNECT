@@ -13,9 +13,9 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { Button } from "../ui/button";
 
 export const ProfileAvatar = ({ imageUrl }: { imageUrl?: string }) => {
-  const [open, setOpen] = useState<boolean>(false);
   const router = useRouter();
   const handleLogout = async () => {
     await logout();
@@ -29,7 +29,7 @@ export const ProfileAvatar = ({ imageUrl }: { imageUrl?: string }) => {
           <AvatarFallback className="bg-sky-700">KK</AvatarFallback>
         </Avatar>
       </PopoverTrigger>
-      <PopoverContent className="z-10 mt-3 w-44">
+      <PopoverContent className="z-10 mt-3 w-44 bg-white dark:bg-slate-950">
         <Link
           className="p-2 dark:hover:bg-slate-900 hover:bg-sky-100 w-full flex items-center justify-start gap-2"
           href={"/settings"}
@@ -39,13 +39,13 @@ export const ProfileAvatar = ({ imageUrl }: { imageUrl?: string }) => {
         <div className="p-2 dark:hover:bg-slate-900 hover:bg-sky-100 w-full flex items-center justify-start gap-2">
           <SelectTheme />
         </div>
-        <button
+        <Button
           className="p-2 dark:hover:bg-slate-900 hover:bg-sky-100 w-full flex items-center justify-start gap-2"
           onClick={() => handleLogout()}
         >
           <LucideLogOut className="h-5 w-5" />
           Logout
-        </button>
+        </Button>
       </PopoverContent>
     </Popover>
   );
