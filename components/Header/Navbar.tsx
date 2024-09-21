@@ -21,6 +21,7 @@ import { Url } from "next/dist/shared/lib/router/router";
 import { MobileNavbar } from "@/components/Header/MobileNavbar";
 import { APP_NAME } from "@/constants/TextConsts";
 import { usePathname } from "next/navigation";
+import { SelectTheme } from "../ThemeToggler";
 
 interface NavbarProps {
   navLinks?: Array<{ name: String; href: Url }>;
@@ -67,29 +68,8 @@ export const Navbar = ({
         <div className="hidden md:flex items-center space-x-4">
           <NavbarLinks links={navLinks} showInput={showInput} />
         </div>
-        <div
-          className="flex justify-center items-center
-        "
-        >
-          {theme === "dark" ? (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => toggleTheme("light")}
-              className="w-full flex items-center justify-between hover:bg-transparent"
-            >
-              <SunMoonIcon />
-            </Button>
-          ) : (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => toggleTheme("dark")}
-              className="w-full flex items-center justify-between hover:bg-transparent"
-            >
-              <MoonStarIcon />
-            </Button>
-          )}
+        <div className="flex justify-center items-center">
+          <SelectTheme text={false} />
         </div>
       </nav>
     </header>
