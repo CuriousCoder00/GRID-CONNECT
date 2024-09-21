@@ -15,13 +15,14 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Community } from "./Community";
+import { Notifications } from "./Notifications";
 export const AppBar = () => {
   return (
     <header className="md:px-20 p-2 flex w-screen items-center justify-between relative">
       <nav className="flex justify-end items-center w-full">
         <div className="flex justify-center items-center gap-4">
           <Community />
-          <BellIcon />
+          <Notifications />
           <ProfileAvatar />
         </div>
       </nav>
