@@ -16,24 +16,24 @@ const SidebarLinks = () => {
   const path = usePathname();
   const links = [
     {
-      label: "Account Settings",
-      href: "/settings",
-      active: path === "/settings",
+      label: "Profile Info",
+      href: "/account",
+      active: path === "/account",
     },
     {
-      label: "Profile Info",
-      href: "/settings/profile",
-      active: path === "/settings/profile",
+      label: "Account Settings",
+      href: "/account/settings",
+      active: path === "/account/settings",
     },
     {
       label: "Communities",
-      href: "/settings/communities",
-      active: path === "/settings/communities",
+      href: "/account/communities",
+      active: path === "/account/communities",
     },
     {
       label: "Notifications",
-      href: "/settings/notifications",
-      active: path === "/settings/notifications",
+      href: "/account/notifications",
+      active: path === "/account/notifications",
     },
   ];
   return (
@@ -61,24 +61,24 @@ const SidebarMobileLinks = () => {
   const path = usePathname();
   const links = [
     {
-      label: "Account Settings",
-      href: "/settings",
-      active: path === "/settings",
+      label: "Profile Info",
+      href: "/account",
+      active: path === "/account",
     },
     {
-      label: "Profile Info",
-      href: "/settings/profile",
-      active: path === "/settings/profile",
+      label: "Account Settings",
+      href: "/account/settings",
+      active: path === "/account/settings",
     },
     {
       label: "Communities",
-      href: "/settings/communities",
-      active: path === "/settings/communities",
+      href: "/account/communities",
+      active: path === "/account/communities",
     },
     {
       label: "Notifications",
-      href: "/settings/notifications",
-      active: path === "/settings/notifications",
+      href: "/account/notifications",
+      active: path === "/account/notifications",
     },
   ];
   return (

@@ -32,7 +32,7 @@ export const ProfileAvatar = ({ imageUrl }: { imageUrl?: string }) => {
       <PopoverContent className="z-10 mt-3 w-44 bg-white dark:bg-slate-950">
         <Link
           className="p-2 dark:hover:bg-slate-900 hover:bg-sky-100 w-full flex items-center justify-start gap-2"
-          href={"/settings"}
+          href={"/account"}
         >
           <User className="h-5 w-5" /> Profile Settings
         </Link>
