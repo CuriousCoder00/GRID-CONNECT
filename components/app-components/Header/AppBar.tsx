@@ -5,6 +5,7 @@ import React from "react";
 import { ProfileAvatar } from "../ProfileAvatar";
 import { Community } from "./Community";
 import { Notifications } from "./Notifications";
+
 export const AppBar = () => {
   return (
     <header className="md:px-20 p-2 flex w-screen items-center justify-between relative">
