@@ -6,9 +6,9 @@ const Profile = () => {
     <div className="flex flex-col w-full h-full max-h-[90vh]">
       <div className="text-xs">
         <Link className="mr-1" href="/account">Account</Link>
-        &gt; Settings
+        &gt; Password
       </div>
-      Account Settings
+      Password Settings
     </div>
   );
 };

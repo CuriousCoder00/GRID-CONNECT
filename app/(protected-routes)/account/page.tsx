@@ -9,7 +9,7 @@ const Settings = ({}: Props) => {
         <Link className="mr-1" href="/account">
           Account
         </Link>
-        &gt; Profile Info
+        &gt; Profile Settings
       </div>
       <div className="flex flex-col mt-5">
         <ProfileInfo />

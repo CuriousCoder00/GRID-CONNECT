@@ -1,4 +1,4 @@
-import { SidebarOpen } from "lucide-react";
+import { Bell, Group, LockKeyhole, SidebarOpen, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -16,23 +16,27 @@ const SidebarLinks = () => {
   const path = usePathname();
   const links = [
     {
-      label: "Profile Info",
+      label: "Profile Settings",
       href: "/account",
+      icon: <User />,
       active: path === "/account",
     },
     {
-      label: "Account Settings",
-      href: "/account/settings",
-      active: path === "/account/settings",
+      label: "Password",
+      href: "/account/password",
+      icon: <LockKeyhole />,
+      active: path === "/account/password",
     },
     {
       label: "Communities",
       href: "/account/communities",
+      icon: <Group />,
       active: path === "/account/communities",
     },
     {
       label: "Notifications",
       href: "/account/notifications",
+      icon: <Bell />,
       active: path === "/account/notifications",
     },
   ];
@@ -43,12 +47,13 @@ const SidebarLinks = () => {
       <h1 className="mb-5 font-bold">Settings</h1>
       {links.map((link) => (
         <Link
-          className={`p-3 hover:bg-sky-600 dark:hover:bg-sky-800 hover:text-white  transition-all duration-100 ${
+          className={`flex gap-2 p-3 hover:bg-sky-600 dark:hover:bg-sky-800 hover:text-white  transition-all duration-100 ${
             link.active && "border-l-2 border-l-blue-600 dark:border-l-sky-200"
           } `}
           href={link.href}
           key={link.label}
         >
+          {link.icon}
           {link.label}
         </Link>
       ))}
@@ -61,23 +66,27 @@ const SidebarMobileLinks = () => {
   const path = usePathname();
   const links = [
     {
-      label: "Profile Info",
+      label: "Profile Settings",
       href: "/account",
+      icon: <User />,
       active: path === "/account",
     },
     {
-      label: "Account Settings",
-      href: "/account/settings",
-      active: path === "/account/settings",
+      label: "Password",
+      href: "/account/password",
+      icon: <LockKeyhole />,
+      active: path === "/account/password",
     },
     {
       label: "Communities",
       href: "/account/communities",
+      icon: <Group />,
       active: path === "/account/communities",
     },
     {
       label: "Notifications",
       href: "/account/notifications",
+      icon: <Bell />,
       active: path === "/account/notifications",
     },
   ];
@@ -88,20 +97,21 @@ const SidebarMobileLinks = () => {
       </div>
 
       <div
-        className={`flex flex-col z-[2] bg-white dark:bg-black max-sm:absolute pt-12 w-44 transition-all duration-200 ${
+        className={`flex flex-col h-screen z-[2] bg-white dark:bg-black max-sm:absolute pt-12 w-52 transition-all duration-200 ${
           opened ? " translate-x-0" : "-translate-x-52"
         }`}
       >
         <h1 className="mb-5 font-bold">Settings</h1>
         {links.map((link) => (
           <Link
-            className={`p-3 hover:bg-sky-800 hover:text-white  transition-all duration-100 ${
+            className={`flex gap-2 p-3 hover:bg-sky-800 hover:text-white  transition-all duration-100 ${
               link.active &&
               "border-l-2 border-l-blue-600 dark:border-l-sky-200"
             } `}
             href={link.href}
             key={link.label}
           >
+            {link.icon}
             {link.label}
           </Link>
         ))}
