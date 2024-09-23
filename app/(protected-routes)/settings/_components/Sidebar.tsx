@@ -27,8 +27,8 @@ const SidebarLinks = ({ links }: sidebarLinksProps) => {
       <h1 className="mb-5 font-bold">Settings</h1>
       {links.map((link) => (
         <Link
-          className={`p-3 hover:bg-sky-800 hover:text-white  transition-all duration-100 ${
-            link.active && "border-l-2 border-l-sky-600 dark:border-l-sky-800"
+          className={`p-3 hover:bg-sky-600 dark:hover:bg-sky-800 hover:text-white  transition-all duration-100 ${
+            link.active && "border-l-2 border-l-blue-600 dark:border-l-sky-200"
           } `}
           href={link.href}
           key={link.label}
@@ -61,7 +61,7 @@ const SidebarMobileLinks = ({
         {links.map((link) => (
           <Link
             className={`p-3 hover:bg-sky-800 hover:text-white  transition-all duration-100 ${
-              link.active && "border-l-2 border-l-sky-600 dark:border-l-sky-800"
+              link.active && "border-l-2 border-l-blue-600 dark:border-l-sky-200"
             } `}
             href={link.href}
             key={link.label}
