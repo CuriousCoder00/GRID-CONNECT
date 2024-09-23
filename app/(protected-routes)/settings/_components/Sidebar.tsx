@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const Sidebar = () => {
+export const Sidebar = () => {
   return (
     <div className="flex flex-col justify-start items-start z-[4]">
       <SidebarLinks />
@@ -130,5 +130,3 @@ const SidebarTrigger = ({
     </div>
   );
 };
-
-export { Sidebar, SidebarLinks, SidebarTrigger, SidebarMobileLinks };

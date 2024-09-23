@@ -1,11 +1,8 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import {
-  Sidebar,
-  SidebarLinks,
-  SidebarMobileLinks,
+  Sidebar
 } from "./_components/Sidebar";
-import { usePathname } from "next/navigation";
 
 function layout({ children }: { children: React.ReactNode }) {
   return (
