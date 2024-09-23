@@ -1,25 +1,41 @@
 import { SidebarOpen } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-type sidebarProps = {
-  children: React.ReactNode;
-};
-
-type sidebarLinksProps = {
-  links: { label: string; href: string; active: boolean }[];
-};
-
-const Sidebar = ({ children }: sidebarProps) => {
+const Sidebar = () => {
   return (
     <div className="flex flex-col justify-start items-start z-[4]">
-      {children}
+      <SidebarLinks />
+      <SidebarMobileLinks />
     </div>
   );
 };
 
-const SidebarLinks = ({ links }: sidebarLinksProps) => {
-    
+const SidebarLinks = () => {
+  const path = usePathname();
+  const links = [
+    {
+      label: "Account Settings",
+      href: "/settings",
+      active: path === "/settings",
+    },
+    {
+      label: "Profile Info",
+      href: "/settings/profile",
+      active: path === "/settings/profile",
+    },
+    {
+      label: "Communities",
+      href: "/settings/communities",
+      active: path === "/settings/communities",
+    },
+    {
+      label: "Notifications",
+      href: "/settings/notifications",
+      active: path === "/settings/notifications",
+    },
+  ];
   return (
     <div
       className={`relative flex flex-col bg-white dark:bg-black max-sm:hidden w-52 pt-12`}
@@ -40,12 +56,31 @@ const SidebarLinks = ({ links }: sidebarLinksProps) => {
   );
 };
 
-const SidebarMobileLinks = ({
-  links,
-}: {
-  links: { label: string; href: string; active: boolean }[];
-}) => {
+const SidebarMobileLinks = () => {
   const [opened, setOpened] = useState<boolean>(false);
+  const path = usePathname();
+  const links = [
+    {
+      label: "Account Settings",
+      href: "/settings",
+      active: path === "/settings",
+    },
+    {
+      label: "Profile Info",
+      href: "/settings/profile",
+      active: path === "/settings/profile",
+    },
+    {
+      label: "Communities",
+      href: "/settings/communities",
+      active: path === "/settings/communities",
+    },
+    {
+      label: "Notifications",
+      href: "/settings/notifications",
+      active: path === "/settings/notifications",
+    },
+  ];
   return (
     <div className="sm:hidden relative flex flex-col z-[3] ">
       <div className="mb-8 sm:hidden">
@@ -61,7 +96,8 @@ const SidebarMobileLinks = ({
         {links.map((link) => (
           <Link
             className={`p-3 hover:bg-sky-800 hover:text-white  transition-all duration-100 ${
-              link.active && "border-l-2 border-l-blue-600 dark:border-l-sky-200"
+              link.active &&
+              "border-l-2 border-l-blue-600 dark:border-l-sky-200"
             } `}
             href={link.href}
             key={link.label}

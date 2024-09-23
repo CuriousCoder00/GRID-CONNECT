@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { SelectTheme } from "../ThemeToggler";
 
-import { LucideLogOut, Settings } from "lucide-react";
+import { LucideLogOut, User } from "lucide-react";
 
 import logout from "@/actions/logout";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -34,7 +34,7 @@ export const ProfileAvatar = ({ imageUrl }: { imageUrl?: string }) => {
           className="p-2 dark:hover:bg-slate-900 hover:bg-sky-100 w-full flex items-center justify-start gap-2"
           href={"/settings"}
         >
-          <Settings className="h-5 w-5" /> Settings
+          <User className="h-5 w-5" /> Profile Settings
         </Link>
         <div className="p-2 dark:hover:bg-slate-900 hover:bg-sky-100 w-full flex items-center justify-start gap-2">
           <SelectTheme />
