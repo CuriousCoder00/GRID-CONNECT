@@ -36,13 +36,13 @@ export function VerifyCard() {
 
   return (
     <CardContainer className="inter-var">
-      <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
-        <CardItem className="text-xl font-bold text-neutral-600 dark:text-white">
+      <CardBody className="relative group/card  hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-black border-white/[0.2] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border text-white">
+        <CardItem className="text-xl font-bold  text-white">
           Verify your email address
         </CardItem>
         <CardItem
           as="p"
-          className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
+          className="text-sm max-w-sm mt-2"
         >
           To start using {APP_NAME}, we need to verify your email
         </CardItem>
@@ -57,7 +57,7 @@ export function VerifyCard() {
         ) : null}
         <CardItem
           as="p"
-          className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
+          className="text-sm max-w-sm mt-2 text-neutral-300"
         >
           For any queries: codebrise@gmail.com
         </CardItem>
@@ -69,7 +69,7 @@ export function VerifyCard() {
               onClick={() => {
                 router.push("/auth/login");
               }}
-              className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-sm font-bold w-full"
+              className="px-4 py-2 rounded-xl  text-white text-sm font-bold w-full"
             >
               Login
             </CardItem>
@@ -77,7 +77,7 @@ export function VerifyCard() {
             <CardItem
               as="button"
               onClick={handleVerification}
-              className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-sm font-bold w-full"
+              className="px-4 py-2 rounded-xl text-black bg-white  text-sm font-bold w-full"
               disabled={loading}
             >
               Verify

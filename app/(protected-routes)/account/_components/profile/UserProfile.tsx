@@ -31,7 +31,7 @@ export const UserProfile = ({}: Props) => {
           </Button>
         </div>
       </div>
-      <div className="w-1/2">
+      <div className="lg:w-1/2">
         {!editToggle ? <Profile /> : <EditableProfile />}
       </div>
     </div>
