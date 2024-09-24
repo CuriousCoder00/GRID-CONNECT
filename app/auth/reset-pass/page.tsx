@@ -1,6 +1,6 @@
+import React from "react";
 import { PasswordResetCard } from "@/components/auth/PasswordResetCard";
 
-import React from "react";
 
 const ResetPass = () => {
   return (

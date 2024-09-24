@@ -3,12 +3,9 @@ import { UserTypes } from "@/types";
 import verificationMailHTML from "@/emails/VERIFY_EMAIL";
 import resetPassMailHTML from "@/emails/RESET_PASS";
 import { getVerificationTokenByEmail } from "@/data/user-data";
+import { generatePasswordResetToken } from "@/lib/tokens";
 
-export async function sendVerificationMail(
-  email: string,
-  token: string,
-  name: string
-) {
+export async function sendVerificationMail(email: string, name: string) {
   try {
     const transporter = nodemailer.createTransport({
       service: process.env.EMAIL_SERVICE,
@@ -34,7 +31,7 @@ export async function sendVerificationMail(
   }
 }
 
-export async function sendPasswordResetLink(user: UserTypes) {
+export async function sendPasswordResetLink(email: string, name: string) {
   try {
     const transporter = nodemailer.createTransport({
       service: process.env.EMAIL_SERVICE,
@@ -46,15 +43,14 @@ export async function sendPasswordResetLink(user: UserTypes) {
         pass: process.env.EMAIL_PASS,
       },
     });
-    console.log("forgotPasswordToken", user.forgotPasswordToken);
+    const passwordResetToken = await generatePasswordResetToken(email);
     const resetPasswordLink =
-      `${process.env.NEXTAUTH_URL}/reset-password?token=${user.forgotPasswordToken}` ||
-      "";
+      `${process.env.NEXTAUTH_URL}/auth/reset-password?token=${passwordResetToken}` || "";
     const info = await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: user.email || "",
+      to: email || "",
       subject: "Reset your password",
-      html: resetPassMailHTML(resetPasswordLink, user.name || ""),
+      html: resetPassMailHTML(resetPasswordLink, name),
     });
     return info;
   } catch (error: any) {

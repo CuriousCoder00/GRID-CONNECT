@@ -1,11 +1,10 @@
 export interface UserTypes {
-  name: string | null;
+  name: string ;
   email: string | null;
   password: string | null;
   username: string | null;
   imageUrl: string | null;
   verifyToken: string | null;
-  forgotPasswordToken: string | null;
 }
 
 export interface RegisterActionTypes {

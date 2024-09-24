@@ -50,7 +50,6 @@ export async function POST(req: NextRequest) {
     const verificationToken = await generateVerificationToken(email);
     await sendVerificationMail(
       verificationToken.email,
-      verificationToken.token,
       name
     );
     return NextResponse.json({ user }, { status: 201 });
