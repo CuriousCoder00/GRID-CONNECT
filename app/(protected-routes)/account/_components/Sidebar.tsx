@@ -1,3 +1,4 @@
+import { useCurrentUser } from "@/hooks/use-current-user";
 import { Bell, Group, LockKeyhole, SidebarOpen, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -22,12 +23,6 @@ const SidebarLinks = () => {
       active: path === "/account",
     },
     {
-      label: "Password",
-      href: "/account/password",
-      icon: <LockKeyhole />,
-      active: path === "/account/password",
-    },
-    {
       label: "Communities",
       href: "/account/communities",
       icon: <Group />,
@@ -48,7 +43,8 @@ const SidebarLinks = () => {
       {links.map((link) => (
         <Link
           className={`flex gap-2 p-3 hover:bg-sky-600 dark:hover:bg-sky-800 hover:text-white  transition-all duration-100 ${
-            link.active && "border-l-2 border-l-blue-600 dark:border-l-sky-200 dark:bg-sky-700 bg-sky-500 text-white"
+            link.active &&
+            "border-l-2 border-l-blue-600 dark:border-l-sky-200 dark:bg-sky-700 bg-sky-500 text-white"
           } `}
           href={link.href}
           key={link.label}
@@ -62,6 +58,7 @@ const SidebarLinks = () => {
 };
 
 const SidebarMobileLinks = () => {
+  const user = useCurrentUser();
   const [opened, setOpened] = useState<boolean>(false);
   const path = usePathname();
   const links = [
@@ -70,12 +67,6 @@ const SidebarMobileLinks = () => {
       href: "/account",
       icon: <User />,
       active: path === "/account",
-    },
-    {
-      label: "Password",
-      href: "/account/password",
-      icon: <LockKeyhole />,
-      active: path === "/account/password",
     },
     {
       label: "Communities",
@@ -105,14 +96,14 @@ const SidebarMobileLinks = () => {
         {links.map((link) => (
           <Link
             className={`flex gap-2 p-3 hover:bg-sky-800 hover:text-white  transition-all duration-100 ${
-              link.active &&
+              link?.active &&
               "border-l-2 border-l-blue-600 dark:border-l-sky-200 bg-sky-700"
             } `}
-            href={link.href}
-            key={link.label}
+            href={link?.href}
+            key={link?.label}
           >
-            {link.icon}
-            {link.label}
+            {link?.icon}
+            {link?.label}
           </Link>
         ))}
       </div>

@@ -1,12 +1,13 @@
 "use client";
 
-import { useCurrentUser } from "@/hooks/use-current-user";
+import { FeedBanner } from "./_components/FeedBanner";
+import { UserActivities } from "./_components/UserActivities";
 
 export default function Feed() {
-  const user = useCurrentUser();
   return (
-    <div className="flex flex-1 h-full w-full">
-      Hey {user.name}
+    <div className="flex flex-col h-full w-full p-5">
+      <FeedBanner />
+      <UserActivities />
     </div>
   );
 }

@@ -5,8 +5,13 @@ import { useState } from "react";
 import { Profile } from "./Profile";
 import { EditableProfile } from "./EditableProfile";
 
-type Props = { name: string; username: string; email: string };
-export const UserProfile = ({ name, username, email }: Props) => {
+type Props = {
+  name: string;
+  username: string;
+  email: string;
+  isOAuth: boolean;
+};
+export const UserProfile = ({ name, username, email, isOAuth }: Props) => {
   const [editToggle, setEditToggle] = useState<boolean>(false);
 
   return (
@@ -34,9 +39,19 @@ export const UserProfile = ({ name, username, email }: Props) => {
       </div>
       <div className="lg:w-1/2">
         {!editToggle ? (
-          <Profile name={name} username={username} email={email} />
+          <Profile
+            name={name}
+            username={username}
+            email={email}
+            isOAuth={isOAuth}
+          />
         ) : (
-          <EditableProfile name={name} username={username} email={email} />
+          <EditableProfile
+            name={name}
+            username={username}
+            email={email}
+            isOAuth={isOAuth}
+          />
         )}
       </div>
     </div>
