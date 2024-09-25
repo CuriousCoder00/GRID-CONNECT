@@ -48,7 +48,7 @@ const SidebarLinks = () => {
       {links.map((link) => (
         <Link
           className={`flex gap-2 p-3 hover:bg-sky-600 dark:hover:bg-sky-800 hover:text-white  transition-all duration-100 ${
-            link.active && "border-l-2 border-l-blue-600 dark:border-l-sky-200"
+            link.active && "border-l-2 border-l-blue-600 dark:border-l-sky-200 dark:bg-sky-700 bg-sky-500 text-white"
           } `}
           href={link.href}
           key={link.label}
@@ -106,7 +106,7 @@ const SidebarMobileLinks = () => {
           <Link
             className={`flex gap-2 p-3 hover:bg-sky-800 hover:text-white  transition-all duration-100 ${
               link.active &&
-              "border-l-2 border-l-blue-600 dark:border-l-sky-200"
+              "border-l-2 border-l-blue-600 dark:border-l-sky-200 bg-sky-700"
             } `}
             href={link.href}
             key={link.label}
