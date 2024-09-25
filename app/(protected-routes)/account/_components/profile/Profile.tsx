@@ -2,15 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogTrigger,
   DialogHeader,
-  DialogOverlay,
-  DialogPortal,
-  DialogTitle,
 } from "@/components/ui/dialog";
 import { Password } from "./Password";
 type Props = {
