@@ -1,7 +1,12 @@
 import { Label } from "@/components/ui/label";
+import { useSession } from "next-auth/react";
 
-type Props = {};
-export const Profile = ({}: Props) => {
+type Props = {
+  name: string;
+  username: string;
+  email: string;
+};
+export const Profile = ({ name, username, email }: Props) => {
   return (
     <div className="flex flex-col gap-5 w-full">
       <div className="flex w-full flex-col gap-3">
@@ -10,7 +15,7 @@ export const Profile = ({}: Props) => {
           type="text"
           className="w-full p-2 rounded-lg border bg-transparent"
           required
-          value={"Tox I C"}
+          value={name}
           disabled
         />
       </div>
@@ -20,7 +25,7 @@ export const Profile = ({}: Props) => {
           type="text"
           required
           className="w-full p-2 rounded-lg border bg-transparent"
-          value={"toxicp083"}
+          value={username}
           disabled
         />
       </div>
@@ -30,7 +35,7 @@ export const Profile = ({}: Props) => {
           type="email"
           required
           className="w-full p-2 rounded-lg border bg-transparent"
-          value={"toxicp083@gmail.com"}
+          value={email}
           disabled
         />
       </div>

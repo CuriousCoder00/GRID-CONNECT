@@ -24,8 +24,6 @@ const verificationMailHTML = (verificationLink: string, userName: string) => `
             <p>Thank you for signing up to ${APP_NAME}. <br> We are excited to have you on board.</p>
             <p>Click the link below to verify your email address and complete your registration.</p>
             <a href="${verificationLink}">Verify email</a>
-            <p>If you have any questions, please don't hesitate to contact us at: support@${APP_NAME}.com
-            </p>
         </div>
     </div>
 </body>

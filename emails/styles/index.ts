@@ -13,12 +13,6 @@ const emailStyles = `
             height: 100%;
             text-wrap: wrap;
         }
-
-        .logo {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
         .fs{
             font-size: larger;
         }
@@ -44,23 +38,14 @@ const emailStyles = `
         a {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #007bff;
-            color: #fffff;
-            text-decoration: none;
+            background-color: #000;
+            color: rgb(255 255 255);
+            text-decoration-line: none;
             border-radius: 5px;
             margin-top: 10px;
         }
 
-        a:hover {
-            background-color: #fffff;
-            color: #007bff;
-        }
-
         @media (max-width: 600px) {
-            img {
-                width: 180px;
-                height: 50px;
-            }
 
             .email-container {
                 padding: 10px;

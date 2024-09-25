@@ -5,9 +5,10 @@ import { useState } from "react";
 import { Profile } from "./Profile";
 import { EditableProfile } from "./EditableProfile";
 
-type Props = {};
-export const UserProfile = ({}: Props) => {
+type Props = { name: string; username: string; email: string };
+export const UserProfile = ({ name, username, email }: Props) => {
   const [editToggle, setEditToggle] = useState<boolean>(false);
+
   return (
     <div className="flex flex-col gap-5 w-full mt-2">
       <div className="flex w-full justify-between">
@@ -32,7 +33,11 @@ export const UserProfile = ({}: Props) => {
         </div>
       </div>
       <div className="lg:w-1/2">
-        {!editToggle ? <Profile /> : <EditableProfile />}
+        {!editToggle ? (
+          <Profile name={name} username={username} email={email} />
+        ) : (
+          <EditableProfile name={name} username={username} email={email} />
+        )}
       </div>
     </div>
   );

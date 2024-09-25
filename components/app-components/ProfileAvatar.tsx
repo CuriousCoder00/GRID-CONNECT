@@ -26,7 +26,9 @@ export const ProfileAvatar = ({ imageUrl }: { imageUrl?: string }) => {
       <PopoverTrigger asChild>
         <Avatar className="cursor-pointer">
           <AvatarImage src={imageUrl} />
-          <AvatarFallback className="bg-sky-700">KK</AvatarFallback>
+          <AvatarFallback className="bg-sky-700">
+            <User />
+          </AvatarFallback>
         </Avatar>
       </PopoverTrigger>
       <PopoverContent className="z-10 mt-3 w-44 bg-white dark:bg-slate-950">
