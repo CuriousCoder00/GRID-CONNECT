@@ -21,3 +21,24 @@ export const createUsername = async ({
     },
   });
 };
+
+export const updateUser = async ({
+  name,
+  username,
+  email,
+}: {
+  name: string;
+  username: string;
+  email: string;
+}) => {
+  const user = await getUserByEmail(email);
+  const userId = user?.id;
+  await db.user.update({
+    where: { id: userId },
+    data: {
+      name,
+      username,
+      email,
+    },
+  });
+};

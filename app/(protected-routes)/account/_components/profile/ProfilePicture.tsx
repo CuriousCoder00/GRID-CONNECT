@@ -1,3 +1,4 @@
+import { Label } from "@/components/Custom/label";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Upload, User } from "lucide-react";
@@ -26,10 +27,14 @@ export const ProfilePicture = ({ imageUrl, isOAuth, name, email }: Props) => {
         </div>
         {!isOAuth && (
           <div className="flex max-sm:absolute max-sm:flex-col bottom-0 right-2 gap-3">
-            <Button className="flex justify-center items-center gap-2 text-sm bg-black dark:bg-white dark:text-black text-white rounded-full p-2 px-4  ">
+            <Label
+              className="flex justify-center items-center gap-2 text-sm bg-black dark:bg-white dark:text-black text-white rounded-full p-2 px-4 cursor-pointer"
+              htmlFor="pfp"
+            >
               <Upload className="w-4 h-4" />
               Upload image
-            </Button>
+            </Label>
+            <input id="pfp" name="pfp" type="file" className="hidden" />
             <Button className="flex justify-center items-center gap-3 text-sm">
               Remove
             </Button>
