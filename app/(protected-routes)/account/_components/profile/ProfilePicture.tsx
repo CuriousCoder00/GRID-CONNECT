@@ -12,7 +12,7 @@ export const ProfilePicture = ({ imageUrl, isOAuth, name, email }: Props) => {
   return (
     <div className="relative flex flex-col gap-2">
       <Avatar className="cursor-pointer h-24 w-24">
-        <AvatarImage src={imageUrl || "   "} />
+        <AvatarImage className=" object-cover" src={imageUrl || "   "} />
         <AvatarFallback className="bg-sky-700">
           <User />
         </AvatarFallback>
