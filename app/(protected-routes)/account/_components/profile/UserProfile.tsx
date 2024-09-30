@@ -18,25 +18,33 @@ export const UserProfile = ({ name, username, email, isOAuth }: Props) => {
     <div className="flex flex-col gap-5 w-full mt-2">
       <div className="flex w-full justify-between">
         <h2 className="text-lg">User Profile</h2>
-        <div className="flex items-center">
-          <Button
-            className="text-sm"
-            onClick={() => setEditToggle(!editToggle)}
-          >
-            {!editToggle ? (
-              <div className="flex items-center gap-2">
-                <Edit className="w-4 h-4" />
-                Edit
-              </div>
-            ) : (
-              <div className="flex items-center gap-2">
-                <CircleX className="w-4 h-4" />
-                Cancel
-              </div>
-            )}
-          </Button>
-        </div>
+        {!isOAuth && (
+          <div className="flex items-center">
+            <Button
+              className="text-sm"
+              onClick={() => setEditToggle(!editToggle)}
+            >
+              {!editToggle ? (
+                <div className="flex items-center gap-2">
+                  <Edit className="w-4 h-4" />
+                  Edit
+                </div>
+              ) : (
+                <div className="flex items-center gap-2">
+                  <CircleX className="w-4 h-4" />
+                  Cancel
+                </div>
+              )}
+            </Button>
+          </div>
+        )}
       </div>
+      {isOAuth && (
+        <p className="text-sm text-gray-500">
+          You are using an OAuth provider to login. You cannot edit your profile
+          details.
+        </p>
+      )}
       <div className="lg:w-1/2">
         {!editToggle ? (
           <Profile

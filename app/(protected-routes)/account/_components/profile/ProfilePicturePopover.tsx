@@ -1,39 +1,39 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { User } from "lucide-react";
+import { PencilIcon, Trash, User } from "lucide-react";
 
 type Props = {
+  isOAuth: boolean;
   imageUrl?: string;
 };
-export const ProfilePicturePopover = ({ imageUrl }: Props) => {
+export const ProfilePicturePopover = ({ imageUrl, isOAuth }: Props) => {
   return (
-    <Popover>
-      <Avatar className="cursor-pointer h-24 w-24 md:hidden">
-        <PopoverTrigger>
+    <div className="flex flex-col items-center justify-center gap-4 my-4">
+      <div className="flex justify-center items-center">
+        <Avatar className="cursor-pointer w-64 h-64">
           <AvatarImage className=" object-cover" src={imageUrl || "   "} />
           <AvatarFallback className="bg-sky-700">
             <User />
           </AvatarFallback>
-        </PopoverTrigger>
-      </Avatar>
-      <PopoverContent side="right" className=" mr-4 bg-white dark:bg-slate-950 p-4">
-        Change Your Profile Picture
-        <div className="flex justify-center items-center gap-3 ">
-          <div className="flex gap-3">
-            <Label htmlFor="pfp">
-              <Button>Browse Pictures</Button>
-            </Label>
-            <input id="pfp" name="pfp" type="file" className="hidden" />
-          </div>
-          <Button className="text-sm">Remove</Button>
+        </Avatar>
+      </div>
+      {!isOAuth && (
+        <div className="flex mt-2">
+          <Label
+            className="flex items-center justify-center gap-3 text-xs bg-black text-white dark:bg-white dark:text-black rounded-full px-6 cursor-pointer"
+            htmlFor="pfp"
+          >
+            <PencilIcon className="w-4 h-4" />
+            Change
+          </Label>
+          <input type="file" id="pfp" name="pfp" className="hidden" />
+          <Button className="flex items-center justify-center gap-3 text-xs text-red-400">
+            <Trash className="w-4 h-4" />
+            Remove
+          </Button>
         </div>
-      </PopoverContent>
-    </Popover>
+      )}
+    </div>
   );
 };

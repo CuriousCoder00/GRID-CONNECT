@@ -38,36 +38,36 @@ export const Profile = ({ name, username, email, isOAuth }: Props) => {
           disabled
         />
       </div>
+      <div className="flex w-full flex-col gap-3">
+        <Label>Email</Label>
+        <input
+          type="email"
+          required
+          className="w-full p-2 rounded-lg border bg-transparent"
+          value={email}
+          disabled
+        />
+      </div>
       {!isOAuth && (
-        <div className="flex w-full flex-col gap-3">
-          <Label>Email</Label>
-          <input
-            type="email"
-            required
-            className="w-full p-2 rounded-lg border bg-transparent"
-            value={email}
-            disabled
-          />
+        <div>
+          <Dialog>
+            <DialogTrigger>
+              <Button variant={"link"}>Change Password</Button>
+            </DialogTrigger>
+            <DialogContent className="bg-white dark:bg-slate-950">
+              <div>
+                <DialogHeader className="text-xl font-bold my-0">
+                  <DialogTitle>Change Your Password</DialogTitle>
+                  <DialogDescription className="my-0">
+                    Change your password to something more secure.
+                  </DialogDescription>
+                </DialogHeader>
+              </div>
+              <Password />
+            </DialogContent>
+          </Dialog>
         </div>
       )}
-      <div>
-        <Dialog>
-          <DialogTrigger>
-            <Button variant={"link"}>Change Password</Button>
-          </DialogTrigger>
-          <DialogContent className="bg-white dark:bg-slate-950">
-            <div>
-              <DialogHeader className="text-xl font-bold my-0">
-                <DialogTitle>Change Your Password</DialogTitle>
-                <DialogDescription className="my-0">
-                  Change your password to something more secure.
-                </DialogDescription>
-              </DialogHeader>
-            </div>
-            <Password />
-          </DialogContent>
-        </Dialog>
-      </div>
     </div>
   );
 };
