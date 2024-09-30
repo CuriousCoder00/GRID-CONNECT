@@ -6,6 +6,7 @@ import {
   DialogDescription,
   DialogTrigger,
   DialogHeader,
+  DialogTitle,
 } from "@/components/ui/dialog";
 import { Password } from "./Password";
 type Props = {
@@ -57,11 +58,11 @@ export const Profile = ({ name, username, email, isOAuth }: Props) => {
           <DialogContent className="bg-white dark:bg-slate-950">
             <div>
               <DialogHeader className="text-xl font-bold my-0">
-                Change your password
+                <DialogTitle>Change Your Password</DialogTitle>
+                <DialogDescription className="my-0">
+                  Change your password to something more secure.
+                </DialogDescription>
               </DialogHeader>
-              <DialogDescription className="my-0">
-                Change your password to something more secure.
-              </DialogDescription>
             </div>
             <Password />
           </DialogContent>

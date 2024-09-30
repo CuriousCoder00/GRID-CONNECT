@@ -41,7 +41,7 @@ export const ProfilePicture = ({ imageUrl, isOAuth, name, email }: Props) => {
           </div>
         )}
       </div>
-      <div>{email}</div>
+      {isOAuth && <div>{email}</div>}
     </div>
   );
 };
