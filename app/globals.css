@@ -97,3 +97,8 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-slate-700;
 }
+
+
+.hidden-scrollbar{
+  scrollbar-width: none;
+}
