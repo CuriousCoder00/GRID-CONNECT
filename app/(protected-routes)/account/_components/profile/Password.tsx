@@ -6,7 +6,7 @@ import { Eye } from "lucide-react";
 type Props = {};
 export const Password = ({}: Props) => {
   return (
-    <form className="flex flex-col mt-4 gap-3 lg:w-1/2">
+    <form className="flex flex-col mt-4 gap-3">
       <div className="flex flex-col gap-3">
         <Label>Current Password</Label>
         <Input placeholder="Current Password" type="password" />

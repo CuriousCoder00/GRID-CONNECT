@@ -7,16 +7,20 @@ import { useCurrentUser } from "@/hooks/use-current-user";
 type Props = {};
 export const ProfileInfo = ({}: Props) => {
   const user = useCurrentUser();
-  const { name, username, email, image, isOAuth } = user;
   return (
     <div className="flex flex-col">
-      <ProfilePicture imageUrl={image} isOAuth={isOAuth} name={name} email={email} />
+      <ProfilePicture
+        imageUrl={user?.image}
+        isOAuth={user?.isOAuth}
+        name={user?.name}
+        email={user?.email}
+      />
       <Separator className="bg-slate-400 dark:bg-slate-800 my-3" />
       <UserProfile
-        name={name}
-        username={username}
-        email={email}
-        isOAuth={isOAuth}
+        name={user?.name}
+        username={user?.username}
+        email={user?.email}
+        isOAuth={user?.isOAuth}
       />
     </div>
   );
