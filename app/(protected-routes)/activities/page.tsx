@@ -3,12 +3,10 @@
 import { useEffect, useState } from "react";
 import { UserActivities } from "./_components/UserActivities";
 import { TrendingCommunities } from "./_components/TrendingComms";
-import { CreateUsername } from "./_components/CreateUsername";
 
 export default function Feed() {
   return (
     <div className="flex h-full w-full p-5">
-      <CreateUsername />
       <div className="relative flex flex-col w-full overflow-y-auto gap-1 px-6 py-2 mt-5">
         <UserActivities />
       </div>

@@ -3,6 +3,7 @@ import React from "react";
 import { SidebarNavigations } from "@/components/app-components/Sidebar/Sidebar";
 
 import { AppBar } from "@/components/app-components/Header/AppBar";
+import { CreateUsername } from "@/components/app-components/CreateUsername";
 
 export default function ProtectedRoutesLayout({
   children,
@@ -12,6 +13,7 @@ export default function ProtectedRoutesLayout({
   return (
     <div className="flex flex-col max-h-screen h-screen max-w-screen overflow-hidden dark:bg-black bg-white">
       <AppBar />
+      <CreateUsername />
       <div className="flex max-md:flex-col w-full h-full">
         <div className="z-[200] flex justify-start items-start">
           <SidebarNavigations />
