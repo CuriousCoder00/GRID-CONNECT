@@ -8,12 +8,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Plus } from "lucide-react";
-import { CreateCommunityForm } from "../create-community/CreateCommunityForm";
-import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
-import { JoinByInvite } from "../create-community/JoinByInvite";
+
 import { TooltipContainer } from "@/components/TooltipContainer";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+
+import { CreateCommunityForm } from "../create-community/CreateCommunityForm";
+import { JoinByInvite } from "../create-community/JoinByInvite";
+
+import { Plus } from "lucide-react";
 
 export const Community = () => {
   const [join, setJoin] = useState<boolean>(true);
@@ -26,7 +29,7 @@ export const Community = () => {
         </DialogTrigger>
       </TooltipContainer>
       {join ? (
-        <DialogContent className="bg-white dark:bg-slate-950">
+        <DialogContent className="bg-white dark:bg-slate-950 w-[450px]">
           <DialogHeader>
             <DialogTitle>Create Your Community</DialogTitle>
             <DialogDescription>
