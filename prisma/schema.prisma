@@ -35,10 +35,10 @@ model User {
 }
 
 model Activity {
-  id        String @id @default(uuid())
-  data      String @db.Text
+  id        String   @id @default(uuid())
+  data      String   @db.Text
   userId    String
-  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -121,13 +121,13 @@ model PasswordResetToken {
 }
 
 model Community {
-  id          String @id @default(uuid())
+  id          String  @id @default(uuid())
   name        String
   description String
-  imageUrl    String @db.Text
-  inviteCode  String @unique
+  imageUrl    String? @db.Text
+  inviteCode  String  @unique
 
-  communityType String
+  category String
 
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -138,6 +138,10 @@ model Community {
   updatedAt DateTime @updatedAt
 
   @@index([userId])
+}
+
+model Category {
+  name String @id @unique
 }
 
 enum MemberRole {

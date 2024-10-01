@@ -31,7 +31,7 @@ export function Combobox({
   str,
   placeholder,
   className,
-}: ComboboxProps) {
+}: ComboboxProps & React.ComponentProps<typeof Button>) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 
