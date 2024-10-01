@@ -1,4 +1,10 @@
+"use client";
+
 import React from "react";
+
+import Link from "next/link";
+
+import { signOut } from "next-auth/react";
 
 import { ProfileAvatar } from "../ProfileAvatar";
 import { Community } from "./Community";
@@ -12,10 +18,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import logout from "@/actions/logout";
 import { LucideLogOut, User } from "lucide-react";
 import { SelectTheme } from "@/components/ThemeToggler";
-import Link from "next/link";
 
 export const AppBar = () => {
   const user = useCurrentUser();
@@ -45,7 +49,10 @@ export const AppBar = () => {
               <DropdownMenuItem>
                 <SelectTheme />
               </DropdownMenuItem>
-              <DropdownMenuItem className="flex gap-3 cursor-pointer  " onClick={() => logout()}>
+              <DropdownMenuItem
+                className="flex gap-3 cursor-pointer  "
+                onClick={() => signOut()}
+              >
                 <LucideLogOut className="size-5" />
                 Logout
               </DropdownMenuItem>

@@ -34,6 +34,14 @@ export const createCommunity = async ({
   });
 };
 
+export const getCommunitiesByUserId = async (userId: string) => {
+  return db.community.findMany({
+    where: {
+      userId,
+    },
+  });
+};
+
 export const getCategories = async () => {
   return db.category.findMany();
 };
