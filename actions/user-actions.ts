@@ -2,6 +2,7 @@
 
 import { getUserByEmail } from "@/data/user-data";
 import { db } from "@/lib/db";
+import bcrypt from "bcryptjs";
 
 export const createUsername = async ({
   username,
@@ -41,4 +42,38 @@ export const updateUser = async ({
       email,
     },
   });
+};
+
+export const changePassword = async ({
+  email,
+  password,
+}: {
+  email: string;
+  password: {
+    currentPassword: string;
+    newPassword: string;
+    confirmNewPassword: string;
+  };
+}) => {
+  const user = await getUserByEmail(email);
+  const userId = user?.id;
+  if (
+    !password.currentPassword ||
+    !password.newPassword ||
+    !password.confirmNewPassword
+  ) {
+    return { error: "Password is required" };
+  }
+  if (!user?.password) return { error: "User password not found" };
+  const match = await bcrypt.compare(password.currentPassword, user.password);
+  if (!match) {
+    return { error: "Invalid credentials" };
+  }
+  await db.user.update({
+    where: { id: userId },
+    data: {
+      password: await bcrypt.hash(password?.newPassword, 10),
+    },
+  });
+  return { success: "Password changed successfully" };
 };

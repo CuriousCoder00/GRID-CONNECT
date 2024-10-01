@@ -54,7 +54,7 @@ export const Profile = ({ name, username, email, isOAuth }: Props) => {
             <DialogTrigger>
               <Button variant={"link"}>Change Password</Button>
             </DialogTrigger>
-            <DialogContent className="bg-white dark:bg-slate-950">
+            <DialogContent className="bg-white dark:bg-slate-950 sm:w-full w-[400px] ">
               <div>
                 <DialogHeader className="text-xl font-bold my-0">
                   <DialogTitle>Change Your Password</DialogTitle>
