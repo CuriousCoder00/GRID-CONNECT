@@ -7,9 +7,16 @@ import {
   SidebarBody,
   SidebarLink,
 } from "@/components/animated/sidebar";
-import { ActivitySquareIcon, LucideMessageSquareText } from "lucide-react";
+import { LucideMessageSquareText, LucideSquareActivity } from "lucide-react";
 
 const links = [
+  {
+    label: "Your Feed",
+    href: "/feed",
+    icon: (
+      <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-7 w-7 flex-shrink-0" />
+    ),
+  },
   {
     label: "Chat",
     href: "/chats",
@@ -28,7 +35,7 @@ const links = [
     label: "Your Activities",
     href: "/activities",
     icon: (
-      <ActivitySquareIcon className="text-neutral-700 dark:text-neutral-200 h-7 w-7 flex-shrink-0" />
+      <LucideSquareActivity className="text-neutral-700 dark:text-neutral-200 h-7 w-7 flex-shrink-0" />
     ),
   },
 ];
