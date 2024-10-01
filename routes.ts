@@ -26,4 +26,4 @@ export const apiAuthPrefix = "/api/auth";
 /**
  * The default redirect path after logged in
  */
-export const DEFAULT_LOGIN_REDIRECT = "/chats";
+export const DEFAULT_LOGIN_REDIRECT = "/feed";
