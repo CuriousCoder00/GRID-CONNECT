@@ -126,7 +126,7 @@ const SidebarTrigger = ({
   const [open, setOpen] = useState<boolean>(false);
   useEffect(() => {
     setOpened(open);
-  }, [open]);
+  }, [open, setOpened]);
   return (
     <div
       className={`absolute  transition-all duration-200 ${

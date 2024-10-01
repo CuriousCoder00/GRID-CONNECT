@@ -32,7 +32,7 @@ const Activities = () => {
         setIsLoaded(true);
         setError(error);
       });
-  }, []);
+  });
 
   return (
     <div className="flex flex-col w-full p-2 my-5 px-8">
@@ -65,7 +65,7 @@ const Activities = () => {
         ) : (
           <div className="flex flex-col gap-4">
             {activities.map((activity) => (
-              <ActivityCard
+              <ActivityCard key={activity.id}
                 id={activity.id}
                 title={activity.title}
                 description={activity.description}

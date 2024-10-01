@@ -40,7 +40,7 @@ export const FeedBanner = ({}: Props) => {
           {Greeting}, <span className="font-bold">{user.name}</span>!
         </h1>
         <p className="text-sm text-neutral-500 dark:text-neutral-400">
-          Here's what's happening in your feed
+          Here&apos;s what&apos;s happening in your feed
         </p>
       </div>
       <h1 className="lg:text-2xl md:text-xl sm:text-base max-md:hidden">

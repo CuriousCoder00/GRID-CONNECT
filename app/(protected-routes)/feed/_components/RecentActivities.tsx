@@ -21,7 +21,7 @@ export const RecentActivities = ({}: Props) => {
         setIsLoaded(true);
         setError(error);
       });
-  }, []);
+  });
 
   return (
     <div className="flex flex-col w-full p-2">
@@ -34,6 +34,7 @@ export const RecentActivities = ({}: Props) => {
           <div className="flex flex-col gap-4">
             {activities.map((activity) => (
               <RecentActivityCard
+                key={activity.id}
                 id={activity.id}
                 title={activity.title}
                 description={activity.description}
