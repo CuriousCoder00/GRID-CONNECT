@@ -1,5 +1,8 @@
 "use server";
-import { getPasswordResetTokenByToken, getUserByEmail } from "@/lib/data/user-data";
+import {
+  getPasswordResetTokenByToken,
+  getUserByEmail,
+} from "@/lib/data/user-data";
 import { sendPasswordResetLink } from "@/helpers/mailer";
 import { db } from "@/lib/db";
 import bcrypt from "bcryptjs";
@@ -27,16 +30,10 @@ export const sendResetEmail = async ({ email }: { email: string }) => {
   }
 };
 
-export const ResetPassword = async ({
-  token,
-  password,
-}: {
-  token: string;
-  password: { newPassword: string; repeatNewPassword: string };
-}) => {
+export const ResetPassword = async (token: string, newPassword: string) => {
   if (!token) return { error: "Token is missing" };
   // check for min password length
-  if (password.newPassword.length < 8) {
+  if (newPassword.length < 8) {
     return { error: "Password must be at least 8 characters long" };
   }
   try {
@@ -46,7 +43,7 @@ export const ResetPassword = async ({
       return { error: "Token has expired" };
     const existingUser = await getUserByEmail(existingToken.email);
     if (!existingUser) return { error: "User not found" };
-    const hashedPassword = await bcrypt.hash(password.newPassword, 10);
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
     await db.user.update({
       where: { id: existingUser.id },
       data: { password: hashedPassword },

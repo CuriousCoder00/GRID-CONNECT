@@ -22,7 +22,7 @@ export const Hero = () => {
           <Link
             onMouseEnter={() => setHovered1(true)}
             onMouseLeave={() => setHovered1(false)}
-            href={`${process.env.GITHUB_REPO}`}
+            href='/'
             target="_blank"
             className="flex items-center justify-center mb-12 px-4 py-2 border border-slate-500 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-950 gap-3 font-bold text-sm rounded-full dark:text-white text-slate-700 cursor-pointer"
           >

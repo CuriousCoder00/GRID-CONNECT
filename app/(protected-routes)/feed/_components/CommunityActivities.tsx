@@ -2,18 +2,6 @@
 import { useEffect, useState } from "react";
 
 export default function CommunityFeed() {
-  //   const [activities, setActivities] = useState([]);
-
-  //   useEffect(() => {
-  //     // Fetch user's community activities (replace with your API endpoint)
-  //     async function fetchActivities() {
-  //       const res = await fetch('/api/activities');
-  //       const data = await res.json();
-  //       setActivities(data.activities);
-  //     }
-  //     fetchActivities();
-  //   }, []);
-
   return (
     <div className="flex flex-col">
       <h2>Community Activities</h2>

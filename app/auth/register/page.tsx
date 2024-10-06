@@ -101,7 +101,7 @@ export default function RegisterPage() {
                     placeholder="john.doe@gmail.com"
                   />
                 </FormControl>
-                <FormMessage className="text-xs text-red-400 text-end" />{" "}
+                <FormMessage className="text-xs text-red-400 text-end" />
               </FormItem>
             )}
           />
@@ -118,7 +118,7 @@ export default function RegisterPage() {
                     placeholder="******"
                   />
                 </FormControl>
-                <FormMessage className="text-xs text-red-400 text-end" />{" "}
+                <FormMessage className="text-xs text-red-400 text-end" />
               </FormItem>
             )}
           />

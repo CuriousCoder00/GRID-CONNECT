@@ -14,18 +14,6 @@ export const RecentActivities = ({}: Props) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [activities, setActivities] = useState([] as any[]);
 
-  useEffect(() => {
-    getUserActivities(user?.email)
-      .then((data) => {
-        setIsLoaded(true);
-        setActivities(data.activities || []);
-      })
-      .catch((error) => {
-        setIsLoaded(true);
-        setError(error);
-      });
-  });
-
   return (
     <div className="flex flex-col w-full p-2">
       <h1 className="text-lg mb-2">Recent activities</h1>
@@ -35,7 +23,7 @@ export const RecentActivities = ({}: Props) => {
           <h1 className="text-xs">No activities found</h1>
         ) : (
           <div className="flex flex-col gap-4">
-            {activities.map((activity) => (
+            {activities?.map((activity) => (
               <RecentActivityCard
                 key={activity.id}
                 id={activity.id}

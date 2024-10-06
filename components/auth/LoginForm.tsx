@@ -84,9 +84,7 @@ export default function LoginForm() {
                     placeholder="john.doe@gmail.com"
                   />
                 </FormControl>
-                <FormMessage>
-                  {form.formState.errors.email?.message}
-                </FormMessage>
+                <FormMessage className="text-xs text-red-500 text-end" />
               </FormItem>
             )}
           />
@@ -104,9 +102,7 @@ export default function LoginForm() {
                     placeholder="******"
                   />
                 </FormControl>
-                <FormMessage>
-                  {form.formState.errors.password?.message}
-                </FormMessage>
+                <FormMessage className="text-xs text-red-500 text-end" />
               </FormItem>
             )}
           />

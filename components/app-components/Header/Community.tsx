@@ -29,12 +29,11 @@ export const Community = () => {
         </DialogTrigger>
       </TooltipContainer>
       {join ? (
-        <DialogContent className="bg-white dark:bg-slate-950 w-[450px]">
+        <DialogContent className="bg-white dark:bg-slate-950">
           <DialogHeader>
             <DialogTitle>Create Your Community</DialogTitle>
             <DialogDescription>
-              Communities are a place to connect with people who shares your
-              interests. Create a community and start something new.
+              Create a community and start something new.
             </DialogDescription>
           </DialogHeader>
           <CreateCommunityForm />

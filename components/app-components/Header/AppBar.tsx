@@ -19,7 +19,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LucideLogOut, User } from "lucide-react";
+import { LucideLogOut, Router, User } from "lucide-react";
 import { SelectTheme } from "@/components/ThemeToggler";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { Button } from "@/components/ui/button";
@@ -66,10 +66,7 @@ export const AppBar = () => {
                   variant={"ghost"}
                   className="p-0 h-0"
                   onClick={() => {
-                    signOut().then(() => {
-                      session.update();
-                      window.location.href = "/";
-                    });
+                    signOut();
                   }}
                 >
                   <LucideLogOut className="size-5" />
