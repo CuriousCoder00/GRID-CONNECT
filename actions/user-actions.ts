@@ -32,48 +32,56 @@ export const updateUser = async ({
   username: string;
   email: string;
 }) => {
-  const user = await getUserByEmail(email);
-  const userId = user?.id;
-  await db.user.update({
-    where: { id: userId },
-    data: {
-      name,
-      username,
-      email,
-    },
-  });
+  try {
+    const user = await getUserByEmail(email);
+    const userId = user?.id;
+    await db.user.update({
+      where: { id: userId },
+      data: {
+        name,
+        username,
+        email,
+      },
+    });
+    return { success: "User profile updated successfully." };
+  } catch (error) {
+    return { error: "Something went wrong" };
+  }
 };
 
-export const changePassword = async ({
-  email,
-  password,
-}: {
-  email: string;
-  password: {
+export const changePassword = async (
+  email: string,
+  data: {
     currentPassword: string;
     newPassword: string;
     confirmNewPassword: string;
-  };
-}) => {
-  const user = await getUserByEmail(email);
-  const userId = user?.id;
-  if (
-    !password.currentPassword ||
-    !password.newPassword ||
-    !password.confirmNewPassword
-  ) {
-    return { error: "Password is required" };
   }
+) => {
+  const { currentPassword, newPassword, confirmNewPassword } = data;
+  const passwordMatch = newPassword === confirmNewPassword;
+  if (!passwordMatch) return { mismatch: "Password do not match" };
+  const user = await getUserByEmail(email);
+  if (!user) return { error: "User not found" };
+  const userId = user?.id;
+
   if (!user?.password) return { error: "User password not found" };
-  const match = await bcrypt.compare(password.currentPassword, user.password);
+
+  const match = await bcrypt.compare(currentPassword, user.password);
+
   if (!match) {
     return { error: "Invalid credentials" };
   }
+
+  const hashedPassword = await bcrypt.hash(
+    newPassword,
+    await bcrypt.genSalt(10)
+  );
   await db.user.update({
     where: { id: userId },
     data: {
-      password: await bcrypt.hash(password?.newPassword, 10),
+      password: hashedPassword,
     },
   });
+
   return { success: "Password changed successfully" };
 };

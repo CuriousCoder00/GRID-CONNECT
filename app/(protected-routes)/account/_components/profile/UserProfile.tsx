@@ -41,8 +41,7 @@ export const UserProfile = ({ name, username, email, isOAuth }: Props) => {
       </div>
       {isOAuth && (
         <p className="text-sm text-gray-500">
-          You are using an OAuth provider to login. You cannot edit your profile
-          details.
+          You are using an OAuth provider to login. You cannot edit your profile details except username.
         </p>
       )}
       <div className="lg:w-1/2">

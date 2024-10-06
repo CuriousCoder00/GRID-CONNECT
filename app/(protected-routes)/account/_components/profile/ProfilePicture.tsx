@@ -11,7 +11,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { APP_NAME } from "@/lib/constants/TextConsts";
 
 type Props = {
   imageUrl?: string;

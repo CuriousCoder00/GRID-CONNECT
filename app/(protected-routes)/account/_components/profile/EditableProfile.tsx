@@ -1,9 +1,24 @@
-import { useState } from "react";
+import { useTransition } from "react";
 
 import { Input } from "@/components/Custom/input";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { updateUser } from "@/actions/user-actions";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { useForm } from "react-hook-form";
+import { useToast } from "@/hooks/use-toast";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  ProfileSchema,
+  ProfileSchemaType,
+} from "@/lib/validators/profile.validator";
+import PulseLoader from "react-spinners/PulseLoader";
 
 type Props = {
   name: string;
@@ -11,69 +26,113 @@ type Props = {
   email: string;
   isOAuth: boolean;
 };
+
 export const EditableProfile = ({ name, username, email, isOAuth }: Props) => {
-  const [userData, setUserData] = useState({
-    name: name,
-    username: username,
-    email: email,
+  const { toast } = useToast();
+
+  const [isPending, startTransition] = useTransition();
+
+  const form = useForm<ProfileSchemaType>({
+    resolver: zodResolver(ProfileSchema),
+    defaultValues: {
+      name: name,
+      username: username,
+      email: email,
+    },
   });
+
   const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserData({
-      ...userData,
-      [e.target.name]: e.target.value,
+    form.setValue(e.target.name as keyof ProfileSchemaType, e.target.value);
+  };
+
+  const handleFormSubmit = async (data: ProfileSchemaType) => {
+    startTransition(() => {
+      updateUser(data).then((res) => {
+        res?.error
+          ? toast({ title: res.error as string, variant: "destructive" })
+          : toast({ title: res.success as string, variant: "success" });
+      });
     });
   };
-  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    await updateUser(userData);
-  };
   return (
-    <form className="flex flex-col gap-5 w-full" onSubmit={handleFormSubmit}>
-      <div className="flex w-full flex-col gap-3">
-        <Label>Name</Label>
-        <Input
-          name="name"
-          type="text"
-          className="w-full"
-          required
-          value={userData.name}
-          onChange={handleValueChange}
-        />
-      </div>
-      <div className="flex w-full flex-col gap-3">
-        <Label>Username</Label>
-        <Input
+    <Form {...form}>
+      <form
+        className="flex flex-col gap-5 w-full"
+        onSubmit={form.handleSubmit(handleFormSubmit)}
+      >
+        {!isOAuth && (
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    type="text"
+                    onChange={handleValueChange}
+                    value={form.watch("name")}
+                    disabled={isPending}
+                  />
+                </FormControl>
+                <FormMessage className="text-xs text-red-500 text-end" />{" "}
+              </FormItem>
+            )}
+          />
+        )}
+        <FormField
+          control={form.control}
           name="username"
-          type="text"
-          required
-          className="w-full"
-          value={userData.username}
-          onChange={handleValueChange}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Username</FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  type="text"
+                  onChange={handleValueChange}
+                  value={form.watch("username")}
+                  disabled={isPending}
+                />
+              </FormControl>
+              <FormMessage className="text-xs text-red-500 text-end" />{" "}
+            </FormItem>
+          )}
         />
-      </div>
-      {!isOAuth && (
-        <div className="flex gap-4 items-end w-full">
-          <div className="flex w-full flex-col gap-3">
-            <Label>Email</Label>
-            <Input
-              name="email"
-              type="email"
-              required
-              className="w-full"
-              value={userData.email}
-              onChange={handleValueChange}
-            />
-          </div>
+        {!isOAuth && (
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    onChange={handleValueChange}
+                    value={form.watch("email")}
+                    disabled={isPending}
+                  />
+                </FormControl>
+                <FormMessage className="text-xs text-red-500 text-end" />{" "}
+              </FormItem>
+            )}
+          />
+        )}
+
+        <div className="flex items-center justify-end">
+          <Button
+            type="submit"
+            disabled={isPending}
+            className="text-sm bg-black text-white dark:bg-white dark:text-black w-1/2"
+          >
+            {
+              isPending ? <PulseLoader/> : 'Save'
+            }
+          </Button>
         </div>
-      )}
-      <div className="flex items-center justify-end">
-        <Button
-          type="submit"
-          className="text-sm bg-black text-white dark:bg-white dark:text-black w-1/2"
-        >
-          Save
-        </Button>
-      </div>
-    </form>
+      </form>
+    </Form>
   );
 };
