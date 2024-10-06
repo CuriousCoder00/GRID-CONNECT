@@ -2,7 +2,7 @@
 
 import { WavyBackground } from "@/components/animated/wavy-background";
 import { Icon } from "@/components/Custom/Icon";
-import { APP_NAME } from "@/constants/TextConsts";
+import { APP_NAME } from "@/lib/constants/TextConsts";
 import Link from "next/link";
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {

@@ -19,7 +19,7 @@ import { Button } from "@/components/ui/button";
 import { NavbarLinks } from "@/components/Header/NavbarLinks";
 import { Url } from "next/dist/shared/lib/router/router";
 import { MobileNavbar } from "@/components/Header/MobileNavbar";
-import { APP_NAME } from "@/constants/TextConsts";
+import { APP_NAME } from "@/lib/constants/TextConsts";
 import { usePathname } from "next/navigation";
 import { SelectTheme } from "../ThemeToggler";
 

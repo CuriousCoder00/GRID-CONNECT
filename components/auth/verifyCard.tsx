@@ -6,7 +6,7 @@ import {
   CardContainer,
   CardItem,
 } from "@/components/animated/3d-card";
-import { APP_NAME } from "@/constants/TextConsts";
+import { APP_NAME } from "@/lib/constants/TextConsts";
 import BeatLoader from "react-spinners/BeatLoader";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";

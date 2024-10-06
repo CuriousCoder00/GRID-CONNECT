@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
 import { db } from "@/lib/db";
 import { UserTypes } from "@/types";
-import { getUserByEmail } from "@/data/user-data";
+import { getUserByEmail } from "@/lib/data/user-data";
 import { generateVerificationToken } from "@/lib/tokens";
 import { sendVerificationMail } from "@/helpers/mailer";
 

@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SessionProvider } from "next-auth/react";
-import { auth } from "@/auth";
+import { auth } from "@/lib/validators/auth";
 export const Providers = async ({ children }: { children: ReactNode }) => {
   const session = await auth();
   return (

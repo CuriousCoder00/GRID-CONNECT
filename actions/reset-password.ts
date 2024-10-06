@@ -1,5 +1,5 @@
 "use server";
-import { getPasswordResetTokenByToken, getUserByEmail } from "@/data/user-data";
+import { getPasswordResetTokenByToken, getUserByEmail } from "@/lib/data/user-data";
 import { sendPasswordResetLink } from "@/helpers/mailer";
 import { db } from "@/lib/db";
 import bcrypt from "bcryptjs";

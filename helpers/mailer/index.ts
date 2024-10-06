@@ -1,8 +1,7 @@
 import nodemailer from "nodemailer";
-import { UserTypes } from "@/types";
-import verificationMailHTML from "@/emails/VERIFY_EMAIL";
-import resetPassMailHTML from "@/emails/RESET_PASS";
-import { getVerificationTokenByEmail } from "@/data/user-data";
+import verificationMailHTML from "@/lib/emails/VERIFY_EMAIL";
+import resetPassMailHTML from "@/lib/emails/RESET_PASS";
+import { getVerificationTokenByEmail } from "@/lib/data/user-data";
 import { generatePasswordResetToken } from "@/lib/tokens";
 
 export async function sendVerificationMail(email: string, name: string) {

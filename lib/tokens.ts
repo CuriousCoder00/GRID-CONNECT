@@ -1,7 +1,7 @@
 import {
   getPasswordResetTokenByEmail,
   getVerificationTokenByEmail,
-} from "@/data/user-data";
+} from "@/lib/data/user-data";
 import { v4 as uuidv4 } from "uuid";
 import { db } from "./db";
 

@@ -1,4 +1,4 @@
-import { APP_NAME } from "@/constants/TextConsts";
+import { APP_NAME } from "@/lib/constants/TextConsts";
 import { cn } from "@/lib/utils";
 import {
   IconAdjustmentsBolt,

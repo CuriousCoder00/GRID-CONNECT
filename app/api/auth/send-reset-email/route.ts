@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
-import { getUserByEmail, getVerificationTokenByToken } from "@/data/user-data";
+import { getUserByEmail, getVerificationTokenByToken } from "@/lib/data/user-data";
 import { sendPasswordResetLink } from "@/helpers/mailer";
 
 export async function POST(request: NextRequest) {

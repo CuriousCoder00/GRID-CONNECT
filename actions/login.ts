@@ -1,10 +1,10 @@
 "use server";
 
-import { signIn } from "@/auth";
-import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
+import { signIn } from "@/lib/validators/auth";
+import { DEFAULT_LOGIN_REDIRECT } from "@/lib/validators/routes";
 import { AuthError } from "next-auth";
 import { generateVerificationToken } from "@/lib/tokens";
-import { getUserByEmail } from "@/data/user-data";
+import { getUserByEmail } from "@/lib/data/user-data";
 export const Login = async ({
   userData,
 }: {

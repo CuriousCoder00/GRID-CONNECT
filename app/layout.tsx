@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
-import { APP_NAME } from "@/constants/TextConsts";
+import { APP_NAME } from "@/lib/constants/TextConsts";
 import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -28,7 +27,6 @@ export default function RootLayout({
       <body className={inter.className}>
         <NextTopLoader />
         <Providers>{children}</Providers>
-        <Analytics />
       </body>
     </html>
   );

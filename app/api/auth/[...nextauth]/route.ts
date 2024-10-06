@@ -1,2 +1,2 @@
-import { handlers } from "@/auth"; 
+import { handlers } from "@/lib/validators/auth"; 
 export const { GET, POST } = handlers;

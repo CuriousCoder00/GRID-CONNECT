@@ -14,7 +14,7 @@ import {
 import { NavbarLinks } from "@/components/Header/NavbarLinks";
 import { Url } from "next/dist/shared/lib/router/router";
 import { Icon } from "@/components/Custom/Icon";
-import { APP_NAME } from "@/constants/TextConsts";
+import { APP_NAME } from "@/lib/constants/TextConsts";
 
 interface NavbarProps {
   links?: Array<{ name: String; href: Url }>;

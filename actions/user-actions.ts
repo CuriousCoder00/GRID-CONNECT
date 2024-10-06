@@ -1,6 +1,6 @@
 "use server";
 
-import { getUserByEmail } from "@/data/user-data";
+import { getUserByEmail } from "@/lib/data/user-data";
 import { db } from "@/lib/db";
 import bcrypt from "bcryptjs";
 
