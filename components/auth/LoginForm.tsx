@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useState } from "react";
+import React, { useState } from "react";
 import { Label } from "@/components/Custom/label";
 import { Input } from "@/components/Custom/input";
 import Link from "next/link";
