@@ -51,7 +51,7 @@ export const Profile = ({ name, username, email, isOAuth }: Props) => {
       {!isOAuth && (
         <div>
           <Dialog>
-            <DialogTrigger>
+            <DialogTrigger asChild>
               <Button variant={"link"}>Change Password</Button>
             </DialogTrigger>
             <DialogContent className="bg-white dark:bg-slate-950 sm:w-full w-[400px] ">

@@ -3,8 +3,9 @@
 import { Separator } from "@/components/ui/separator";
 import { useEffect, useState } from "react";
 import { getUserActivities } from "@/actions/user-activites";
-import { useCurrentUser } from "@/hooks/use-current-user";
+ 
 import { RecentActivityCard } from "./RecentActivityCard";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
 type Props = {};
 export const RecentActivities = ({}: Props) => {
@@ -14,7 +15,7 @@ export const RecentActivities = ({}: Props) => {
   const [activities, setActivities] = useState([] as any[]);
 
   useEffect(() => {
-    getUserActivities(user.email)
+    getUserActivities(user?.email)
       .then((data) => {
         setIsLoaded(true);
         setActivities(data.activities || []);

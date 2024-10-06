@@ -1,27 +1,25 @@
-import axios from "axios";
+"use server";
+import {
+  getUserByEmail,
+  getVerificationTokenByToken,
+} from "@/lib/data/user-data";
+import { db } from "@/lib/db";
 
-export const verifyEmail = async ({
-  token,
-  setError,
-  setSuccess,
-  setLoading,
-  setVerified,
-}: {
-  setError: (error: string) => void;
-  setSuccess: (success: string) => void;
-  setLoading: (loading: boolean) => void;
-  setVerified: (loading: boolean) => void;
-  token: string;
-}) => {
-
-  setLoading(true);
-  const res = await axios.post("/api/auth/verify-email", { token });
-  if (res.data?.error) {
-    setError(res.data.error);
-  } else {
-    setSuccess("Email verified!");
-    setVerified(true);
-    setLoading(false);
+export const verifyEmail = async (token: string) => {
+  try {
+    const existingToken = await getVerificationTokenByToken(token);
+    if (!existingToken) return { error: "Token has expired!" };
+    const existingUser = await getUserByEmail(existingToken.email);
+    if (!existingUser) return { error: "Email does not exist" };
+    await db.user.update({
+      where: { id: existingUser.id },
+      data: { emailVerified: new Date() },
+    });
+    await db.verificationToken.delete({
+      where: { id: existingToken.id },
+    });
+    return { success: "Email verified!" };
+  } catch (error: any) {
+    return { error: error.message };
   }
-  setLoading(false);
 };

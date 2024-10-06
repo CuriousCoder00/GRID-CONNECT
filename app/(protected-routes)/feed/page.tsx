@@ -3,6 +3,7 @@ import { TrendingCommunities } from "./_components/TrendingComms";
 import { FeedBanner } from "./_components/FeedBanner";
 import { RecentActivities } from "./_components/RecentActivities";
 import { useCurrentUser } from "@/hooks/use-current-user";
+ 
 
 export default function Feed() {
   const user = useCurrentUser();

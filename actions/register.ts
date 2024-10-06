@@ -1,30 +1,42 @@
-import { RegisterActionTypes } from "@/types";
-import axios from "axios";
+"use server";
 
-export const Register = async ({
-  userData,
-  setError,
-  setSuccessMessage,
-  setLoading,
-}: RegisterActionTypes) => {
-  // Reset error and success message state
-  setError("");
-  setSuccessMessage("");
-  // Set loading to true during API call
-  setLoading(true);
-  // Make API call to the backend to register the user
-  await axios
-    .post("/api/auth/register", userData)
-    .then((res) => {
-      // Set success message on successful registration
-      setSuccessMessage("Confirmation mail sent");
-      // Capture any error returned by the API
-      setError(res.data.error);
-    })
-    .catch((err) => {
-      // Set error message if registration fails
-      setError(err.response.data.error);
+import { z } from "zod";
+import bcryptjs from "bcryptjs";
+
+import { db } from "@/lib/db";
+
+import { getUserByEmail } from "@/lib/data/user-data";
+import { RegisterSchema } from "@/lib/validators/auth.validator";
+import { generateVerificationToken } from "@/lib/tokens";
+import { sendVerificationMail } from "@/helpers/mailer";
+
+export const Register = async (data: z.infer<typeof RegisterSchema>) => {
+  try {
+    const { email, name, password } = data;
+    const userExists = await getUserByEmail(email);
+    console.log(userExists);
+    if (userExists){
+      return { error: "User already exists" };
+    }
+    // Hash password
+    const hashedPassword = await bcryptjs.hash(
+      password,
+      await bcryptjs.genSalt(10)
+    );
+    // Register user
+    const uname = email.split("@")[0];
+    await db.user.create({
+      data: {
+        name,
+        email,
+        password: hashedPassword,
+        username: uname,
+      },
     });
-  // Reset loading state after the API call
-  setLoading(false);
+    const verificationToken = await generateVerificationToken(email);
+    await sendVerificationMail(verificationToken.email, name);
+    return { success: "Confirmation mail sent" };
+  } catch (error: any) {
+    return { error: error.message || "Something went wrong." };
+  }
 };

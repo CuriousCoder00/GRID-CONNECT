@@ -23,7 +23,7 @@ export const ProfilePicture = ({ imageUrl, isOAuth, name, email }: Props) => {
   return (
     <div className="flex flex-col gap-2">
       <Dialog>
-        <DialogTrigger className="w-24 rounded-full">
+        <DialogTrigger asChild className="w-24 rounded-full">
           <Avatar className="cursor-pointer h-24 w-24">
             <AvatarImage className=" object-cover" src={imageUrl || "   "} />
             <AvatarFallback className="bg-sky-700">

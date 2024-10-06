@@ -4,6 +4,7 @@ import { Label } from "@/components/Custom/label";
 import { Button } from "@/components/ui/button";
 import { changePassword } from "@/actions/user-actions";
 import { useCurrentUser } from "@/hooks/use-current-user";
+ 
 
 type Props = {};
 export const Password = ({}: Props) => {
@@ -36,7 +37,7 @@ export const Password = ({}: Props) => {
       return;
     }
     const res: { error?: string } = await changePassword({
-      email: user.email,
+      email: user?.email,
       password: password,
     });
     if (res.error) {

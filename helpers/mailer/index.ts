@@ -1,3 +1,4 @@
+"use server";
 import nodemailer from "nodemailer";
 import verificationMailHTML from "@/lib/emails/VERIFY_EMAIL";
 import resetPassMailHTML from "@/lib/emails/RESET_PASS";
@@ -44,7 +45,8 @@ export async function sendPasswordResetLink(email: string, name: string) {
     });
     const passwordResetToken = await generatePasswordResetToken(email);
     const resetPasswordLink =
-      `${process.env.NEXTAUTH_URL}/auth/new-password?token=${passwordResetToken?.token}` || "";
+      `${process.env.NEXTAUTH_URL}/auth/new-password?token=${passwordResetToken?.token}` ||
+      "";
     const info = await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: email || "",

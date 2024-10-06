@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/separator";
 import { useEffect, useState } from "react";
 import { ActivityCard } from "./_components/ActivityCard";
 import { getUserActivities } from "@/actions/user-activites";
-import { useCurrentUser } from "@/hooks/use-current-user";
+ 
 import {
   Select,
   SelectContent,
@@ -14,6 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { LucideListFilter } from "lucide-react";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
 type Props = {};
 const Activities = () => {
@@ -23,7 +24,7 @@ const Activities = () => {
   const [activities, setActivities] = useState([] as any[]);
 
   useEffect(() => {
-    getUserActivities(user.email)
+    getUserActivities(user?.email)
       .then((data) => {
         setIsLoaded(true);
         setActivities(data.activities || []);

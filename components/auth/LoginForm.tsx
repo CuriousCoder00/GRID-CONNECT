@@ -1,119 +1,140 @@
 "use client";
 
-import React, { useState } from "react";
-import { Label } from "@/components/Custom/label";
-import { Input } from "@/components/Custom/input";
+import React, { useTransition } from "react";
 import Link from "next/link";
-import { Login } from "@/actions/login";
-import Alert from "@/components/Custom/Alert";
 import { useSearchParams } from "next/navigation";
+
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import { Input } from "@/components/Custom/input";
+import { Login } from "@/actions/login";
 import PulseLoader from "react-spinners/PulseLoader";
 import { BottomGradient } from "@/components/auth/BottomGradient";
-import { LabelInputContainer } from "@/components/auth/LabelInputContainer";
 import AuthForm from "@/components/auth/AuthForm";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { useForm } from "react-hook-form";
+import { LoginSchema } from "@/lib/validators/auth.validator";
+import { useToast } from "@/hooks/use-toast";
 
 export default function LoginForm() {
-  // State to hold user login data
-  const [userData, setUserData] = useState({
-    email: "",
-    password: "",
-  });
-  // State to hold error messages
+  type LoginSchemaType = z.infer<typeof LoginSchema>;
+
+  const { toast } = useToast();
   const searchParams = useSearchParams();
+
+  const form = useForm<LoginSchemaType>({
+    resolver: zodResolver(LoginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
   const authError =
     searchParams.get("error") === "OAuthAccountNotLinked"
       ? "Please login with different email."
-      : "";
-  // State to handle error messages
-  const [error, setError] = useState<string | undefined>(undefined);
-  // State to handle success messages for email verification needed
-  const [success, setSuccess] = useState<string | undefined>(undefined);
+      : null;
 
-  // State to loading phase of form submission
-  const [loading, setLoading] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
-  // Handle input value change for the form fields
   const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserData({ ...userData, [e.target.name]: e.target.value });
+    form.setValue(e.target.name as keyof LoginSchemaType, e.target.value);
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Make API call to the backend to register the user
-    setError("");
-    setSuccess("");
-    // Set loading to true during API call
-    setLoading(true);
-    // Make API call to the backend to login the user
-    const res = await Login({ userData });
-    // Capture any error returned by the API
-    setError(res?.error);
-    // Capture any success message returned by the API
-    setSuccess(res?.warning);
-    // Reset loading state after the API call
-    setLoading(false);
+  const onLogin = async (data: LoginSchemaType) => {
+    startTransition(() => {
+      Login({ data })
+        .then((res) => {
+          res?.error
+            ? toast({ title: res.error as string, variant: "destructive" })
+            : res?.success
+            ? toast({ title: res.success as string, variant: "success" })
+            : res?.warning
+            ? toast({ title: res?.warning as string, variant: "warning" })
+            : null;
+        })
+        .then(() => {
+          authError && toast({ title: authError, variant: "destructive" });
+        });
+    });
   };
 
   return (
-    <AuthForm loading={loading}>
-      <form className="my-8" onSubmit={handleSubmit}>
-        <LabelInputContainer className="mb-4">
-          <Label className="text-white" htmlFor="email">
-            Email Address
-          </Label>
-          <Input
-            className="bg-neutral-800 text-white"
-            id="email"
-            placeholder="john.doe@gmail.com"
-            type="email"
+    <AuthForm loading={isPending}>
+      <Form {...form}>
+        <form className="my-8" onSubmit={form.handleSubmit(onLogin)}>
+          <FormField
+            control={form.control}
             name="email"
-            autoComplete="email"
-            disabled={loading}
-            onChange={onValueChange}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email Address</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    onChange={onValueChange}
+                    placeholder="john.doe@gmail.com"
+                  />
+                </FormControl>
+                <FormMessage>
+                  {form.formState.errors.email?.message}
+                </FormMessage>
+              </FormItem>
+            )}
           />
-        </LabelInputContainer>
-        <LabelInputContainer>
-          <Label className="text-white" htmlFor="password">
-            Password
-          </Label>
-          <Input
-            className="bg-neutral-800 text-white"
-            id="password"
-            placeholder="••••••••"
-            type="password"
+          <FormField
+            control={form.control}
             name="password"
-            autoComplete="current-password"
-            disabled={loading}
-            onChange={onValueChange}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    type="password"
+                    onChange={onValueChange}
+                    placeholder="******"
+                  />
+                </FormControl>
+                <FormMessage>
+                  {form.formState.errors.password?.message}
+                </FormMessage>
+              </FormItem>
+            )}
           />
-        </LabelInputContainer>
-        <div className="mb-4 text-end">
-          <Link
-            className="text-xs text-white hover:text-blue-400"
-            href={"/auth/reset-pass"}
+          <div className="mb-4 text-end">
+            <Link
+              className="text-xs text-white hover:text-blue-400"
+              href={"/auth/reset-pass"}
+            >
+              Forgot Password?
+            </Link>
+          </div>
+          <button
+            className="bg-gradient-to-br relative group/btn  from-zinc-900 to-zinc-900 bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] flex justify-center items-center"
+            type="submit"
           >
-            Forgot Password?
-          </Link>
-        </div>
-        {error && <Alert type="error" message={error} />}
-        {authError && <Alert type="error" message={authError} />}
-        {success && <Alert type="warning" message={success} />}
-        <button
-          className="bg-gradient-to-br relative group/btn  from-zinc-900 to-zinc-900 bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] flex justify-center items-center"
-          type="submit"
-        >
-          {loading ? <PulseLoader color="#06b4ff" /> : "Login →"}
-          <BottomGradient />
-        </button>
-        <div className="flex justify-end mt-2">
-          <Link
-            className="text-sm text-white hover:text-blue-400"
-            href="/auth/register"
-          >
-            Don&apos;t have an account yet?
-          </Link>
-        </div>
-      </form>
+            {isPending ? <PulseLoader color="#06b4ff" /> : "Login →"}
+            <BottomGradient />
+          </button>
+          <div className="flex justify-end mt-2">
+            <Link
+              className="text-sm text-white hover:text-blue-400"
+              href="/auth/register"
+            >
+              Don&apos;t have an account yet?
+            </Link>
+          </div>
+        </form>
+      </Form>
     </AuthForm>
   );
 }

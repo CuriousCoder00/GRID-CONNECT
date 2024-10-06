@@ -2,9 +2,10 @@
 import React, { useState, useEffect } from "react";
 
 import { getCommunitiesByUserId } from "@/actions/community-actions";
-import { useCurrentUser } from "@/hooks/use-current-user";
+ 
 import Link from "next/link";
 import { CommunityCard } from "./_components/CommunityCard";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
 interface Community {
   id: string;

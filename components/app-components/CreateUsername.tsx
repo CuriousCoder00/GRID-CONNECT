@@ -2,13 +2,14 @@ import { useState } from "react";
 import { Input } from "@/components/Custom/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { useCurrentUser } from "@/hooks/use-current-user";
+ 
 import { createUsername } from "@/actions/user-actions";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
 export const CreateUsername = () => {
   const [username, setUsername] = useState<string>("");
   const user = useCurrentUser();
-  if (user.username) return null;
+  // if (user?.username) return null;
   console.log(user);
   const handleCreateUsername = async (username: string, email: string) => {
     await createUsername({ username, email });
@@ -33,7 +34,7 @@ export const CreateUsername = () => {
           <div className="flex items-center justify-center gap-2">
             <Button
               className="text-sm bg-black text-white dark:bg-white dark:text-black w-1/2"
-              onClick={() => handleCreateUsername(username, user.email)}
+              onClick={() => handleCreateUsername(username, user?.email)}
             >
               Save
             </Button>

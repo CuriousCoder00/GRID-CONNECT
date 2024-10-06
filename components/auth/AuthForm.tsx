@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense } from "react";
+import React from "react";
 import Socials from "./Socials";
 
 export default function AuthForm({

@@ -1,116 +1,146 @@
 "use client";
-import React, { useState } from "react";
+
+import React, { useTransition } from "react";
 
 import Link from "next/link";
 
-import { Label } from "@/components/Custom/label";
-import { Input } from "@/components/Custom/input";
-import Alert from "@/components/Custom/Alert";
+import { useForm } from "react-hook-form";
 
-import { cn } from "@/lib/utils";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import { Input } from "@/components/Custom/input";
+
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { RegisterSchema } from "@/lib/validators/auth.validator";
+
 import { Register } from "@/actions/register";
 import PulseLoader from "react-spinners/PulseLoader";
 import AuthForm from "@/components/auth/AuthForm";
+import { useToast } from "@/hooks/use-toast";
 
 export default function RegisterPage() {
-  // State to hold user registration data
-  const [userData, setUserData] = useState({
-    name: "",
-    email: "",
-    password: "",
+  type RegisterSchemaType = z.infer<typeof RegisterSchema>;
+
+  const { toast } = useToast();
+
+  const [isPending, startTransition] = useTransition();
+
+  const form = useForm<RegisterSchemaType>({
+    resolver: zodResolver(RegisterSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+    },
   });
 
-  // State to handle error messages
-  const [error, setError] = useState("");
-
-  // State to loading phase of form submission
-  const [loading, setLoading] = useState(false);
-
-  // State to display success messages
-  const [successMessage, setSuccessMessage] = useState("");
-
-  // Handle input value change for the form fields
   const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserData({ ...userData, [e.target.name]: e.target.value });
+    form.setValue(e.target.name as keyof RegisterSchemaType, e.target.value);
   };
 
   // Handle form submission for user registration
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // Prevent form from submitting the default way
-    Register({ userData, setError, setSuccessMessage, setLoading });
+  const onRegister = async (data: RegisterSchemaType) => {
+    startTransition(() => {
+      Register(data)
+        .then((res) => {
+          res?.error
+            ? toast({ title: res.error as string, variant: "destructive" })
+            : toast({ title: res.success as string, variant: "success" });
+        })
+        .then(() => {
+          form.reset({ name: "", email: "", password: "" });
+        })
+        .catch((error) => {
+          toast({
+            title: error.message || "Something went wrong",
+            variant: "destructive",
+          });
+        });
+    });
   };
 
   return (
-    <AuthForm loading={loading}>
-      <form className="my-8" onSubmit={handleSubmit}>
-        <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
-          <LabelInputContainer>
-            <Label className="text-white" htmlFor="Full Name">
-              Full name
-            </Label>
-            <Input
-              id="name"
-              name="name"
-              placeholder="John Doe"
-              type="text"
-              required
-              className="bg-neutral-800 text-white"
-              disabled={loading}
-              onChange={onValueChange}
-            />
-          </LabelInputContainer>
-        </div>
-        <LabelInputContainer className="mb-4">
-          <Label className="text-white" htmlFor="email">
-            Email Address
-          </Label>
-          <Input
-            id="email"
+    <AuthForm loading={isPending}>
+      <Form {...form}>
+        <form className="my-8" onSubmit={form.handleSubmit(onRegister)}>
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    onChange={onValueChange}
+                    placeholder="John Doe"
+                  />
+                </FormControl>
+                <FormMessage className="text-xs text-red-400 text-end" />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
             name="email"
-            placeholder="john.doe@gmail.com"
-            type="email"
-            required
-            className="bg-neutral-800 text-white"
-            disabled={loading}
-            onChange={onValueChange}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email Address</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    onChange={onValueChange}
+                    placeholder="john.doe@gmail.com"
+                  />
+                </FormControl>
+                <FormMessage className="text-xs text-red-400 text-end" />{" "}
+              </FormItem>
+            )}
           />
-        </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label className="text-white" htmlFor="password">
-            Password
-          </Label>
-          <Input
-            id="password"
+          <FormField
+            control={form.control}
             name="password"
-            placeholder="••••••••"
-            type="password"
-            required
-            className="bg-neutral-800 text-white"
-            autoComplete="current-password"
-            disabled={loading}
-            onChange={onValueChange}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    onChange={onValueChange}
+                    placeholder="******"
+                  />
+                </FormControl>
+                <FormMessage className="text-xs text-red-400 text-end" />{" "}
+              </FormItem>
+            )}
           />
-        </LabelInputContainer>
-        {error && <Alert type="error" message={error} />}
-        {successMessage && <Alert type="success" message={successMessage} />}
-        <button
-          className="mt-8 bg-gradient-to-br relative group/btn  from-zinc-900 to-zinc-900 flex justify-center text-center items-center bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] "
-          type="submit"
-          disabled={loading}
-        >
-          {loading ? <PulseLoader color="#06b4ff" /> : "Sign up →"}
-          <BottomGradient />
-        </button>
-        <div className="flex justify-end mt-2">
-          <Link
-            className="text-sm text-white hover:text-blue-400"
-            href="/auth/login"
+
+          <button
+            className="mt-8 bg-gradient-to-br relative group/btn  from-zinc-900 to-zinc-900 flex justify-center text-center items-center bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] "
+            type="submit"
+            disabled={isPending}
           >
-            Already have an account?
-          </Link>
-        </div>
-      </form>
-      <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-2 h-[1px] w-full" />
+            {isPending ? <PulseLoader color="#06b4ff" /> : "Sign up →"}
+            <BottomGradient />
+          </button>
+          <div className="flex justify-end mt-2">
+            <Link
+              className="text-sm text-white hover:text-blue-400"
+              href="/auth/login"
+            >
+              Already have an account?
+            </Link>
+          </div>
+        </form>
+      </Form>
     </AuthForm>
   );
 }
@@ -121,19 +151,5 @@ const BottomGradient = () => {
       <span className="group-hover/btn:opacity-100 block transition duration-500 opacity-0 absolute h-px w-full -bottom-px inset-x-0 bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
       <span className="group-hover/btn:opacity-100 blur-sm block transition duration-500 opacity-0 absolute h-px w-1/2 mx-auto -bottom-px inset-x-10 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
     </>
-  );
-};
-
-const LabelInputContainer = ({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => {
-  return (
-    <div className={cn("flex flex-col space-y-2 w-full", className)}>
-      {children}
-    </div>
   );
 };

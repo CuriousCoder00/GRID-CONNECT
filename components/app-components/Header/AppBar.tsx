@@ -4,12 +4,13 @@ import React from "react";
 
 import Link from "next/link";
 
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
-import { ProfileAvatar } from "../ProfileAvatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 import { Community } from "./Community";
 import { Notifications } from "./Notifications";
-import { useCurrentUser } from "@/hooks/use-current-user";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,8 +21,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { LucideLogOut, User } from "lucide-react";
 import { SelectTheme } from "@/components/ThemeToggler";
+import { useCurrentUser } from "@/hooks/use-current-user";
+import { Button } from "@/components/ui/button";
 
 export const AppBar = () => {
+  const session = useSession();
   const user = useCurrentUser();
   return (
     <header className="md:px-20 p-2 flex w-screen items-center justify-between relative">
@@ -32,7 +36,15 @@ export const AppBar = () => {
 
           <DropdownMenu>
             <DropdownMenuTrigger>
-              <ProfileAvatar imageUrl={user?.image || ""} />
+              <Avatar className="cursor-pointer">
+                <AvatarImage
+                  className=" object-cover"
+                  src={user?.image as string}
+                />
+                <AvatarFallback className="bg-sky-700">
+                  <User />
+                </AvatarFallback>
+              </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-40 mt-4 z-10 bg-white text-black dark:bg-slate-950 dark:text-white pb-5">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -49,11 +61,19 @@ export const AppBar = () => {
               <DropdownMenuItem>
                 <SelectTheme />
               </DropdownMenuItem>
-              <DropdownMenuItem
-                className="flex gap-3 cursor-pointer  "
-                onClick={() => signOut()}
-              >
-                <LucideLogOut className="size-5" />
+              <DropdownMenuItem className="flex gap-3 cursor-pointer">
+                <Button
+                  variant={"ghost"}
+                  className="p-0 h-0"
+                  onClick={() => {
+                    signOut().then(() => {
+                      session.update();
+                      window.location.href = "/";
+                    });
+                  }}
+                >
+                  <LucideLogOut className="size-5" />
+                </Button>
                 Logout
               </DropdownMenuItem>
             </DropdownMenuContent>

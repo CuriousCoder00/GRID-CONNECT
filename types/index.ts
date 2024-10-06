@@ -1,4 +1,4 @@
-export interface UserTypes {
+export type UserTypes = {
   name: string ;
   email: string | null;
   password: string | null;
@@ -7,7 +7,7 @@ export interface UserTypes {
   verifyToken: string | null;
 }
 
-export interface RegisterActionTypes {
+export type RegisterActionTypes = {
   userData: { name: string; email: string; password: string };
   setError: (error: string) => void;
   setSuccessMessage: (message: string) => void;

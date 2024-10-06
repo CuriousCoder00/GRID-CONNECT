@@ -21,7 +21,7 @@ export default function RootLayout({
     <html
       className="dark select-none"
       lang="en"
-      suppressHydrationWarning={true}
+      suppressHydrationWarning
     >
       <link rel="shortcut icon" href="grid-icon.svg" type="image/svg" />
       <body className={inter.className}>

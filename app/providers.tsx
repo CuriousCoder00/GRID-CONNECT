@@ -1,7 +1,9 @@
 import { ReactNode } from "react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SessionProvider } from "next-auth/react";
-import { auth } from "@/lib/validators/auth";
+import { Toaster } from '@/components/ui/toaster';
+import { auth } from "@/lib/auth";
+
 export const Providers = async ({ children }: { children: ReactNode }) => {
   const session = await auth();
   return (
@@ -13,6 +15,7 @@ export const Providers = async ({ children }: { children: ReactNode }) => {
         disableTransitionOnChange
       >
         {children}
+        <Toaster />
       </ThemeProvider>
     </SessionProvider>
   );

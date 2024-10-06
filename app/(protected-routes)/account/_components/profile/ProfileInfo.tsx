@@ -3,6 +3,7 @@ import { Separator } from "@/components/ui/separator";
 import { ProfilePicture } from "./ProfilePicture";
 import { UserProfile } from "./UserProfile";
 import { useCurrentUser } from "@/hooks/use-current-user";
+ 
 
 type Props = {};
 export const ProfileInfo = ({}: Props) => {

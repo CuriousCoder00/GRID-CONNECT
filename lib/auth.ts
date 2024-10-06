@@ -1,10 +1,14 @@
-import NextAuth from "next-auth";
+import NextAuth, { User as NextAuthUser } from "next-auth";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 
 import { db } from "@/lib/db";
-import authConfig from "@/lib/validators/auth.config";
+import authConfig from "@/lib/auth.config";
 
-import { getAccountByUserId, getUserByID } from "../data/user-data";
+import { getAccountByUserId, getUserByID } from "./data/user-data";
+
+interface ExtendedUser extends NextAuthUser {
+  username?: string;
+}
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   pages: {
@@ -24,7 +28,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     async signIn({ user, account }) {
       // Allow OAuth without email verification
-      if (account?.provider !== "credentials") return true;
+      if (account?.provider !== "credentials") {
+        const existingUser = await getUserByID(user.id!);
+        db.user.update({
+          where: { id: user.id },
+          data: {
+            username: existingUser?.email.split("@")[0],
+          },
+        });
+        return true;
+      }
       // Prevent login without email verification
       const existingUser = await getUserByID(user.id!);
       if (!existingUser?.emailVerified) return false;

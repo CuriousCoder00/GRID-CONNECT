@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useTransition, useState } from "react";
 import {
   CardBody,
   CardContainer,
@@ -11,27 +11,29 @@ import BeatLoader from "react-spinners/BeatLoader";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { verifyEmail } from "@/actions/verification";
-import Alert from "@/components/Custom/Alert";
-
+import { useToast } from "@/hooks/use-toast";
 export function VerifyCard() {
+  const { toast } = useToast();
   const searchParams = useSearchParams();
   const token = searchParams.get("token") ?? "";
 
   const router = useRouter();
-
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [isPending, startTransition] = useTransition();
   const [verified, setVerified] = useState(false);
-
   const handleVerification = async () => {
-    await verifyEmail({
-      token,
-      setError,
-      setSuccess,
-      setLoading,
-      setVerified,
-    })
+    startTransition(() => {
+      verifyEmail(token)
+        .then((res) => {
+          res?.error
+            ? toast({ title: res.error as string, variant: "destructive" })
+            : res?.success
+            ? toast({ title: res.success as string, variant: "success" })
+            : null;
+        })
+        .then(() => {
+          setVerified(true);
+        });
+    });
   };
 
   return (
@@ -40,25 +42,15 @@ export function VerifyCard() {
         <CardItem className="text-xl font-bold  text-white">
           Verify your email address
         </CardItem>
-        <CardItem
-          as="p"
-          className="text-sm max-w-sm mt-2"
-        >
+        <CardItem as="p" className="text-sm max-w-sm mt-2">
           To start using {APP_NAME}, we need to verify your email
         </CardItem>
-        {loading ? (
+        {isPending ? (
           <CardItem className="w-full mt-4 flex justify-center" as={"div"}>
             <BeatLoader color="#06b4ff" />
           </CardItem>
-        ) : error ? (
-          <Alert type="error" message={error} />
-        ) : success ? (
-          <Alert type="success" message={success} />
         ) : null}
-        <CardItem
-          as="p"
-          className="text-sm max-w-sm mt-2 text-neutral-300"
-        >
+        <CardItem as="p" className="text-sm max-w-sm mt-2 text-neutral-300">
           For any queries: codebrise@gmail.com
         </CardItem>
 
@@ -78,7 +70,7 @@ export function VerifyCard() {
               as="button"
               onClick={handleVerification}
               className="px-4 py-2 rounded-xl text-black bg-white  text-sm font-bold w-full"
-              disabled={loading}
+              disabled={isPending}
             >
               Verify
             </CardItem>
