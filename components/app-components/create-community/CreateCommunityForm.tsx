@@ -2,7 +2,6 @@ import { useEffect, useState, useTransition } from "react";
 import { createCommunity, getCategories } from "@/actions/community-actions";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -30,6 +29,7 @@ import {
   CommunitySchemaType,
 } from "@/lib/validators/community.validator";
 import { Input } from "@/components/Custom/input";
+import PulseLoader from "react-spinners/PulseLoader";
 
 export const CreateCommunityForm = () => {
   const user = useCurrentUser();
@@ -186,7 +186,7 @@ export const CreateCommunityForm = () => {
         />
         <div className="flex justify-end">
           <Button disabled={isPending} type="submit">
-            Create
+            {isPending ? <PulseLoader /> : 'Create'}
           </Button>
         </div>
       </form>
