@@ -1,3 +1,5 @@
+"use client";
+
 import { Separator } from "@/components/ui/separator";
 import { useEffect, useState } from "react";
 import { getUserActivities } from "@/actions/user-activites";

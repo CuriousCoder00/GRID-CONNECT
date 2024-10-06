@@ -1,5 +1,4 @@
 "use client";
-
 import { TrendingCommunities } from "./_components/TrendingComms";
 import { FeedBanner } from "./_components/FeedBanner";
 import { RecentActivities } from "./_components/RecentActivities";
