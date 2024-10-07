@@ -22,7 +22,7 @@ import {
 } from "@/lib/validators/auth.validator";
 import { useToast } from "@/hooks/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "../Custom/input";
+import { Input } from "../Landing/Custom/input";
 export default function NewPasswordForm() {
   // State to hold user login data
   const searchParams = useSearchParams();

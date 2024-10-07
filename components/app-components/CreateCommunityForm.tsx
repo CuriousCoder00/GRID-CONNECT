@@ -28,7 +28,7 @@ import {
   CommunitySchema,
   CommunitySchemaType,
 } from "@/lib/validators/community.validator";
-import { Input } from "@/components/Custom/input";
+import { Input } from "@/components/Landing/Custom/input";
 import PulseLoader from "react-spinners/PulseLoader";
 
 export const CreateCommunityForm = () => {

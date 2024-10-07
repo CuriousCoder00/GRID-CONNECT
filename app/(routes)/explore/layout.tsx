@@ -1,7 +1,7 @@
 import { Gradient } from "@/components/Landing/Gradient";
 import { Navbar } from "@/components/Header/Navbar";
-import Banner from "@/components/Custom/Banner";
-import CommunityNavs from "@/components/Custom/CommunityNavs";
+import Banner from "@/components/Landing/Custom/Banner";
+import CommunityNavs from "@/components/Landing/Custom/CommunityNavs";
 
 
 const links = [

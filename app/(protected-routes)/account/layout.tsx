@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { Sidebar } from "./_components/Sidebar";
 import { usePathname } from "next/navigation";
 import {
   Bell,
@@ -10,6 +9,7 @@ import {
   LucideShield,
   User,
 } from "lucide-react";
+import { Sidebar } from "@/components/app-components/account/Sidebar";
 
 function AccountLayout({ children }: { children: React.ReactNode }) {
   const path = usePathname();

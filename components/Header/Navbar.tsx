@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-import { Icon } from "@/components/Custom/Icon";
+import { Icon } from "@/components/Landing/Custom/Icon";
 
 import { SunMoonIcon, MoonStarIcon } from "lucide-react";
 import {

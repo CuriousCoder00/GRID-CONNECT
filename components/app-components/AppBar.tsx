@@ -19,10 +19,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LucideLogOut, Router, User } from "lucide-react";
+import { LucideLogOut, User } from "lucide-react";
 import { SelectTheme } from "@/components/ThemeToggler";
 import { useCurrentUser } from "@/hooks/use-current-user";
-import { Button } from "@/components/ui/button";
 
 export const AppBar = () => {
   const session = useSession();
@@ -61,16 +60,11 @@ export const AppBar = () => {
               <DropdownMenuItem>
                 <SelectTheme />
               </DropdownMenuItem>
-              <DropdownMenuItem className="flex gap-3 cursor-pointer">
-                <Button
-                  variant={"ghost"}
-                  className="p-0 h-0"
-                  onClick={() => {
-                    signOut();
-                  }}
-                >
-                  <LucideLogOut className="size-5" />
-                </Button>
+              <DropdownMenuItem
+                className="flex gap-3 cursor-pointer"
+                onClick={() => signOut()}
+              >
+                <LucideLogOut className="size-5" />
                 Logout
               </DropdownMenuItem>
             </DropdownMenuContent>

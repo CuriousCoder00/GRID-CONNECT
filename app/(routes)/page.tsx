@@ -1,5 +1,5 @@
 "use client";
-import { TracingBeam } from "@/components/animated/tracing-beam";
+import { TracingBeam } from "@/components/ui/animated/tracing-beam";
 import { Navbar } from "@/components/Header/Navbar";
 import { Features } from "@/components/Landing/Features";
 import { Hero } from "@/components/Landing/Hero";

@@ -1,5 +1,5 @@
 import { sendResetEmail } from "@/actions/reset-password";
-import { Input } from "@/components/Custom/input";
+import { Input } from "@/components/Landing/Custom/input";
 import { Button } from "@/components/ui/button";
 import { useTransition } from "react";
 import BeatLoader from "react-spinners/BeatLoader";

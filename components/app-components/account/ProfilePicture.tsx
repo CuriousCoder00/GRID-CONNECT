@@ -1,4 +1,4 @@
-import { Label } from "@/components/Custom/label";
+import { Label } from "@/components/Landing/Custom/label";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Upload, User } from "lucide-react";

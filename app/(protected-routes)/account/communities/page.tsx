@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { getCommunitiesByUserId } from "@/actions/community-actions";
  
 import Link from "next/link";
-import { CommunityCard } from "./_components/CommunityCard";
+import { CommunityCard } from "../../../../components/app-components/communities/CommunityCard";
 import { useCurrentUser } from "@/hooks/use-current-user";
 
 interface Community {

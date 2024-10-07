@@ -6,14 +6,9 @@ import authConfig from "@/lib/auth.config";
 
 import { getAccountByUserId, getUserByID } from "./data/user-data";
 
-interface ExtendedUser extends NextAuthUser {
-  username?: string;
-}
-
 export const { handlers, signIn, signOut, auth } = NextAuth({
   pages: {
     signIn: "/auth/login",
-    error: "/auth/error",
   },
   events: {
     async linkAccount({ user }) {
@@ -23,6 +18,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           emailVerified: new Date(),
         },
       });
+    },
+    async signIn({ user }) {
+      const existingUser = await getUserByID(user.id!);
+      if (!existingUser?.username) {
+        await db.user.update({
+          where: { id: user.id },
+          data: {
+            username: existingUser?.email.split("@")[0],
+          },
+        });
+      }
     },
   },
   callbacks: {
@@ -59,7 +65,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         session.user.email = token.email ?? "";
         session.user.isOAuth = token.isOAuth;
       }
-
       return session;
     },
 
@@ -73,11 +78,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       token.name = existingUser.name;
       token.email = existingUser.email;
       token.role = existingUser.role;
-      token.username = existingUser.username;
+      token.username =
+        existingUser.username ?? existingUser.email.split("@")[0];
       return token;
     },
   },
   adapter: PrismaAdapter(db),
-  session: { strategy: "jwt" },
+  session: { strategy: "jwt", maxAge: 30 * 24 * 60 * 60 },
   ...authConfig,
 });

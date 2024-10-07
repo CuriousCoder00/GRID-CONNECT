@@ -1,7 +1,7 @@
 "use client";
-import { TrendingCommunities } from "./_components/TrendingComms";
-import { FeedBanner } from "./_components/FeedBanner";
-import { RecentActivities } from "./_components/RecentActivities";
+import { TrendingCommunities } from "../../../components/app-components/feed/TrendingComms";
+import { FeedBanner } from "../../../components/app-components/feed/FeedBanner";
+import { RecentActivities } from "../../../components/app-components/feed/RecentActivities";
 import { useCurrentUser } from "@/hooks/use-current-user";
  
 

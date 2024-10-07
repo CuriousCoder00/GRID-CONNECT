@@ -5,7 +5,7 @@ import {
   CardBody,
   CardContainer,
   CardItem,
-} from "@/components/animated/3d-card";
+} from "@/components/ui/animated/3d-card";
 import { APP_NAME } from "@/lib/constants/TextConsts";
 import BeatLoader from "react-spinners/BeatLoader";
 import { useSearchParams } from "next/navigation";

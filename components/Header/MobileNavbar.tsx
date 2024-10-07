@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/sheet";
 import { NavbarLinks } from "@/components/Header/NavbarLinks";
 import { Url } from "next/dist/shared/lib/router/router";
-import { Icon } from "@/components/Custom/Icon";
+import { Icon } from "@/components/Landing/Custom/Icon";
 import { APP_NAME } from "@/lib/constants/TextConsts";
 
 interface NavbarProps {

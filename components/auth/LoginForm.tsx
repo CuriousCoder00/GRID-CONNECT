@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Input } from "@/components/Custom/input";
+import { Input } from "@/components/Landing/Custom/input";
 import { Login } from "@/actions/login";
 import PulseLoader from "react-spinners/PulseLoader";
 import { BottomGradient } from "@/components/auth/BottomGradient";

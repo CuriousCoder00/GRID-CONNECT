@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import { SidebarNavigations } from "@/components/app-components/Sidebar/Sidebar";
+import { SidebarNavigations } from "@/components/app-components/Sidebar";
 
-import { AppBar } from "@/components/app-components/Header/AppBar";
+import { AppBar } from "@/components/app-components/AppBar";
 
 export default function ProtectedRoutesLayout({
   children,

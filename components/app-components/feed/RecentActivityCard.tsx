@@ -17,4 +17,3 @@ type Props = {
       </div>
     );
   };
-  

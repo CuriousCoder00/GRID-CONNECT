@@ -2,7 +2,7 @@
 import React from "react";
 import { Separator } from "@/components/ui/separator";
 import { useEffect, useState } from "react";
-import { ActivityCard } from "./_components/ActivityCard";
+import { ActivityCard } from "../../../components/app-components/activities/ActivityCard";
 import { getUserActivities } from "@/actions/user-activites";
  
 import {

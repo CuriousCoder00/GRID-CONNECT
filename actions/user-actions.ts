@@ -4,36 +4,30 @@ import { getUserByEmail } from "@/lib/data/user-data";
 import { db } from "@/lib/db";
 import bcrypt from "bcryptjs";
 
-export const createUsername = async ({
-  username,
-  email,
-}: {
-  username: string;
-  email: string;
-}) => {
-  if (!email) return;
-  if (!username) return { error: "Username is required" };
-  const existingUser = await getUserByEmail(email);
-  const userId = existingUser?.id;
-  await db.user.update({
-    where: { id: userId },
-    data: {
-      username: username,
-    },
-  });
-};
-
-export const updateUser = async ({
-  name,
-  username,
-  email,
-}: {
-  name: string;
-  username: string;
-  email: string;
-}) => {
+export const updateUser = async (
+  currentEmail: string,
+  data: {
+    name: string;
+    username: string;
+    email: string;
+  }
+) => {
+  const { name, username, email } = data;
   try {
-    const user = await getUserByEmail(email);
+    const user = await getUserByEmail(currentEmail);
+    if (!user) return { error: "User not found" };
+    if (user.email !== email) {
+      const userExists = await getUserByEmail(email);
+      if (userExists) return { error: "User with this email already exists" };
+    }
+    if (user.username !== username) {
+      const userExists = await db.user.findFirst({
+        where: {
+          username,
+        },
+      });
+      if (userExists) return { error: "Username already taken" };
+    }
     const userId = user?.id;
     await db.user.update({
       where: { id: userId },

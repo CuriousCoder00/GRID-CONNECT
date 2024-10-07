@@ -1,5 +1,5 @@
+import { ProfileInfo } from "@/components/app-components/account/ProfileInfo";
 import Link from "next/link";
-import { ProfileInfo } from "./_components/profile/ProfileInfo";
 
 type Props = {};
 const Settings = ({}: Props) => {

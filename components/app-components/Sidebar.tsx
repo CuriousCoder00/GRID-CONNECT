@@ -6,7 +6,7 @@ import {
   Sidebar,
   SidebarBody,
   SidebarLink,
-} from "@/components/animated/sidebar";
+} from "@/components/ui/animated/sidebar";
 import { LucideMessageSquareText, LucideSquareActivity } from "lucide-react";
 
 const links = [

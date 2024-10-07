@@ -13,8 +13,8 @@ import { TooltipContainer } from "@/components/TooltipContainer";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
-import { CreateCommunityForm } from "../create-community/CreateCommunityForm";
-import { JoinByInvite } from "../create-community/JoinByInvite";
+import { CreateCommunityForm } from "./CreateCommunityForm";
+import { JoinByInvite } from "./JoinByInvite";
 
 import { Plus } from "lucide-react";
 

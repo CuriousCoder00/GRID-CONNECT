@@ -6,7 +6,7 @@ import {
   CardBody,
   CardContainer,
   CardItem,
-} from "@/components/animated/3d-card";
+} from "@/components/ui/animated/3d-card";
 import { useRouter } from "next/navigation";
 import { PasswordReset } from "@/components/auth/PasswordReset";
 

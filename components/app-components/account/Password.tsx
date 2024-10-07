@@ -1,5 +1,5 @@
 import { useState, useTransition } from "react";
-import { Input } from "@/components/Custom/input";
+import { Input } from "@/components/Landing/Custom/input";
 import { Button } from "@/components/ui/button";
 import { changePassword } from "@/actions/user-actions";
 import { useCurrentUser } from "@/hooks/use-current-user";

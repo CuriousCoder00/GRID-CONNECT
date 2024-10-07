@@ -1,6 +1,6 @@
 import { useTransition } from "react";
 
-import { Input } from "@/components/Custom/input";
+import { Input } from "@/components/Landing/Custom/input";
 import { Button } from "@/components/ui/button";
 import { updateUser } from "@/actions/user-actions";
 import {
@@ -47,7 +47,7 @@ export const EditableProfile = ({ name, username, email, isOAuth }: Props) => {
 
   const handleFormSubmit = async (data: ProfileSchemaType) => {
     startTransition(() => {
-      updateUser(data).then((res) => {
+      updateUser(email, data).then((res) => {
         res?.error
           ? toast({ title: res.error as string, variant: "destructive" })
           : toast({ title: res.success as string, variant: "success" });
