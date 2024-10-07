@@ -2,7 +2,6 @@
 
 import React from "react";
 import Cards from "@/components/Landing/Custom/Cards";
-import CommunityNavs from "@/components/Landing/Custom/CommunityNavs";
 
 const page = () => {
   return (
