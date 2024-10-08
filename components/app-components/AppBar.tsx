@@ -19,7 +19,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LucideLogOut, User } from "lucide-react";
+import { LucideLogOut, MessageSquare, User } from "lucide-react";
 import { SelectTheme } from "@/components/ThemeToggler";
 import { useCurrentUser } from "@/hooks/use-current-user";
 
@@ -29,18 +29,24 @@ export const AppBar = () => {
     <header className="md:px-20 p-2 flex w-screen items-center justify-between relative">
       <nav className="flex justify-end items-center w-full">
         <div className="flex justify-center items-center gap-4">
+          <Link
+            className="flex items-center justify-center gap-2 text-sm max-md:hover:border p-1 rounded-lg"
+            href="/chats"
+          >
+            <MessageSquare className="size-5 " />
+            <span className="hidden md:block">Chats</span>
+          </Link>
           <Community />
           <Notifications />
-
           <DropdownMenu>
             <DropdownMenuTrigger>
-              <Avatar className="cursor-pointer">
+              <Avatar className="cursor-pointer w-8 h-8">
                 <AvatarImage
                   className=" object-cover"
                   src={user?.image as string}
                 />
                 <AvatarFallback className="bg-sky-700">
-                  <User />
+                  {user?.name[0] || "U"}
                 </AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
@@ -61,9 +67,11 @@ export const AppBar = () => {
               </DropdownMenuItem>
               <DropdownMenuItem
                 className="flex gap-3 cursor-pointer"
-                onClick={() => signOut({
-                  callbackUrl: "/auth/login"
-                })}
+                onClick={() =>
+                  signOut({
+                    callbackUrl: "/auth/login",
+                  })
+                }
               >
                 <LucideLogOut className="size-5" />
                 Logout

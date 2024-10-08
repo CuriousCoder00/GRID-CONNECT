@@ -11,17 +11,10 @@ import { LucideMessageSquareText, LucideSquareActivity } from "lucide-react";
 
 const links = [
   {
-    label: "Your Feed",
-    href: "/feed",
+    label: "Your Activities",
+    href: "/activities",
     icon: (
-      <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-7 w-7 flex-shrink-0" />
-    ),
-  },
-  {
-    label: "Chat",
-    href: "/chats",
-    icon: (
-      <LucideMessageSquareText className="text-neutral-700 dark:text-neutral-200 h-7 w-7 flex-shrink-0" />
+      <LucideSquareActivity className="text-neutral-700 dark:text-neutral-200 h-7 w-7 flex-shrink-0" />
     ),
   },
   {
@@ -31,13 +24,13 @@ const links = [
       <IconBuildingCommunity className="text-neutral-700 dark:text-neutral-200 h-7 w-7 flex-shrink-0" />
     ),
   },
-  {
-    label: "Your Activities",
-    href: "/activities",
-    icon: (
-      <LucideSquareActivity className="text-neutral-700 dark:text-neutral-200 h-7 w-7 flex-shrink-0" />
-    ),
-  },
+  // {
+  //   label: "Your Feed",
+  //   href: "/feed",
+  //   icon: (
+  //     <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-7 w-7 flex-shrink-0" />
+  //   ),
+  // },
 ];
 
 export const SidebarNavigations = () => {
