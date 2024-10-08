@@ -4,7 +4,7 @@ import React from "react";
 
 import Link from "next/link";
 
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -24,7 +24,6 @@ import { SelectTheme } from "@/components/ThemeToggler";
 import { useCurrentUser } from "@/hooks/use-current-user";
 
 export const AppBar = () => {
-  const session = useSession();
   const user = useCurrentUser();
   return (
     <header className="md:px-20 p-2 flex w-screen items-center justify-between relative">
@@ -62,7 +61,9 @@ export const AppBar = () => {
               </DropdownMenuItem>
               <DropdownMenuItem
                 className="flex gap-3 cursor-pointer"
-                onClick={() => signOut()}
+                onClick={() => signOut({
+                  callbackUrl: "/auth/login"
+                })}
               >
                 <LucideLogOut className="size-5" />
                 Logout

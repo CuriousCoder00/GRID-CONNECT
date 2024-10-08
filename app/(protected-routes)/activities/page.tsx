@@ -23,17 +23,17 @@ const Activities = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [activities, setActivities] = useState([] as any[]);
 
-  useEffect(() => {
-    getUserActivities(user?.email)
-      .then((data) => {
-        setIsLoaded(true);
-        setActivities(data.activities || []);
-      })
-      .catch((error) => {
-        setIsLoaded(true);
-        setError(error);
-      });
-  });
+  // useEffect(() => {
+  //   getUserActivities(user?.email)
+  //     .then((data) => {
+  //       setIsLoaded(true);
+  //       setActivities(data.activities || []);
+  //     })
+  //     .catch((error) => {
+  //       setIsLoaded(true);
+  //       setError(error);
+  //     });
+  // });
 
   return (
     <div className="flex flex-col w-full p-2 my-5 px-8">
