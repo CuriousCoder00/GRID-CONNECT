@@ -30,7 +30,7 @@ export const AppBar = () => {
       <nav className="flex justify-end items-center w-full">
         <div className="flex justify-center items-center gap-4">
           <Link
-            className="flex items-center justify-center gap-2 text-sm max-md:hover:border p-1 rounded-lg"
+            className="flex items-center justify-center gap-2 text-sm rounded-md"
             href="/chats"
           >
             <MessageSquare className="size-5 " />

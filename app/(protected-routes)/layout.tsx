@@ -16,7 +16,7 @@ export default function ProtectedRoutesLayout({
         <div className="z-[200] flex justify-start items-start">
           <SidebarNavigations />
         </div>
-        <div className="p-2 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-black flex flex-col gap-2 flex-1 w-full h-full">
+        <div className="border border-neutral-700 bg-white dark:bg-black flex flex-col gap-2 flex-1 w-full h-full">
           {children}
         </div>
       </div>
