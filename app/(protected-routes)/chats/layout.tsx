@@ -1,4 +1,3 @@
-import { ChatHeader } from "@/components/app-components/chats/chat-header";
 import { ChatSidebar } from "@/components/app-components/chats/sidebar";
 import React from "react";
 import { Handshake } from "lucide-react";
@@ -11,12 +10,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
           <ChatSidebar links={Links} users={users} />
         </div>
         <div className="flex flex-col h-full w-full overflow-hidden gap-3 sm:border-l-2 dark:border-l-slate-700">
-          <div className="flex flex-col">
-            <ChatHeader />
-          </div>
-          <div className="flex flex-col h-full w-full overflow-y-auto px-4">
-            {children}
-          </div>
+          {children}
         </div>
       </div>
     </div>
