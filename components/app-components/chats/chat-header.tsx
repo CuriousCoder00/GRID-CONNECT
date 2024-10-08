@@ -8,7 +8,7 @@ export const ChatHeader = ({}: Props) => {
       <div className="flex items-center justify-start gap-2">
         <Avatar className="h-7 w-7">
           <AvatarImage src="https://avatars.dicebear.com/api/human/1.svg" />
-          <AvatarFallback>"U"</AvatarFallback>
+          <AvatarFallback>U</AvatarFallback>
         </Avatar>
         <span className="text-sm">
             user_name

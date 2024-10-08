@@ -27,8 +27,9 @@ export const ChatSidebar = ({ links, users }: Props) => {
       <Separator className="bg-slate-600" />
       <div className="flex flex-col h-full w-full overflow-y-auto hidden-scrollbar gap-3 px-2 text-slate-800 dark:text-slate-200 text-sm">
         <div className="flex flex-col my-1">
-          {links.map((link) => (
+          {links.map((link, idx) => (
             <Link
+              key={idx}
               href={link.href}
               className="flex items-center gap-4 py-2 pl-3 text-sm dark:hover:bg-slate-800 hover:bg-slate-300 transition-all duration-150"
             >
@@ -40,8 +41,11 @@ export const ChatSidebar = ({ links, users }: Props) => {
         <Separator className="bg-slate-600" />
         <div className="flex flex-col gap-2">
           <div className="text-xs">Friends</div>
-          {users.map((user) => (
-            <div className="flex items-center gap-2 hover:bg-slate-900 p-2 rounded-md">
+          {users.map((user, idx) => (
+            <div
+              className="flex items-center gap-2 hover:bg-slate-900 p-2 rounded-md"
+              key={idx}
+            >
               <img
                 src={user.avatar}
                 alt="avatar"
