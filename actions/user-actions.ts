@@ -34,7 +34,6 @@ export const updateUser = async (
       data: {
         name,
         username,
-        email,
       },
     });
     return { success: "User profile updated successfully." };

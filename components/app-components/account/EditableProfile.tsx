@@ -100,7 +100,7 @@ export const EditableProfile = ({ name, username, email, isOAuth }: Props) => {
             </FormItem>
           )}
         />
-        {!isOAuth && (
+        {/* {!isOAuth && (
           <FormField
             control={form.control}
             name="email"
@@ -119,7 +119,7 @@ export const EditableProfile = ({ name, username, email, isOAuth }: Props) => {
               </FormItem>
             )}
           />
-        )}
+        )} */}
 
         <div className="flex items-center justify-end">
           <Button
