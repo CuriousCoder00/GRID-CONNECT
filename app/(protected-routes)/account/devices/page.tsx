@@ -11,6 +11,10 @@ const Page = () => {
         &gt; Manage Devices
       </div>
       <div className="flex flex-col mt-5">
+        <span className="text-lg font-bold">Devices</span>
+        <span className="text-xs">
+          Manage your devices and sessions that are currently logged in.
+        </span>
       </div>
     </div>
   );

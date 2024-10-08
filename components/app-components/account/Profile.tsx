@@ -1,14 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTrigger,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { Password } from "./Password";
+
 type Props = {
   name: string;
   username: string;
@@ -48,26 +39,6 @@ export const Profile = ({ name, username, email, isOAuth }: Props) => {
           disabled
         />
       </div>
-      {!isOAuth && (
-        <div>
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button variant={"link"}>Change Password</Button>
-            </DialogTrigger>
-            <DialogContent className="bg-white dark:bg-slate-950 sm:w-full w-[400px] ">
-              <div>
-                <DialogHeader className="text-xl font-bold my-0">
-                  <DialogTitle>Change Your Password</DialogTitle>
-                  <DialogDescription className="my-0">
-                    Change your password to something more secure.
-                  </DialogDescription>
-                </DialogHeader>
-              </div>
-              <Password />
-            </DialogContent>
-          </Dialog>
-        </div>
-      )}
     </div>
   );
 };

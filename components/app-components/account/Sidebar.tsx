@@ -58,7 +58,7 @@ const SidebarLinks = ({ userSettingLinks, appSettingLinks }: SidebarProps) => {
       ))}
       <Separator orientation="horizontal" className="bg-slate-600 my-3" />
       <h1 className="my-2 font-bold text-xs">App Settings</h1>
-      {appSettingLinks.map((link) => (
+      {appSettingLinks && appSettingLinks.map((link) => (
         <Link
           className={`flex gap-2 p-3 hover:bg-sky-800 hover:text-white text-sm transition-all duration-100 ${
             link?.active &&

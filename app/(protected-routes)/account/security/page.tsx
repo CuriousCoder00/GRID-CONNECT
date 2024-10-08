@@ -1,5 +1,7 @@
-import Link from "next/link";
+"use client";
 import React from "react";
+import Link from "next/link";
+import { Authentication } from "@/components/app-components/account/Authentication";
 
 const Page = () => {
   return (
@@ -11,6 +13,7 @@ const Page = () => {
         &gt; Privacy and Security
       </div>
       <div className="flex flex-col mt-5">
+        <Authentication />
       </div>
     </div>
   );
