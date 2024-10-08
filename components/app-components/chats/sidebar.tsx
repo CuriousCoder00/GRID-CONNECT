@@ -43,7 +43,7 @@ export const ChatSidebar = ({ links, users }: Props) => {
           <div className="text-xs">Friends</div>
           {users.map((user, idx) => (
             <div
-              className="flex items-center gap-2 hover:bg-slate-900 p-2 rounded-md"
+              className="flex items-center gap-2 dark:hover:bg-slate-800 hover:bg-slate-300  p-2 rounded-md"
               key={idx}
             >
               <img
