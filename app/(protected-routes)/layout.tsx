@@ -1,14 +1,23 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { SidebarNavigations } from "@/components/app-components/Sidebar";
 
 import { AppBar } from "@/components/app-components/AppBar";
+import PacmanLoader from "react-spinners/PacmanLoader";
 
 export default function ProtectedRoutesLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [loading, setLoading] = React.useState(true);
+  useEffect(() => {
+    document.addEventListener("onLoad", () => {
+      setTimeout(() => {
+        setLoading(false);
+      }, 4000);
+    });
+  }, []);
   return (
     <div className="flex flex-col max-h-screen h-screen max-w-screen overflow-hidden dark:bg-black bg-white">
       <AppBar />

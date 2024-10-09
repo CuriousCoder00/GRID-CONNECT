@@ -22,14 +22,14 @@ interface Community {
 const Communities = () => {
   const [communities, setCommunities] = useState<Community[]>([]);
   const user = useCurrentUser();
-  const fetchCommunities = async () => {
-    // fetch user communities
-    const res = await getCommunitiesByUserId(user?.id);
-    setCommunities(res);
-  };
-  useEffect(() => {
-    fetchCommunities();
-  });
+  // const fetchCommunities = async () => {
+  //   // fetch user communities
+  //   const res = await getCommunitiesByUserId(user?.id);
+  //   setCommunities(res);
+  // };
+  // useEffect(() => {
+  //   fetchCommunities();
+  // });
 
   return (
     <div className="flex flex-col w-full h-full max-h-[90vh]">
