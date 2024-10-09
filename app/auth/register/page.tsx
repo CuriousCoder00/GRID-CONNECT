@@ -79,7 +79,7 @@ export default function RegisterPage() {
                 <FormLabel>Name</FormLabel>
                 <FormControl>
                   <Input
-                    className="bg-zinc-900"
+                    className="bg-zinc-900 text-white"
                     {...field}
                     onChange={onValueChange}
                     placeholder="John Doe"
@@ -97,7 +97,7 @@ export default function RegisterPage() {
                 <FormLabel>Email Address</FormLabel>
                 <FormControl>
                   <Input
-                    className="bg-zinc-900"
+                    className="bg-zinc-900 text-white"
                     {...field}
                     onChange={onValueChange}
                     placeholder="john.doe@gmail.com"
@@ -115,7 +115,7 @@ export default function RegisterPage() {
                 <FormLabel>Password</FormLabel>
                 <FormControl>
                   <Input
-                    className="bg-zinc-900"
+                    className="bg-zinc-900 text-white"
                     {...field}
                     onChange={onValueChange}
                     placeholder="******"

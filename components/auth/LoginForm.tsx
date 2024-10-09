@@ -79,7 +79,7 @@ export default function LoginForm() {
                 <FormLabel>Email Address</FormLabel>
                 <FormControl>
                   <Input
-                  className="bg-zinc-900"
+                    className="bg-zinc-900 text-white"
                     {...field}
                     onChange={onValueChange}
                     placeholder="john.doe@gmail.com"
@@ -98,7 +98,8 @@ export default function LoginForm() {
                 <FormControl>
                   <Input
                     {...field}
-                    type="password" className="bg-zinc-900"
+                    type="password"
+                    className="bg-zinc-900 text-white"
                     onChange={onValueChange}
                     placeholder="******"
                   />
