@@ -19,32 +19,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         },
       });
     },
-    async signIn({ user }) {
-      const existingUser = await getUserByID(user.id!);
-      if (!existingUser?.username) {
-        await db.user.update({
-          where: { id: user.id },
-          data: {
-            username: existingUser?.email.split("@")[0],
-          },
-        });
-      }
-    },
   },
   callbacks: {
     async signIn({ user, account }) {
       // Allow OAuth without email verification
       if (account?.provider !== "credentials") {
-        const existingUser = await getUserByID(user.id!);
-        db.user.update({
-          where: { id: user.id },
-          data: {
-            username: existingUser?.email.split("@")[0],
-          },
-        });
         return true;
       }
-      // Prevent login without email verification
       const existingUser = await getUserByID(user.id!);
       if (!existingUser?.emailVerified) return false;
       return true;
@@ -84,6 +65,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
   },
   adapter: PrismaAdapter(db),
-  session: { strategy: "jwt", maxAge: 30 * 24 * 60 * 60 },
+  session: { strategy: "jwt" },
   ...authConfig,
 });
