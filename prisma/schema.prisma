@@ -24,8 +24,6 @@ model User {
   members     Member[]
   accounts    Account[]
 
-  role MemberRole @default(GUEST)
-
   emailVerified DateTime?
 
   activities Activity[]
