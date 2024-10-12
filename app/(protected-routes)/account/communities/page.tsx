@@ -2,9 +2,8 @@
 import React, { useState, useEffect } from "react";
 
 import { getCommunitiesByUserId } from "@/actions/community-actions";
- 
+
 import Link from "next/link";
-import { CommunityCard } from "../../../../components/app-components/communities/CommunityCard";
 import { useCurrentUser } from "@/hooks/use-current-user";
 
 interface Community {
@@ -41,20 +40,7 @@ const Communities = () => {
       </div>
       Manage Your subscribed communities
       <div className="grid grid-cols-3 gap-3 mt-5">
-        {communities ? (
-          communities.map((community) => (
-            <div className="col-span-1" key={community.id}>
-              <CommunityCard
-                title={community.name}
-                description={community.description}
-                imageUrl={community.imageUrl ? community.imageUrl : undefined}
-                category={community.category}
-              />
-            </div>
-          ))
-        ) : (
-          <p>There&apos;s nothing to show at the moment</p>
-        )}
+        <p>There&apos;s nothing to show at the moment</p>
       </div>
     </div>
   );
