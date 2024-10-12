@@ -12,7 +12,7 @@ type Props = {
 
 export const Header = ({ type, setTab, tab }: Props) => {
   return (
-    <div className="flex w-full border-b-2 border-b-slate-600 p-2">
+    <div className="flex w-full border-b-2 border-b-slate-600 p-2 px-4">
       {type === "chat" ? <ChatHeader /> : <FriendsHeader setTab={setTab} tab={tab} />}
     </div>
   );
