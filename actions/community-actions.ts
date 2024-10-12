@@ -3,6 +3,7 @@
 import { getUserByEmail } from "@/lib/data/user-data";
 import { db } from "@/lib/db";
 import { CommunitySchemaType } from "@/lib/validators/community.validator";
+import { MemberRole } from "@prisma/client";
 
 export const createCommunity = async (
   email: string,
@@ -24,6 +25,12 @@ export const createCommunity = async (
         imageUrl: imageUrl ? imageUrl : null,
         userId: creatorId,
         inviteCode: Math.random().toString(36).substring(7),
+        members: {
+          create: {
+            userId: creatorId,
+            role: MemberRole.ADMIN,
+          },
+        },
       },
     });
     return {
