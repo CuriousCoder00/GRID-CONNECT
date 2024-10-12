@@ -8,7 +8,6 @@ import { signOut } from "next-auth/react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-import { Community } from "./Community";
 import { Notifications } from "./Notifications";
 
 import {
@@ -36,7 +35,6 @@ export const AppBar = () => {
             <MessageSquare className="size-5 " />
             <span className="hidden md:block">Chats</span>
           </Link>
-          <Community />
           <Notifications />
           <DropdownMenu>
             <DropdownMenuTrigger>
