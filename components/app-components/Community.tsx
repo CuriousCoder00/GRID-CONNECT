@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 
 import {
@@ -23,7 +24,11 @@ export const Community = () => {
 
   return (
     <Dialog>
-      <TooltipContainer content="Create your community" pos="bottom" sideOffset={15}>
+      <TooltipContainer
+        content="Create your community"
+        pos="right"
+        sideOffset={15}
+      >
         <DialogTrigger className="cursor-pointer" asChild>
           <Plus />
         </DialogTrigger>
