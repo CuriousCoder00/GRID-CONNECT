@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState, useTransition } from "react";
 import { createCommunity, getCategories } from "@/actions/community-actions";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -186,7 +187,7 @@ export const CreateCommunityForm = () => {
         />
         <div className="flex justify-end">
           <Button disabled={isPending} type="submit">
-            {isPending ? <PulseLoader /> : 'Create'}
+            {isPending ? <PulseLoader /> : "Create"}
           </Button>
         </div>
       </form>
