@@ -1,5 +1,4 @@
 import { CommunitSidebar } from "@/components/app-components/communities/community-sidebar";
-import React from "react";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
