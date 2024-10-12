@@ -51,7 +51,7 @@ export const Authentication = ({}: Props) => {
       )}
       <span className="text-md mt-5">Account Removal</span>
       <span className="text-sm">
-        Disabling your account means you can recover your it at any time after
+        Disabling your account means you can recover it at any time after
         taking this action.
       </span>
       <div className="flex w-full gap-3 my-3">
