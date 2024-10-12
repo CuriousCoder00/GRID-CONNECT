@@ -21,7 +21,6 @@ export const AddFriends = ({}: Props) => {
           </Button>
         </div>
       </div>
-      <Separator className="bg-slate-400 dark:bg-slate-600 my-3" />
     </div>
   );
 };
