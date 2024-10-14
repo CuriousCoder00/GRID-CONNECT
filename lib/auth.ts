@@ -36,10 +36,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         session.user.id = token.sub;
       }
 
-      if (token.role && session.user) {
-        session.user.role = token.role;
-      }
-
       if (session.user) {
         session.user.name = token.name;
         session.user.username = token.username;
@@ -58,7 +54,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       token.isOAuth = !!existingAccount;
       token.name = existingUser.name;
       token.email = existingUser.email;
-      token.role = existingUser.role;
       token.username =
         existingUser.username ?? existingUser.email.split("@")[0];
       return token;
