@@ -1,5 +1,6 @@
 "use server";
 
+import { auth } from "@/lib/auth";
 import { getUserByEmail } from "@/lib/data/user-data";
 import { db } from "@/lib/db";
 import { CommunitySchemaType } from "@/lib/validators/community.validator";
@@ -43,13 +44,32 @@ export const createCommunity = async (
 };
 
 export const getCommunitiesByUserId = async (userId: string) => {
-  return db.community.findMany({
+  const session = await auth();
+  if (!session) return null;
+  const user = session.user;
+  if (!user) return null;
+  if (user.id !== userId) return null;
+  const communities = await await db.community.findMany({
     where: {
-      userId,
+      members: {
+        some: {
+          userId: session?.user.id,
+        },
+      },
     },
   });
+  return communities;
 };
 
 export const getCategories = async () => {
   return db.category.findMany();
+};
+
+export const getCommunityById = async (id: string) => {
+  const community = await db.community.findUnique({
+    where: {
+      id,
+    },
+  });
+  return community;
 };

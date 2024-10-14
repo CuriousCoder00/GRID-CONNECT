@@ -1,6 +1,7 @@
 "use server";
 
 import { getUserByEmail } from "@/lib/data/user-data";
+import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import bcrypt from "bcryptjs";
 
@@ -77,4 +78,10 @@ export const changePassword = async (
   });
 
   return { success: "Password changed successfully" };
+};
+
+export const getServerSession = async () => {
+  const session = await auth();
+  const user = session?.user;
+  return user;
 };

@@ -1,5 +1,6 @@
 "use client";
 import { CommunityHeader } from "@/components/app-components/communities/community-header";
+import { Skeleton } from "@/components/ui/skeleton";
 import { usePathname } from "next/navigation";
 import React, { Suspense } from "react";
 

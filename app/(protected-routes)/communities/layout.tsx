@@ -1,3 +1,4 @@
+"use client";
 import { CommunitSidebar } from "@/components/app-components/communities/community-sidebar";
 
 const layout = ({ children }: { children: React.ReactNode }) => {

@@ -2,7 +2,7 @@
  * An array of routes that are accessible to public
  * These routes do not need authentication/login
  */
-export const publicRoutes = ["/home", "/explore", "/explore/gaming", "/explore/entertainment", "/explore/education", "/explore/music", "/explore/science-tech"];
+export const publicRoutes = ["/", "/explore", "/explore/gaming", "/explore/entertainment", "/explore/education", "/explore/music", "/explore/science-tech"];
 
 /**
  * An array of routes that are used for authentication
@@ -26,4 +26,4 @@ export const apiAuthPrefix = "/api/auth";
 /**
  * The default redirect path after logged in
  */
-export const DEFAULT_LOGIN_REDIRECT = "/";
+export const DEFAULT_LOGIN_REDIRECT = "/activities";
