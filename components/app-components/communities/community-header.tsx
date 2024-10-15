@@ -38,10 +38,10 @@ export const CommunityHeader = ({ id }: Props) => {
     <div className="flex w-full border-b-2 border-b-slate-600 p-2 px-4">
       {communityData ? (
         <div className="flex items-center justify-between w-full">
-          <div className="flex items-center justify-start gap-2 relative">
+          <div className="flex items-center justify-start relative">
             <DropdownMenu>
               <DropdownMenuTrigger>{communityData?.name}</DropdownMenuTrigger>
-              <DropdownMenuContent className="absolute top-5 w-48">
+              <DropdownMenuContent className="absolute top-0 w-48">
                 <DropdownMenuLabel>My Community</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>Community Settings</DropdownMenuItem>
