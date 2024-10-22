@@ -13,16 +13,16 @@ export const CommunitSidebar = () => {
   const user = useCurrentUser();
   const [communities, setCommunities] = useState<
     | {
-        id: string;
-        category: string;
-        name: string;
-        description: string;
-        imageUrl: string | null;
-        inviteCode: string;
-        userId: string;
-        createdAt: Date;
-        updatedAt: Date;
-      }[]
+      id: string;
+      category: string;
+      name: string;
+      description: string;
+      imageUrl: string | null;
+      inviteCode: string;
+      userId: string;
+      createdAt: Date;
+      updatedAt: Date;
+    }[]
     | null
   >(null);
   useEffect(() => {
@@ -82,3 +82,15 @@ export const CommunitSidebar = () => {
     </div>
   );
 };
+
+export const ThreadsSidebar = () => {
+  return (
+    <div className="flex flex-col justify-start items-start h-full max-h-[90vh] overflow-hidden border-r">
+      <div className="flex flex-col items-start px-2 mt-3 w-44">
+        <div className="flex flex-col items-center justify-start overflow-y-auto hidden-scrollbar">
+          My First Thread
+        </div>
+      </div>
+    </div>
+  )
+}

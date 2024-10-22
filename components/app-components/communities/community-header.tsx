@@ -10,6 +10,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ArrowDown, ChevronDown, ChevronUp, LogOut, Plus, Settings, UserPlus } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/Landing/Custom/input";
 
 type Props = { id: string };
 type CommunityData = {
@@ -25,6 +28,7 @@ type CommunityData = {
 
 export const CommunityHeader = ({ id }: Props) => {
   const [communityData, setCommunityData] = useState<CommunityData>(null);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   useEffect(() => {
     const fetchData = async () => {
       const data = await getCommunityById(id);
@@ -35,30 +39,69 @@ export const CommunityHeader = ({ id }: Props) => {
   }, [id]);
 
   return (
-    <div className="flex w-full border-b-2 border-b-slate-600 p-2 px-4">
+    <div className="flex items-center justify-center w-full border-b-2 border-b-slate-600 p-1 px-8">
       {communityData ? (
         <div className="flex items-center justify-between w-full">
-          <div className="flex items-center justify-start relative">
-            <DropdownMenu>
-              <DropdownMenuTrigger>{communityData?.name}</DropdownMenuTrigger>
-              <DropdownMenuContent className="absolute top-0 w-48">
-                <DropdownMenuLabel>My Community</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>Community Settings</DropdownMenuItem>
-                <DropdownMenuItem>Members</DropdownMenuItem>
-                <DropdownMenuItem>Invite Members</DropdownMenuItem>
-                <DropdownMenuItem>Leave Community</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+          <DropDownComponent onClick={() => setIsOpen(!open)} trigger={
+            <Button variant={'ghost'} className="flex items-center justify-start gap-4 hover:bg-transparent" onClick={() => setIsOpen(!open)}>
+              <span className="block text-nowrap">
+                {communityData?.name}
+              </span>
+              {
+                isOpen ? <ChevronUp /> : <ChevronDown />
+              }
+            </Button>
+          } />
+          <div className="flex items-center justify-center gap-3">
+            <Button className="hover:bg-transparent" variant={'ghost'}>Create a new thread</Button>
           </div>
-          <div className="flex items-center justify-center gap-3"></div>
         </div>
       ) : (
         <div className="flex items-center justify-between w-full gap-8">
           <Skeleton className="w-40 h-8" />
-          <Skeleton className="w-full h-8" />
+          <div className="flex items-center justify-center gap-3">
+            {/* <Skeleton className="w-96 h-8" /> */}
+            <Skeleton className="w-40 h-8" />
+            {/* <Skeleton className="w-8 h-8" />
+            <Skeleton className="w-8 h-8" />
+            <Skeleton className="w-8 h-8" />
+            <Skeleton className="w-8 h-8" />
+            <Skeleton className="w-8 h-8" />
+            <Skeleton className="w-8 h-8" /> */}
+          </div>
         </div>
       )}
     </div>
   );
 };
+
+const DropDownComponent = ({ trigger, onClick }: { trigger: React.ReactNode; onClick: () => void }) => {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild onClick={onClick}>
+        {trigger}
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuLabel>Community Settings</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem className="text-blue-600 py-0">
+          <UserPlus size={16} />
+          <DropdownMenuLabel>Invite Friends</DropdownMenuLabel>
+        </DropdownMenuItem>
+        <DropdownMenuItem className="py-0">
+          <Settings size={16} />
+          <DropdownMenuLabel>Settings</DropdownMenuLabel>
+        </DropdownMenuItem>
+        <DropdownMenuItem className="py-0">
+          <Plus size={16} />
+          <DropdownMenuLabel>New Thread</DropdownMenuLabel>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem className="py-0 text-red-600">
+          <LogOut size={16} />
+          <DropdownMenuLabel>Leave</DropdownMenuLabel>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
