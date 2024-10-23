@@ -16,28 +16,28 @@ import { useEffect, useState } from "react";
 
 interface SidebarProps {
   userSettingLinks: any[];
-  appSettingLinks: any[];
+  // appSettingLinks: any[];
 }
 
 export const Sidebar = ({
   userSettingLinks,
-  appSettingLinks,
-}: SidebarProps) => {
+}: // appSettingLinks,
+SidebarProps) => {
   return (
     <div className="flex flex-col justify-start items-start px-2 z-[4]">
       <SidebarLinks
         userSettingLinks={userSettingLinks}
-        appSettingLinks={appSettingLinks}
+        // appSettingLinks={appSettingLinks}
       />
       <SidebarMobileLinks
         userSettingLinks={userSettingLinks}
-        appSettingLinks={appSettingLinks}
+        // appSettingLinks={appSettingLinks}
       />
     </div>
   );
 };
 
-const SidebarLinks = ({ userSettingLinks, appSettingLinks }: SidebarProps) => {
+const SidebarLinks = ({ userSettingLinks }: SidebarProps) => {
   return (
     <div
       className={`relative flex flex-col bg-white dark:bg-black max-sm:hidden w-52 pt-12`}
@@ -56,9 +56,9 @@ const SidebarLinks = ({ userSettingLinks, appSettingLinks }: SidebarProps) => {
           {link.label}
         </Link>
       ))}
-      <Separator orientation="horizontal" className="bg-slate-600 my-3" />
-      <h1 className="my-2 font-bold text-xs">App Settings</h1>
-      {appSettingLinks && appSettingLinks.map((link) => (
+      {/* <Separator orientation="horizontal" className="bg-slate-600 my-3" /> */}
+      {/* <h1 className="my-2 font-bold text-xs">App Settings</h1> */}
+      {/* {appSettingLinks && appSettingLinks.map((link) => (
         <Link
           className={`flex gap-2 p-3 hover:bg-sky-800 hover:text-white text-sm transition-all duration-100 ${
             link?.active &&
@@ -70,15 +70,15 @@ const SidebarLinks = ({ userSettingLinks, appSettingLinks }: SidebarProps) => {
           {link?.icon}
           {link?.label}
         </Link>
-      ))}
+      ))} */}
     </div>
   );
 };
 
 const SidebarMobileLinks = ({
   userSettingLinks,
-  appSettingLinks,
-}: SidebarProps) => {
+}: // appSettingLinks,
+SidebarProps) => {
   const user = useCurrentUser();
   const [opened, setOpened] = useState<boolean>(false);
   const path = usePathname();
@@ -113,10 +113,10 @@ const SidebarMobileLinks = ({
             {link?.label}
           </Link>
         ))}
-        <Separator orientation="horizontal" className="bg-slate-600 px-2 my-3" />
+        {/* <Separator orientation="horizontal" className="bg-slate-600 px-2 my-3" /> */}
 
-        <h1 className="mb-2 font-bold text-xs">App Settings</h1>
-        {appSettingLinks.map((link) => (
+        {/* <h1 className="mb-2 font-bold text-xs">App Settings</h1> */}
+        {/* {appSettingLinks.map((link) => (
           <Link
             className={`flex gap-2 p-3 hover:bg-sky-800 hover:text-white text-sm transition-all duration-100 ${
               link?.active &&
@@ -128,7 +128,7 @@ const SidebarMobileLinks = ({
             {link?.icon}
             {link?.label}
           </Link>
-        ))}
+        ))} */}
       </div>
     </div>
   );

@@ -34,32 +34,32 @@ function AccountLayout({ children }: { children: React.ReactNode }) {
       active: path === "/account/devices",
     },
   ];
-  const appSettingLinks = [
-    {
-      label: "Communities",
-      href: "/account/communities",
-      icon: <Group className="size-5" />,
-      active: path === "/account/communities",
-    },
-    {
-      label: "Notifications",
-      href: "/account/notifications",
-      icon: <Bell className="size-5" />,
-      active: path === "/account/notifications",
-    },
-    {
-      label: "Chats",
-      href: "/account/chats",
-      icon: <LucideMessageSquare className="size-5" />,
-      active: path === "/account/chats",
-    },
-  ];
+  // const appSettingLinks = [
+  //   {
+  //     label: "Communities",
+  //     href: "/account/communities",
+  //     icon: <Group className="size-5" />,
+  //     active: path === "/account/communities",
+  //   },
+  //   {
+  //     label: "Notifications",
+  //     href: "/account/notifications",
+  //     icon: <Bell className="size-5" />,
+  //     active: path === "/account/notifications",
+  //   },
+  //   {
+  //     label: "Chats",
+  //     href: "/account/chats",
+  //     icon: <LucideMessageSquare className="size-5" />,
+  //     active: path === "/account/chats",
+  //   },
+  // ];
   return (
     <div className="relative flex max-h-[90vh] w-full h-full overflow-hidden">
       <div className="flex flex-col gap-2 sm:border-r-2 dark:sm:border-r-slate-800 sm:border-r-slate-200">
         <Sidebar
           userSettingLinks={userSettingLinks}
-          appSettingLinks={appSettingLinks}
+          // appSettingLinks={appSettingLinks}
         />
       </div>
       <div className="relative flex flex-col w-full overflow-y-auto gap-1 px-6 py-2 mt-5">
