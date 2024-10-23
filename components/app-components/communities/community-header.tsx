@@ -39,7 +39,7 @@ export const CommunityHeader = ({ id }: Props) => {
   }, [id]);
 
   return (
-    <div className="flex items-center justify-center w-full border-b-2 border-b-slate-600 p-1 px-8">
+    <div className="flex items-center justify-center w-full p-1 px-8">
       {communityData ? (
         <div className="flex items-center justify-between w-full">
           <DropDownComponent onClick={() => setIsOpen(!open)} trigger={
@@ -52,9 +52,6 @@ export const CommunityHeader = ({ id }: Props) => {
               }
             </Button>
           } />
-          <div className="flex items-center justify-center gap-3">
-            <Button className="hover:bg-transparent" variant={'ghost'}>Create a new thread</Button>
-          </div>
         </div>
       ) : (
         <div className="flex items-center justify-between w-full gap-8">

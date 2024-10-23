@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      className="dark select-none"
+      className="dark"
       lang="en"
       suppressHydrationWarning
     >

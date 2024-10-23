@@ -17,7 +17,7 @@ const CommunitiesPage = async () => {
   });
 
   if (community) {
-    return redirect(`/communities/${community.id}`);
+    return redirect(`/communities/${community.id}/threads`);
   }
 
   return <InitSetup />;

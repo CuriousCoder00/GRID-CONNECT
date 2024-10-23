@@ -8,21 +8,23 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { NavigationLink } from "./navigation-link";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Plus } from "lucide-react";
+import { Input } from "@/components/Landing/Custom/input";
 
 export const CommunitSidebar = () => {
   const user = useCurrentUser();
   const [communities, setCommunities] = useState<
     | {
-      id: string;
-      category: string;
-      name: string;
-      description: string;
-      imageUrl: string | null;
-      inviteCode: string;
-      userId: string;
-      createdAt: Date;
-      updatedAt: Date;
-    }[]
+        id: string;
+        category: string;
+        name: string;
+        description: string;
+        imageUrl: string | null;
+        inviteCode: string;
+        userId: string;
+        createdAt: Date;
+        updatedAt: Date;
+      }[]
     | null
   >(null);
   useEffect(() => {
@@ -83,14 +85,28 @@ export const CommunitSidebar = () => {
   );
 };
 
-export const ThreadsSidebar = () => {
+export const TopicsSidebar = () => {
   return (
-    <div className="flex flex-col justify-start items-start h-full max-h-[90vh] overflow-hidden border-r">
+    <div className="flex flex-col justify-start items-start h-full max-h-[90vh] overflow-hidden border-t border-t-slate-600 w-52">
       <div className="flex flex-col items-start px-2 mt-3 w-44">
+        <div className="flex flex-col gap-2 items-center justify-start ">
+          <Input
+            type="search"
+            placeholder="Search for topic..."
+            className="h-8 text-xs"
+          />
+          <Button
+            variant={"ghost"}
+            className="flex items-center justify-start text-sm w-full h-8"
+          >
+            <Plus size={16} /> Open a new topic
+          </Button>
+        </div>
+        <Separator className="bg-slate-300 dark:bg-slate-700 my-3" />
         <div className="flex flex-col items-center justify-start overflow-y-auto hidden-scrollbar">
-          My First Thread
+
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

@@ -41,7 +41,6 @@ model Activity {
   updatedAt DateTime @updatedAt
 }
 
-
 model Account {
   id                String  @id @default(cuid())
   userId            String
@@ -95,11 +94,30 @@ model Community {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   members Member[]
+  clubs   Club[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@index([userId])
+}
+
+model Club {
+  id          String  @id @default(uuid())
+  name        String
+  description String
+  imageUrl    String? @db.Text
+  inviteCode  String  @unique
+
+  communityId String
+  community   Community @relation(fields: [communityId], references: [id], onDelete: Cascade)
+
+  members Member[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([communityId])
 }
 
 model Category {
@@ -122,6 +140,8 @@ model Member {
   communityId String
   communities Community @relation(fields: [communityId], references: [id], onDelete: Cascade)
 
+  clubId    String
+  club      Club     @relation(fields: [clubId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
